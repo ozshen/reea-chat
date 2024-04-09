@@ -3,17 +3,17 @@ import { memo } from 'react';
 
 // TODO: 等 simple icons 修复类型，移除 ignore
 
-const SystemIcon = memo<{ title?: string }>(({ title }) => {
+const SystemIcon = memo<{ size: number; title?: string }>(({ size, title }) => {
   if (!title) return;
 
   // @ts-ignore
-  if (['Mac OS', 'iOS'].includes(title)) return <SiApple size={32} />;
+  if (['Mac OS', 'iOS'].includes(title)) return <SiApple size={size} />;
 
   // @ts-ignore
-  if (title === 'Windows') return <SiWindows11 size={32} />;
+  if (title === 'Windows') return <SiWindows11 size={size} />;
 
   // @ts-ignore
-  if (title === 'Android') return <SiAndroid size={32} />;
+  if (title === 'Android') return <SiAndroid size={size} />;
 
   return null;
 });

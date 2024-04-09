@@ -1,5 +1,5 @@
 import { ActionIcon } from '@lobehub/ui';
-import { AlignJustify } from 'lucide-react';
+import { EllipsisVertical } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -18,7 +18,7 @@ const SettingButton = memo<{ mobile?: boolean }>(({ mobile }) => {
 
   return (
     <ActionIcon
-      icon={AlignJustify}
+      icon={EllipsisVertical}
       onClick={() => {
         if (isInbox) {
           useGlobalStore.setState({

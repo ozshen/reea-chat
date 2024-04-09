@@ -16,9 +16,10 @@ import Actions from './Actions';
 
 interface SessionItemProps {
   id: string;
+  mobile: boolean;
 }
 
-const SessionItem = memo<SessionItemProps>(({ id }) => {
+const SessionItem = memo<SessionItemProps>(({ id, mobile }) => {
   const [open, setOpen] = useState(false);
   const [createGroupModalOpen, setCreateGroupModalOpen] = useState(false);
 
@@ -81,7 +82,7 @@ const SessionItem = memo<SessionItemProps>(({ id }) => {
         description={description || systemRole}
         loading={loading}
         pin={pin}
-        showAction={open}
+        showAction={open || mobile}
         title={title}
       />
       <CreateGroupModal

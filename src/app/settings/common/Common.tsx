@@ -130,8 +130,8 @@ const Common = memo<SettingsCommonProps>(({ showAccessCodeConfig, showOAuthLogin
             {t('danger.reset.action')}
           </Button>
         ),
-        desc: t('danger.reset.title'),
-        label: t('danger.reset.desc'),
+        desc: t('danger.reset.desc'),
+        label: t('danger.reset.title'),
         minWidth: undefined,
       },
       {

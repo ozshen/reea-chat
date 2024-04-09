@@ -42,7 +42,7 @@ export const initialPreferenceState: GlobalPreferenceState = {
     showChatSideBar: true,
     showSessionPanel: true,
     showSystemRole: false,
-    telemetry: null,
-    useCmdEnterToSend: false,
+    telemetry: true, //default trace
+    useCmdEnterToSend: true,
   },
 };

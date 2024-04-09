@@ -3,12 +3,8 @@ import { cookies } from 'next/headers';
 import { FC, ReactNode } from 'react';
 
 import { getClientConfig } from '@/config/client';
-import { LOBE_LOCALE_COOKIE } from '@/const/locale';
-import {
-  LOBE_THEME_APPEARANCE,
-  LOBE_THEME_NEUTRAL_COLOR,
-  LOBE_THEME_PRIMARY_COLOR,
-} from '@/const/theme';
+import { LOCALE_COOKIE } from '@/const/locale';
+import { THEME_APPEARANCE, THEME_NEUTRAL_COLOR, THEME_PRIMARY_COLOR } from '@/const/theme';
 import { getAntdLocale } from '@/utils/locale';
 
 import AppTheme from './AppTheme';
@@ -34,12 +30,12 @@ interface GlobalLayoutProps {
 const GlobalLayout = async ({ children }: GlobalLayoutProps) => {
   // get default theme config to use with ssr
   const cookieStore = cookies();
-  const appearance = cookieStore.get(LOBE_THEME_APPEARANCE);
-  const neutralColor = cookieStore.get(LOBE_THEME_NEUTRAL_COLOR);
-  const primaryColor = cookieStore.get(LOBE_THEME_PRIMARY_COLOR);
+  const appearance = cookieStore.get(THEME_APPEARANCE);
+  const neutralColor = cookieStore.get(THEME_NEUTRAL_COLOR);
+  const primaryColor = cookieStore.get(THEME_PRIMARY_COLOR);
 
   // get default locale config to use with ssr
-  const defaultLang = cookieStore.get(LOBE_LOCALE_COOKIE);
+  const defaultLang = cookieStore.get(LOCALE_COOKIE);
   const antdLocale = await getAntdLocale(defaultLang?.value);
 
   return (

@@ -1,6 +1,6 @@
 import { ActionIcon, SliderWithInput } from '@lobehub/ui';
 import { Popover } from 'antd';
-import { Thermometer } from 'lucide-react';
+import { SeparatorVertical } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -36,7 +36,7 @@ const Temperature = memo(() => {
       trigger={'click'}
     >
       <ActionIcon
-        icon={Thermometer}
+        icon={SeparatorVertical}
         placement={'bottom'}
         title={t('settingModel.temperature.titleWithValue', { value: temperature })}
       />

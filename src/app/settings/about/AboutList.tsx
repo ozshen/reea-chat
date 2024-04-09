@@ -1,17 +1,16 @@
-import { Feather, FileClock, Heart } from 'lucide-react';
+// import { Feather, FileClock, Heart } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
-import { ABOUT, CHANGELOG, FEEDBACK } from '@/const/url';
-
-import Item from '../features/SettingList/Item';
+// import { ABOUT, CHANGELOG, FEEDBACK } from '@/const/url';
+// import Item from '../features/SettingList/Item';
 import { useStyles } from './style';
 
 const AboutList = memo(() => {
   const { t } = useTranslation('setting');
   const { styles } = useStyles();
-  const items = [
+  /*const items = [
     {
       icon: Feather,
       label: t('feedback', { ns: 'common' }),
@@ -30,7 +29,7 @@ const AboutList = memo(() => {
       onClick: () => window.open(ABOUT, '__blank'),
       value: 'about',
     },
-  ];
+  ];*/
 
   return (
     <div className={styles.wrapper}>
@@ -39,11 +38,12 @@ const AboutList = memo(() => {
           {t('about.title')}
         </Flexbox>
         <Flexbox width={'100%'}>
-          {items.map(({ value, icon, label, onClick }) => (
+          <span style={{ color: styles.desc }}>©{new Date().getFullYear()} Power by ozshen.</span>
+          {/* {items.map(({ value, icon, label, onClick }) => (
             <div key={value} onClick={onClick}>
               <Item active={false} icon={icon} label={label} />
             </div>
-          ))}
+          ))} */}
         </Flexbox>
       </Flexbox>
     </div>

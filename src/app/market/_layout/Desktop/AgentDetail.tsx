@@ -2,7 +2,7 @@ import { DraggablePanel, DraggablePanelBody, DraggablePanelContainer } from '@lo
 import { createStyles } from 'antd-style';
 import { memo, useCallback, useState } from 'react';
 
-import SafeSpacing from '@/components/SafeSpacing';
+// import SafeSpacing from '@/components/SafeSpacing';
 import { MARKET_SIDEBAR_WIDTH } from '@/const/layoutTokens';
 import { agentMarketSelectors, useMarketStore } from '@/store/market';
 
@@ -64,7 +64,7 @@ const SideBar = memo(() => {
           minWidth: MARKET_SIDEBAR_WIDTH,
         }}
       >
-        <SafeSpacing />
+        {/* <SafeSpacing /> */}
         <DraggablePanelBody
           className={styles.noScrollbar}
           style={{ padding: 0, position: 'relative' }}

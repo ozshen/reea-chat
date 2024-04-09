@@ -66,6 +66,7 @@ export const DEFAULT_LLM_CONFIG: GlobalLLMConfig = {
   google: {
     apiKey: '',
     enabled: false,
+    endpoint: '',
   },
   groq: {
     apiKey: '',

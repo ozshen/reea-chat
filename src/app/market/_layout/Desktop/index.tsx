@@ -11,7 +11,6 @@ import ClientResponsiveLayout from '@/components/client/ClientResponsiveLayout';
 import { MAX_WIDTH } from '@/const/layoutTokens';
 
 import AgentSearchBar from '../../features/AgentSearchBar';
-import Header from './Header';
 
 const SideBar = dynamic(() => import('./AgentDetail'));
 
@@ -33,7 +32,7 @@ const Desktop = memo<PropsWithChildren>(({ children }) => {
 
   return (
     <Flexbox flex={1} height={'100%'} id={'lobe-market-container'} style={{ position: 'relative' }}>
-      <Header />
+      {/* <Header /> */}
       <Flexbox flex={1} height={'calc(100% - 64px)'} horizontal>
         <Flexbox align={'center'} flex={1} style={{ overflowY: 'scroll', padding: 16 }}>
           <SafeSpacing />

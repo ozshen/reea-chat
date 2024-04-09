@@ -68,7 +68,7 @@ export default {
         pattenErrorMessage: '只能输入英文字符、数字 、- 和_ 这两个符号',
       },
       manifest: {
-        desc: 'LobeChat 将会通过该链接安装插件',
+        desc: 'AI 服务引擎将会通过该链接安装插件',
         label: '插件描述文件 (Manifest) URL',
         preview: '预览 Manifest',
         refresh: '刷新',
@@ -80,8 +80,7 @@ export default {
       },
     },
     metaConfig: '插件元信息配置',
-    modalDesc:
-      '添加自定义插件后，可用于插件开发验证，也可直接在会话中使用。插件开发请参考<1>开发文档↗</>',
+    modalDesc: '添加自定义插件后，可直接在会话中使用，或用于插件开发验证。请参考：<1>插件开发↗</>',
     openai: {
       importUrl: '从 URL 链接导入',
       schema: 'Schema',

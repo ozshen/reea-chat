@@ -5,7 +5,7 @@ import { PropsWithChildren } from 'react';
 import { isRtlLang } from 'rtl-detect';
 
 import Analytics from '@/components/Analytics';
-import { DEFAULT_LANG, LOBE_LOCALE_COOKIE } from '@/const/locale';
+import { DEFAULT_LANG, LOCALE_COOKIE } from '@/const/locale';
 import AuthProvider from '@/layout/AuthProvider';
 import GlobalLayout from '@/layout/GlobalLayout';
 import GlobalProvider from '@/layout/GlobalProvider';
@@ -14,7 +14,7 @@ import { isMobileDevice } from '@/utils/responsive';
 const RootLayout = async ({ children }: PropsWithChildren) => {
   const cookieStore = cookies();
 
-  const lang = cookieStore.get(LOBE_LOCALE_COOKIE);
+  const lang = cookieStore.get(LOCALE_COOKIE);
   const direction = isRtlLang(lang?.value || DEFAULT_LANG) ? 'rtl' : 'ltr';
 
   return (

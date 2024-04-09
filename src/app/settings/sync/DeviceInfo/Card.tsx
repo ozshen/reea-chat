@@ -12,8 +12,8 @@ const useStyles = createStyles(({ css, token, responsive }) => ({
     }
   `,
   icon: css`
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
   `,
   title: css`
     font-size: 20px;

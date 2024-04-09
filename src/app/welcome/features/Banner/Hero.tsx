@@ -25,18 +25,20 @@ const Hero = memo<{ mobile?: boolean; width: number }>(({ width, mobile }) => {
 
   return (
     <>
-      <Flexbox
-        style={{
-          height: size.logo,
-          marginBottom: size.marginBottom,
-          marginTop: size.marginTop,
-          position: 'relative',
-        }}
-      >
-        {mobile ? <LogoThree size={size.logo} /> : <LogoSpline height={'100%'} width={'100%'} />}
-      </Flexbox>
+      {mobile && (
+        <Flexbox
+          style={{
+            height: size.logo,
+            marginBottom: size.marginBottom,
+            marginTop: size.marginTop,
+            position: 'relative',
+          }}
+        >
+          {mobile ? <LogoThree size={size.logo} /> : <LogoSpline height={'100%'} width={'100%'} />}
+        </Flexbox>
+      )}
       <div className={styles.title} style={{ fontSize: size.title }}>
-        <strong style={mobile ? { fontSize: '1.2em' } : {}}>LobeChat</strong>
+        {/* <strong style={mobile ? { fontSize: '1.2em' } : {}}>ChatAI</strong> */}
         {mobile ? <br /> : ' '}
         {t('slogan.title')}
       </div>

@@ -1,7 +1,7 @@
 {
-  "name": "@lobehub/chat",
+  "name": "reea-chat",
   "version": "0.146.0",
-  "description": "Lobe Chat - an open-source, high-performance chatbot framework that supports speech synthesis, multimodal, and extensible Function Call plugin system. Supports one-click free deployment of your private ChatGPT/LLM web application.",
+  "description": "An high-performance chatbot framework that supports speech synthesis, multimodal, and extensible Function Call plugin system. ",
   "keywords": [
     "framework",
     "chatbot",
@@ -14,27 +14,26 @@
     "tts",
     "stt"
   ],
-  "homepage": "https://github.com/lobehub/lobe-chat",
+  "homepage": "https://github.com/ozshen/reea-chat",
   "bugs": {
-    "url": "https://github.com/lobehub/lobe-chat/issues/new/choose"
+    "url": "https://github.com/ozshen/reea-chat/issues/new/choose"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lobehub/lobe-chat.git"
+    "url": "https://github.com/ozshen/reea-chat.git"
   },
   "license": "MIT",
-  "author": "LobeHub <i@lobehub.com>",
+  "author": "ozshen",
   "sideEffects": false,
   "scripts": {
     "build": "next build",
     "postbuild": "npm run build-sitemap",
     "build-sitemap": "next-sitemap --config next-sitemap.config.mjs",
-    "build:analyze": "ANALYZE=true next build",
-    "build:docker": "DOCKER=true next build && npm run build-sitemap",
+    "build:analyze": "cross-env ANALYZE=true next build",
+    "build:docker": "cross-env ANALYZE=false BUILD_MODE=standalone next build && npm run build-sitemap",
     "dev": "next dev -p 3010",
     "docs": "lobe-i18n md && npm run workflow:docs",
     "i18n": "npm run workflow:i18n && lobe-i18n",
-    "i18n:docs": "lobe-i18n md && npm run workflow:docs",
     "lint": "npm run lint:ts && npm run lint:style && npm run type-check && npm run lint:circular",
     "lint:circular": "dpdm src/**/*.ts  --warning false  --tree false  --exit-code circular:1  -T true --skip-dynamic-imports circular",
     "lint:md": "remark . --quiet --frail --output",
@@ -51,9 +50,7 @@
     "test:coverage": "vitest run --coverage",
     "test:update": "vitest -u",
     "type-check": "tsc --noEmit",
-    "workflow:docs": "tsx scripts/docsWorkflow/index.ts",
-    "workflow:i18n": "tsx scripts/i18nWorkflow/index.ts",
-    "workflow:readme": "tsx scripts/readmeWorkflow/index.ts"
+    "workflow:i18n": "tsx scripts/i18nWorkflow/index.ts"
   },
   "lint-staged": {
     "*.md": [
@@ -84,7 +81,7 @@
     "@aws-sdk/client-bedrock-runtime": "^3.525.0",
     "@azure/openai": "^1.0.0-beta.11",
     "@cfworker/json-schema": "^1",
-    "@google/generative-ai": "^0.3.1",
+    "@fuyun/generative-ai": "^0.3.1",
     "@icons-pack/react-simple-icons": "^9",
     "@lobehub/chat-plugin-sdk": "latest",
     "@lobehub/chat-plugins-gateway": "latest",
@@ -190,6 +187,7 @@
     "ajv-keywords": "^5",
     "commitlint": "^19",
     "consola": "^3",
+    "cross-env": "^7.0.3",
     "dpdm": "^3",
     "eslint": "^8",
     "eslint-plugin-mdx": "^2",

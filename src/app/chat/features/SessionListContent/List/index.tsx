@@ -35,7 +35,7 @@ const SessionList = memo<SessionListProps>(({ dataSource, groupId, showAddButton
     dataSource.map(({ id }) => (
       <LazyLoad className={styles} key={id}>
         <Link aria-label={id} href={SESSION_CHAT_URL(id, mobile)}>
-          <SessionItem id={id} />
+          <SessionItem id={id} mobile={mobile || false} />
         </Link>
       </LazyLoad>
     ))

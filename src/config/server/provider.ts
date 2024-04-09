@@ -70,7 +70,10 @@ export const getProviderConfig = () => {
     throw new Error('[Server Config] you are importing a server-only module outside of server');
   }
 
+  const OPENAI_API_KEY = process.env.OPENAI_API_KEY || '';
+
   const ZHIPU_API_KEY = process.env.ZHIPU_API_KEY || '';
+
   const AWS_ACCESS_KEY_ID = process.env.AWS_ACCESS_KEY_ID || '';
 
   const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY || '';
@@ -102,7 +105,7 @@ export const getProviderConfig = () => {
 
     API_KEY_SELECT_MODE: process.env.API_KEY_SELECT_MODE,
 
-    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    OPENAI_API_KEY,
     OPENAI_PROXY_URL: process.env.OPENAI_PROXY_URL,
     OPENAI_FUNCTION_REGIONS: regions,
 
@@ -111,6 +114,7 @@ export const getProviderConfig = () => {
 
     ENABLED_GOOGLE: !!GOOGLE_API_KEY,
     GOOGLE_API_KEY,
+    GOOGLE_PROXY_URL: process.env.GOOGLE_PROXY_URL,
 
     ENABLED_PERPLEXITY: !!PERPLEXITY_API_KEY,
     PERPLEXITY_API_KEY,
@@ -149,7 +153,7 @@ export const getProviderConfig = () => {
     AZURE_ENDPOINT: process.env.AZURE_ENDPOINT,
     USE_AZURE_OPENAI: process.env.USE_AZURE_OPENAI === '1',
 
-    ENABLE_OLLAMA: !!process.env.OLLAMA_PROXY_URL,
+    ENABLE_OLLAMA: !!process.env.ENABLE_OLLAMA,
     OLLAMA_PROXY_URL: process.env.OLLAMA_PROXY_URL || '',
     OLLAMA_CUSTOM_MODELS: process.env.OLLAMA_CUSTOM_MODELS,
   };

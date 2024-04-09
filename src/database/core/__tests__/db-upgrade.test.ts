@@ -3,22 +3,22 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import { LocalDB } from '../db';
 import { dbSchemaV3 } from '../schemas';
-import { LOBE_CHAT_LOCAL_DB_NAME } from '../types/db';
+import { CHAT_LOCAL_DB_NAME } from '../types/db';
 
 beforeEach(async () => {
   // 确保在测试开始前删除数据库
-  await Dexie.delete(LOBE_CHAT_LOCAL_DB_NAME);
+  await Dexie.delete(CHAT_LOCAL_DB_NAME);
 });
 
 afterEach(async () => {
   // 确保在测试结束后删除数据库
-  await Dexie.delete(LOBE_CHAT_LOCAL_DB_NAME);
+  await Dexie.delete(CHAT_LOCAL_DB_NAME);
 });
 
 describe('LocalDB migration', () => {
   it('should upgrade from version 3 to version 4 correctly', async () => {
     // 使用版本3的schema创建数据库实例并填充测试数据
-    const dbV3 = new Dexie(LOBE_CHAT_LOCAL_DB_NAME);
+    const dbV3 = new Dexie(CHAT_LOCAL_DB_NAME);
     dbV3.version(3).stores(dbSchemaV3);
     await dbV3.open();
     await dbV3.table('sessions').bulkAdd([

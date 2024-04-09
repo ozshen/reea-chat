@@ -4,7 +4,7 @@
   },
   "analytics": {
     "telemetry": {
-      "desc": "Durch das Senden von Telemetriedaten können Sie uns dabei helfen, die Gesamtnutzererfahrung von LobeChat zu verbessern",
+      "desc": "Durch das Senden von Telemetriedaten können Sie uns dabei helfen, die Gesamtnutzererfahrung von ChatAI zu verbessern",
       "title": "Anonyme Nutzungsdaten senden"
     },
     "title": "Analytics"
@@ -98,6 +98,11 @@
       "title": "Konnektivitätsprüfung"
     },
     "google": {
+      "endpoint": {
+        "desc": "Die Adresse muss http(s):// enthalten",
+        "placeholder": "https://generativelanguage.googleapis.com",
+        "title": "Schnittstellenproxy-Adresse"
+      },
       "title": "Google",
       "token": {
         "desc": "Geben Sie Ihren API-Key von Google ein",

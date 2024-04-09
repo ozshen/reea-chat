@@ -1,6 +1,6 @@
 import { getPreferredRegion } from '@/app/api/config';
 import { createErrorResponse } from '@/app/api/errorResponse';
-import { LOBE_CHAT_AUTH_HEADER, OAUTH_AUTHORIZED } from '@/const/auth';
+import { CHAT_AUTH_HEADER, OAUTH_AUTHORIZED } from '@/const/auth';
 import { AgentRuntimeError, ChatCompletionErrorPayload } from '@/libs/agent-runtime';
 import { ChatErrorType } from '@/types/fetch';
 import { ChatStreamPayload } from '@/types/openai/chat';
@@ -20,7 +20,7 @@ export const POST = async (req: Request, { params }: { params: { provider: strin
     // ============  1. init chat model   ============ //
 
     // get Authorization from header
-    const authorization = req.headers.get(LOBE_CHAT_AUTH_HEADER);
+    const authorization = req.headers.get(CHAT_AUTH_HEADER);
     const oauthAuthorized = !!req.headers.get(OAUTH_AUTHORIZED);
 
     if (!authorization) throw AgentRuntimeError.createError(ChatErrorType.Unauthorized);

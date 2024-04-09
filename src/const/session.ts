@@ -5,7 +5,7 @@ import { merge } from '@/utils/merge';
 
 export const INBOX_SESSION_ID = 'inbox';
 
-export const DEFAULT_AGENT_LOBE_SESSION: LobeAgentSession = {
+export const DEFAULT_AGENT_SESSION: LobeAgentSession = {
   config: DEFAULT_AGENT_CONFIG,
   createdAt: Date.now(),
   id: '',
@@ -14,7 +14,7 @@ export const DEFAULT_AGENT_LOBE_SESSION: LobeAgentSession = {
   updatedAt: Date.now(),
 };
 
-export const DEFAULT_INBOX_SESSION: LobeAgentSession = merge(DEFAULT_AGENT_LOBE_SESSION, {
+export const DEFAULT_INBOX_SESSION: LobeAgentSession = merge(DEFAULT_AGENT_SESSION, {
   id: 'inbox',
   meta: {
     avatar: DEFAULT_INBOX_AVATAR,

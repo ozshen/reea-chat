@@ -3,9 +3,9 @@ import { produce } from 'immer';
 import {
   AnthropicProvider,
   BedrockProvider,
+  DEFAULT_MODEL_LIST,
   GoogleProvider,
   GroqProvider,
-  LOBE_DEFAULT_MODEL_LIST,
   MistralProvider,
   MoonshotProvider,
   OllamaProvider,
@@ -97,8 +97,8 @@ const processChatModels = (
   return produce(chatModels, (draft) => {
     // 处理添加或替换逻辑
     for (const toAddModel of modelConfig.add) {
-      // first try to find the model in LOBE_DEFAULT_MODEL_LIST to confirm if it is a known model
-      const knownModel = LOBE_DEFAULT_MODEL_LIST.find((model) => model.id === toAddModel.id);
+      // first try to find the model in DEFAULT_MODEL_LIST to confirm if it is a known model
+      const knownModel = DEFAULT_MODEL_LIST.find((model) => model.id === toAddModel.id);
 
       // if the model is known, update it based on the known model
       if (knownModel) {
@@ -117,7 +117,7 @@ const processChatModels = (
           });
         }
       } else {
-        // if the model is not in LOBE_DEFAULT_MODEL_LIST, add it as a new custom model
+        // if the model is not in DEFAULT_MODEL_LIST, add it as a new custom model
         draft.push({
           ...toAddModel,
           displayName: toAddModel.displayName || toAddModel.id,

@@ -1,0 +1,6 @@
+contributing/* linguist-generated=true
+docs/* linguist-generated=true
+scripts/docsWorkflow/* linguist-generated=true
+scripts/readmeWorkflow/* linguist-generated=true
+locales/* linguist-generated=true
+!locales/zh-CN/* linguist-generated=false

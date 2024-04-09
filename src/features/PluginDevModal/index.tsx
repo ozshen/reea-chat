@@ -86,7 +86,7 @@ const DevModal = memo<DevModalProps>(
         onFormChange={() => {
           onValueChange?.(form.getFieldsValue());
         }}
-        onFormFinish={async (_, info) => {
+        onFormFinish={async (_: any, info: any) => {
           if (onSave) {
             setSubmitting(true);
 
@@ -121,14 +121,14 @@ const DevModal = memo<DevModalProps>(
             <Alert
               message={
                 <Trans i18nKey={'dev.modalDesc'} ns={'plugin'}>
-                  添加自定义插件后，可用于插件开发验证，也可直接在会话中使用。插件开发文档请参考：
+                  添加自定义插件后，可直接在会话中使用，或用于插件开发验证。请参考：
                   <a
                     href={WIKI_PLUGIN_GUIDE}
                     rel="noreferrer"
-                    style={{ paddingInline: 8 }}
+                    style={{ fontWeight: 800, paddingInline: 8 }}
                     target={'_blank'}
                   >
-                    文档
+                    插件开发
                   </a>
                   <Icon icon={MoveUpRight} />
                 </Trans>

@@ -1,4 +1,4 @@
-import { Content, GoogleGenerativeAI, Part } from '@google/generative-ai';
+import { Content, GoogleGenerativeAI, Part } from '@fuyun/generative-ai';
 import { GoogleGenerativeAIStream, StreamingTextResponse } from 'ai';
 
 import { LobeRuntimeAI } from '../BaseAI';
@@ -12,6 +12,7 @@ import {
 import { ModelProvider } from '../types/type';
 import { AgentRuntimeError } from '../utils/createError';
 import { debugStream } from '../utils/debugStream';
+import { desensitizeUrl } from '../utils/desensitizeUrl';
 import { parseDataUri } from '../utils/uriParser';
 
 enum HarmCategory {
@@ -28,10 +29,14 @@ enum HarmBlockThreshold {
 export class LobeGoogleAI implements LobeRuntimeAI {
   private client: GoogleGenerativeAI;
 
-  constructor({ apiKey }: { apiKey?: string }) {
+  baseURL?: string;
+
+  constructor({ apiKey, baseURL }: { apiKey?: string; baseURL?: string }) {
     if (!apiKey) throw AgentRuntimeError.createError(AgentRuntimeErrorType.InvalidGoogleAPIKey);
 
     this.client = new GoogleGenerativeAI(apiKey);
+
+    this.baseURL = baseURL;
   }
 
   async chat(payload: ChatStreamPayload, options?: ChatCompetitionOptions) {
@@ -70,7 +75,7 @@ export class LobeGoogleAI implements LobeRuntimeAI {
               },
             ],
           },
-          { apiVersion: 'v1beta' },
+          { apiVersion: 'v1beta', baseURL: this.baseURL },
         )
         .generateContentStream({ contents });
 
@@ -90,7 +95,18 @@ export class LobeGoogleAI implements LobeRuntimeAI {
 
       const { errorType, error } = this.parseErrorMessage(err.message);
 
-      throw AgentRuntimeError.chat({ error, errorType, provider: ModelProvider.Google });
+      let desensitizedEndpoint = this.baseURL;
+
+      if (this.baseURL && this.baseURL.length !== 0) {
+        desensitizedEndpoint = desensitizeUrl(this.baseURL);
+      }
+
+      throw AgentRuntimeError.chat({
+        endpoint: desensitizedEndpoint,
+        error,
+        errorType,
+        provider: ModelProvider.Google,
+      });
     }
   }
 

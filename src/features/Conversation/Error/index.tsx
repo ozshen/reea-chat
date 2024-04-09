@@ -18,7 +18,7 @@ export const getErrorAlertConfig = (
   errorType?: IPluginErrorType | ILobeAgentRuntimeErrorType | ErrorType,
 ): AlertProps | undefined => {
   // OpenAIBizError / ZhipuBizError / GoogleBizError / ...
-  if (typeof errorType === 'string' && (errorType.includes('Biz') || errorType.includes('Invalid')))
+  if (typeof errorType === 'string' && errorType.includes('Biz'))
     return {
       extraDefaultExpand: true,
       extraIsolate: true,
@@ -26,6 +26,13 @@ export const getErrorAlertConfig = (
     };
 
   switch (errorType) {
+    case ChatErrorType.InvalidAccessCode: {
+      return {
+        extraDefaultExpand: true,
+        extraIsolate: true,
+        type: 'info',
+      };
+    }
     case AgentRuntimeErrorType.LocationNotSupportError: {
       return {
         type: 'warning',

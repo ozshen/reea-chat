@@ -13,9 +13,9 @@ export const getCanonicalUrl = (path: string) => urlJoin(OFFICIAL_URL, path);
 export const GITHUB = pkg.homepage;
 export const CHANGELOG = urlJoin(GITHUB, 'blob/main/CHANGELOG.md');
 
-const { LOBE_CHAT_DOCS } = getClientConfig();
+const { REEA_CHAT_DOCS } = getClientConfig();
 
-export const DOCUMENTS = !!LOBE_CHAT_DOCS ? '/docs' : 'https://chat-docs.lobehub.com';
+export const DOCUMENTS = !!REEA_CHAT_DOCS ? '/docs' : 'https://chat-docs.lobehub.com';
 
 export const WIKI_PLUGIN_GUIDE = urlJoin(GITHUB, 'wiki', 'Plugin-Development');
 
@@ -26,6 +26,7 @@ export const FEEDBACK = pkg.bugs.url;
 export const DISCORD = 'https://discord.gg/AYFPHvv2jT';
 export const PRIVACY_URL = 'https://lobehub.com/privacy';
 
+export const AGENTS_INDEX_URL = 'https://chat-agents.lobehub.com';
 export const PLUGINS_INDEX_URL = 'https://chat-plugins.lobehub.com';
 
 export const MORE_MODEL_PROVIDER_REQUEST_URL =

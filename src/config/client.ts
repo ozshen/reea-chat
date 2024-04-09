@@ -31,7 +31,7 @@ declare global {
 
       NEXT_PUBLIC_DEVELOPER_DEBUG: string;
 
-      NEXT_PUBLIC_LOBE_CHAT_DOCS: string;
+      NEXT_PUBLIC_CHAT_DOCS: string;
     }
   }
 }
@@ -40,7 +40,7 @@ export const getClientConfig = () => ({
   BASE_PATH: process.env.NEXT_PUBLIC_BASE_PATH || '',
 
   // docs
-  LOBE_CHAT_DOCS: process.env.NEXT_PUBLIC_LOBE_CHAT_DOCS,
+  REEA_CHAT_DOCS: process.env.NEXT_PUBLIC_CHAT_DOCS,
 
   // Plausible Analytics
   ANALYTICS_PLAUSIBLE: process.env.NEXT_PUBLIC_ANALYTICS_PLAUSIBLE === '1',

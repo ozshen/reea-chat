@@ -1,6 +1,6 @@
 import { ActionIcon, SliderWithInput } from '@lobehub/ui';
 import { Popover, Switch } from 'antd';
-import { Timer, TimerOff } from 'lucide-react';
+import { HistoryIcon, TimerIcon } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
@@ -48,7 +48,7 @@ const History = memo(() => {
       trigger={'click'}
     >
       <ActionIcon
-        icon={unlimited ? TimerOff : Timer}
+        icon={unlimited ? HistoryIcon : TimerIcon}
         placement={'bottom'}
         title={t(
           unlimited

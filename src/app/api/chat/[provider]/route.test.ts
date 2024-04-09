@@ -1,7 +1,7 @@
 // @vitest-environment edge-runtime
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { LOBE_CHAT_AUTH_HEADER, OAUTH_AUTHORIZED } from '@/const/auth';
+import { CHAT_AUTH_HEADER, OAUTH_AUTHORIZED } from '@/const/auth';
 import { LobeRuntimeAI } from '@/libs/agent-runtime';
 import { ChatErrorType } from '@/types/fetch';
 
@@ -19,7 +19,7 @@ let request: Request;
 beforeEach(() => {
   request = new Request(new URL('https://test.com'), {
     headers: {
-      [LOBE_CHAT_AUTH_HEADER]: 'Bearer some-valid-token',
+      [CHAT_AUTH_HEADER]: 'Bearer some-valid-token',
       [OAUTH_AUTHORIZED]: 'true',
     },
     method: 'POST',
@@ -63,7 +63,7 @@ describe('POST handler', () => {
       });
     });
 
-    it('should return Unauthorized error when LOBE_CHAT_AUTH_HEADER is missing', async () => {
+    it('should return Unauthorized error when CHAT_AUTH_HEADER is missing', async () => {
       const mockParams = { provider: 'test-provider' };
       const requestWithoutAuthHeader = new Request(new URL('https://test.com'), {
         method: 'POST',
@@ -103,7 +103,7 @@ describe('POST handler', () => {
       const mockParams = { provider: 'test-provider' };
       const mockChatPayload = { message: 'Hello, world!' };
       request = new Request(new URL('https://test.com'), {
-        headers: { [LOBE_CHAT_AUTH_HEADER]: 'Bearer some-valid-token' },
+        headers: { [CHAT_AUTH_HEADER]: 'Bearer some-valid-token' },
         method: 'POST',
         body: JSON.stringify(mockChatPayload),
       });
@@ -124,7 +124,7 @@ describe('POST handler', () => {
       const mockParams = { provider: 'test-provider' };
       const mockChatPayload = { message: 'Hello, world!' };
       request = new Request(new URL('https://test.com'), {
-        headers: { [LOBE_CHAT_AUTH_HEADER]: 'Bearer some-valid-token' },
+        headers: { [CHAT_AUTH_HEADER]: 'Bearer some-valid-token' },
         method: 'POST',
         body: JSON.stringify(mockChatPayload),
       });

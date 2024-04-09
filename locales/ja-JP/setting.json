@@ -4,7 +4,7 @@
   },
   "analytics": {
     "telemetry": {
-      "desc": "匿名の使用データを送信することで、LobeChat の全体的なユーザーエクスペリエンスの向上にご協力いただけます",
+      "desc": "匿名の使用データを送信することで、ChatAI の全体的なユーザーエクスペリエンスの向上にご協力いただけます",
       "title": "匿名使用データの送信"
     },
     "title": "データ分析"
@@ -98,6 +98,11 @@
       "title": "接続性チェック"
     },
     "google": {
+      "endpoint": {
+        "desc": "アドレスは http(s):// を含む必要があります",
+        "placeholder": "https://generativelanguage.googleapis.com",
+        "title": "APIプロキシアドレス"
+      },
       "title": "Google",
       "token": {
         "desc": "GoogleからのAPIキーを入力してください",

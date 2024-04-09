@@ -8,11 +8,7 @@ import Image from 'next/image';
 import { PropsWithChildren, ReactNode, memo, useEffect } from 'react';
 
 import AntdStaticMethods from '@/components/AntdStaticMethods';
-import {
-  LOBE_THEME_APPEARANCE,
-  LOBE_THEME_NEUTRAL_COLOR,
-  LOBE_THEME_PRIMARY_COLOR,
-} from '@/const/theme';
+import { THEME_APPEARANCE, THEME_NEUTRAL_COLOR, THEME_PRIMARY_COLOR } from '@/const/theme';
 import { useGlobalStore } from '@/store/global';
 import { settingsSelectors } from '@/store/global/selectors';
 import { GlobalStyle } from '@/styles';
@@ -91,11 +87,11 @@ const AppTheme = memo<AppThemeProps>(
     ]);
 
     useEffect(() => {
-      setCookie(LOBE_THEME_PRIMARY_COLOR, primaryColor);
+      setCookie(THEME_PRIMARY_COLOR, primaryColor);
     }, [primaryColor]);
 
     useEffect(() => {
-      setCookie(LOBE_THEME_NEUTRAL_COLOR, neutralColor);
+      setCookie(THEME_NEUTRAL_COLOR, neutralColor);
     }, [neutralColor]);
 
     return (
@@ -106,7 +102,7 @@ const AppTheme = memo<AppThemeProps>(
         }}
         defaultAppearance={defaultAppearance}
         onAppearanceChange={(appearance) => {
-          setCookie(LOBE_THEME_APPEARANCE, appearance);
+          setCookie(THEME_APPEARANCE, appearance);
         }}
         themeMode={themeMode}
       >

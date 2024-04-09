@@ -4,21 +4,21 @@
   },
   "analytics": {
     "telemetry": {
-      "desc": "通过选择发送遥测数据，你可以帮助我们改善 LobeChat 整体用户体验",
+      "desc": "通过选择参与产品改进计划，你可以帮助我们改善 ChatAI 整体用户体验",
       "title": "发送匿名使用数据"
     },
     "title": "数据统计"
   },
   "danger": {
     "clear": {
-      "action": "立即清除",
+      "action": "清除",
       "confirm": "确认清除所有聊天数据？",
-      "desc": "将会清除所有会话数据，包括助手、文件、消息、插件等",
-      "success": "已清除所有会话消息",
-      "title": "清除所有会话消息"
+      "desc": "清除所有会话历史、档案数据",
+      "success": "已清除所有会话数据",
+      "title": "清除所有数据"
     },
     "reset": {
-      "action": "立即重置",
+      "action": "重置",
       "confirm": "确认重置所有设置？",
       "currentVersion": "当前版本",
       "desc": "重置所有设置项回默认值",
@@ -98,6 +98,11 @@
       "title": "连通性检查"
     },
     "google": {
+      "endpoint": {
+        "desc": "地址必须包含 http(s)://",
+        "placeholder": "https://generativelanguage.googleapis.com",
+        "title": "接口代理地址"
+      },
       "title": "Google",
       "token": {
         "desc": "填入来自 Google 的 API Key",
@@ -135,11 +140,11 @@
       },
       "customModelName": {
         "desc": "增加自定义模型，多个模型使用逗号（,）隔开",
-        "placeholder": "vicuna,llava,codellama,llama2:13b-text",
+        "placeholder": "vicuna,llava,codellama,llama2:13b-text,gamma:7b",
         "title": "自定义模型名称"
       },
       "endpoint": {
-        "desc": "填入 Ollama 接口代理地址，本地未额外指定可留空",
+        "desc": "地址必须包含 http(s)://",
         "placeholder": "http://127.0.0.1:11434/v1",
         "title": "接口代理地址"
       },
@@ -157,7 +162,7 @@
         "title": "自定义模型名称"
       },
       "endpoint": {
-        "desc": "除默认地址外，必须包含 http(s)://",
+        "desc": "地址必须包含 http(s)://",
         "placeholder": "https://api.openai.com/v1",
         "title": "接口代理地址"
       },
@@ -172,9 +177,9 @@
       },
       "title": "OpenAI",
       "token": {
-        "desc": "使用自己的 OpenAI Key",
+        "desc": "填入来自 OpenAI 的 Api Key",
         "placeholder": "OpenAI API Key",
-        "title": "OpenAI API Key"
+        "title": "API Key"
       },
       "useAzure": {
         "desc": "使用 Azure 提供的 OpenAI 服务",
@@ -223,19 +228,19 @@
         "title": "API Key"
       }
     },
-    "waitingForMore": "更多模型正在 <1>计划接入</1> 中，敬请期待 ✨",
+    "waitingForMore": "✨ <1>更多模型，敬请期待</1> ✨",
     "zeroone": {
       "title": "01.AI 零一万物",
       "token": {
-        "desc": "填入来自 01.AI 零一万物的 API Key",
-        "placeholder": "01.AI 零一万物 API Key",
+        "desc": "填入来自 零一万物 的 API Key",
+        "placeholder": "零一万物 API Key",
         "title": "API Key"
       }
     },
     "zhipu": {
       "title": "智谱",
       "token": {
-        "desc": "填入来自智谱的 API Key",
+        "desc": "填入来自 智谱 的 API Key",
         "placeholder": "Zhipu API Key",
         "title": "API Key"
       }
@@ -359,10 +364,10 @@
       "title": "随机性",
       "titleWithValue": "随机性 {{value}}"
     },
-    "title": "模型设置",
+    "title": "模型参数",
     "topP": {
-      "desc": "与随机性类似，但不要和随机性一起更改",
-      "title": "核采样"
+      "desc": "随机采样率，不建议更改",
+      "title": "采样率"
     }
   },
   "settingPlugin": {
@@ -381,7 +386,7 @@
       },
       "signin": {
         "action": "登录",
-        "desc": "使用 SSO 登录以解锁应用",
+        "desc": "登录以解锁应用",
         "title": "登录账号"
       },
       "signout": {
@@ -476,7 +481,7 @@
       "unknownOS": "未知系统"
     },
     "warning": {
-      "message": "本功能目前仍为实验性功能，可能存在预期外或不稳定的情况，如遇到问题请及时提交反馈。"
+      "message": "本功能目前仍为实验性功能，可能存在预期外或不稳定的情况。"
     },
     "webrtc": {
       "channelName": {

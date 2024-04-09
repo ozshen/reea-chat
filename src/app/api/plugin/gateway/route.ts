@@ -4,8 +4,8 @@ import { createGatewayOnEdgeRuntime } from '@lobehub/chat-plugins-gateway';
 import { getJWTPayload } from '@/app/api/chat/auth';
 import { createErrorResponse } from '@/app/api/errorResponse';
 import { getServerConfig } from '@/config/server';
-import { LOBE_CHAT_AUTH_HEADER, OAUTH_AUTHORIZED } from '@/const/auth';
-import { LOBE_CHAT_TRACE_ID, TraceNameMap } from '@/const/trace';
+import { CHAT_AUTH_HEADER, OAUTH_AUTHORIZED } from '@/const/auth';
+import { CHAT_TRACE_ID, TraceNameMap } from '@/const/trace';
 import { AgentRuntimeError } from '@/libs/agent-runtime';
 import { TraceClient } from '@/libs/traces';
 import { ChatErrorType, ErrorType } from '@/types/fetch';
@@ -40,7 +40,7 @@ const handler = createGatewayOnEdgeRuntime({ defaultPluginSettings, pluginsIndex
 
 export const POST = async (req: Request) => {
   // get Authorization from header
-  const authorization = req.headers.get(LOBE_CHAT_AUTH_HEADER);
+  const authorization = req.headers.get(CHAT_AUTH_HEADER);
   if (!authorization) throw AgentRuntimeError.createError(ChatErrorType.Unauthorized);
 
   const oauthAuthorized = !!req.headers.get(OAUTH_AUTHORIZED);
@@ -75,7 +75,7 @@ export const POST = async (req: Request) => {
   span?.end({ output: await res.clone().text() });
 
   if (trace?.id) {
-    res.headers.set(LOBE_CHAT_TRACE_ID, trace.id);
+    res.headers.set(CHAT_TRACE_ID, trace.id);
   }
 
   return res;

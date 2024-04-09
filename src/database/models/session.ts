@@ -1,6 +1,6 @@
 import { DeepPartial } from 'utility-types';
 
-import { DEFAULT_AGENT_LOBE_SESSION } from '@/const/session';
+import { DEFAULT_AGENT_SESSION } from '@/const/session';
 import { BaseModel } from '@/database/core';
 import { DBModel } from '@/database/core/types/db';
 import { DB_Session, DB_SessionSchema } from '@/database/schemas/session';
@@ -174,7 +174,7 @@ class _SessionModel extends BaseModel {
   // **************** Create *************** //
 
   async create(type: 'agent' | 'group', defaultValue: Partial<LobeAgentSession>, id = uuid()) {
-    const data = merge(DEFAULT_AGENT_LOBE_SESSION, { type, ...defaultValue });
+    const data = merge(DEFAULT_AGENT_SESSION, { type, ...defaultValue });
     const dataDB = this.mapToDB_Session(data);
     return this._addWithSync(dataDB, id);
   }

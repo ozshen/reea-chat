@@ -39,7 +39,7 @@ interface AgentCardBannerProps extends DivProps {
 }
 
 const AvatarBanner = memo<AgentCardBannerProps>(
-  ({ avatar, className, size = 200, children, ...props }) => {
+  ({ avatar, className, size = 180, children, ...props }) => {
     const { styles, cx } = useStyles();
 
     return (

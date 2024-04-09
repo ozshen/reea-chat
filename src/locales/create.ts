@@ -5,7 +5,7 @@ import { initReactI18next } from 'react-i18next';
 import { isRtlLang } from 'rtl-detect';
 
 import { getClientConfig } from '@/config/client';
-import { DEFAULT_LANG, LOBE_LOCALE_COOKIE } from '@/const/locale';
+import { DEFAULT_LANG, LOCALE_COOKIE } from '@/const/locale';
 import { COOKIE_CACHE_DAYS } from '@/const/settings';
 import { normalizeLocale } from '@/locales/resources';
 import { isDev, isOnServerSide } from '@/utils/env';
@@ -48,7 +48,7 @@ export const createI18nNext = (lang?: string) => {
           cookieOptions: {
             sameSite: 'lax',
           },
-          lookupCookie: LOBE_LOCALE_COOKIE,
+          lookupCookie: LOCALE_COOKIE,
         },
         fallbackLng: DEFAULT_LANG,
         interpolation: {

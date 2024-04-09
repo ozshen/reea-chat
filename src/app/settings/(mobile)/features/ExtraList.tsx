@@ -1,10 +1,13 @@
 import { Upload } from 'antd';
 import { useResponsive } from 'antd-style';
-import { Feather, FileClock, HardDriveDownload, HardDriveUpload } from 'lucide-react';
+import {
+  /*Feather, FileClock,*/
+  HardDriveDownload,
+  HardDriveUpload,
+} from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { CHANGELOG, FEEDBACK } from '@/const/url';
 import { useImportConfig } from '@/hooks/useImportConfig';
 import { configService } from '@/services/config';
 import { SettingsTabs } from '@/store/global/initialState';
@@ -26,6 +29,7 @@ const ExtraList = memo<ExtraListProps>(({ activeTab }) => {
       onClick: configService.exportAll,
       value: 'export',
     },
+    /*
     {
       icon: Feather,
       label: t('feedback'),
@@ -38,6 +42,7 @@ const ExtraList = memo<ExtraListProps>(({ activeTab }) => {
       onClick: () => window.open(CHANGELOG, '__blank'),
       value: 'changelog',
     },
+    */
   ];
 
   return (

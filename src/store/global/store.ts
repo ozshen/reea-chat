@@ -26,13 +26,13 @@ const createStore: StateCreator<GlobalStore, [['zustand/devtools', never]]> = (.
 type GlobalPersist = Pick<GlobalStore, 'preference' | 'settings'>;
 
 const persistOptions: PersistOptions<GlobalStore, GlobalPersist> = {
-  name: 'LOBE_GLOBAL',
+  name: 'REEA_GLOBAL',
 
   skipHydration: true,
 
   storage: createHyperStorage({
     localStorage: {
-      dbName: 'LobeHub',
+      dbName: 'ReeaChat',
       selectors: ['preference'],
     },
   }),
@@ -44,7 +44,7 @@ export const useGlobalStore = createWithEqualityFn<GlobalStore>()(
   persist(
     subscribeWithSelector(
       devtools(createStore, {
-        name: 'LobeChat_Global' + (isDev ? '_DEV' : ''),
+        name: 'ReeaChat_Global' + (isDev ? '_DEV' : ''),
       }),
     ),
     persistOptions,

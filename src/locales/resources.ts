@@ -1,20 +1,14 @@
 import resources from './default';
 
 export const locales = [
-  'ar',
   'bg-BG',
   'de-DE',
   'en-US',
-  'es-ES',
-  'fr-FR',
   'ja-JP',
   'ko-KR',
-  'pt-BR',
   'ru-RU',
-  'tr-TR',
   'zh-CN',
   'zh-TW',
-  'vi-VN',
 ] as const;
 
 export type DefaultResources = typeof resources;
@@ -48,6 +42,7 @@ export const normalizeLocale = (locale?: string) => {
 };
 
 type LocaleOptions = {
+  check: boolean;
   label: string;
   value: Locales;
 }[];
@@ -58,66 +53,37 @@ export const localeOptions: LocaleOptions = [
     value: 'en-US',
   },
   {
+    check: true,
     label: '简体中文',
     value: 'zh-CN',
   },
   {
+    check: false,
     label: '繁體中文',
     value: 'zh-TW',
   },
   {
+    check: false,
     label: '日本語',
     value: 'ja-JP',
   },
   {
+    check: false,
     label: '한국어',
     value: 'ko-KR',
   },
   {
+    check: false,
     label: 'Deutsch',
     value: 'de-DE',
   },
   {
-    label: 'Español',
-    value: 'es-ES',
-  },
-  {
-    label: 'العربية',
-    value: 'ar',
-  },
-  {
-    label: 'Français',
-    value: 'fr-FR',
-  },
-  {
-    label: 'Português',
-    value: 'pt-BR',
-  },
-  {
+    check: false,
     label: 'Русский',
     value: 'ru-RU',
   },
   {
-    label: 'Türkçe',
-    value: 'tr-TR',
-  },
-  {
-    label: 'Polski',
-    value: 'pl-PL',
-  },
-  {
-    label: 'Nederlands',
-    value: 'nl-NL',
-  },
-  {
-    label: 'Italiano',
-    value: 'it-IT',
-  },
-  {
-    label: 'Tiếng Việt',
-    value: 'vi-VN',
-  },
-  {
+    check: false,
     label: 'Български',
     value: 'bg-BG',
   },

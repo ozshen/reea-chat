@@ -1,12 +1,7 @@
 import { getServerConfig } from '@/config/server';
 import { JWTPayload } from '@/const/auth';
 import { INBOX_SESSION_ID } from '@/const/session';
-import {
-  LOBE_CHAT_OBSERVATION_ID,
-  LOBE_CHAT_TRACE_ID,
-  TracePayload,
-  TraceTagMap,
-} from '@/const/trace';
+import { CHAT_OBSERVATION_ID, CHAT_TRACE_ID, TracePayload, TraceTagMap } from '@/const/trace';
 import {
   ChatStreamPayload,
   LobeAnthropicAI,
@@ -106,8 +101,8 @@ class AgentRuntime {
         },
       },
       headers: {
-        [LOBE_CHAT_OBSERVATION_ID]: generation?.id,
-        [LOBE_CHAT_TRACE_ID]: trace?.id,
+        [CHAT_OBSERVATION_ID]: generation?.id,
+        [CHAT_TRACE_ID]: trace?.id,
       },
     });
   }
@@ -243,10 +238,11 @@ class AgentRuntime {
   }
 
   private static initGoogle(payload: JWTPayload) {
-    const { GOOGLE_API_KEY } = getServerConfig();
+    const { GOOGLE_API_KEY, GOOGLE_PROXY_URL } = getServerConfig();
     const apiKey = apiKeyManager.pick(payload?.apiKey || GOOGLE_API_KEY);
+    const baseURL = payload?.endpoint || GOOGLE_PROXY_URL;
 
-    return new LobeGoogleAI({ apiKey });
+    return new LobeGoogleAI({ apiKey, baseURL });
   }
 
   private static initBedrock(payload: JWTPayload) {

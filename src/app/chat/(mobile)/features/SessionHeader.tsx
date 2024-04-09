@@ -33,7 +33,10 @@ const Header = memo(() => {
           <div onClick={() => router.push('/settings')}>
             {avatar ? <Avatar avatar={avatar} size={28} /> : <Logo size={28} />}
           </div>
-          <Logo type={'text'} />
+          <Flexbox align={'center'} flex={1} style={{ fontSize: 18, fontWeight: 600 }}>
+            ChatAI
+          </Flexbox>
+          {/* <Logo type={'text'} /> */}
           <SyncStatusInspector placement={'bottom'} />
         </Flexbox>
       }

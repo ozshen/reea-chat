@@ -48,9 +48,9 @@ const useStyles = createStyles(({ css, token, stylish }) => {
       width: 100%;
       height: 100%;
 
-      transition: all 0.3s ease-in-out;
-
       background: ${token.colorBgMask};
+
+      transition: all 0.3s ease-in-out;
       ${stylish.blur};
     `,
   };

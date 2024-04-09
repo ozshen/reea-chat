@@ -30,7 +30,7 @@ describe('AgentMarket', () => {
 
   it('should return the base URL if the provided language is not supported', () => {
     const agentMarket = new AgentMarket();
-    const url = agentMarket.getAgentIndexUrl('fr' as any);
+    const url = agentMarket.getAgentIndexUrl('zh-TW' as any);
     expect(url).toBe(baseURL);
   });
 
@@ -42,13 +42,13 @@ describe('AgentMarket', () => {
 
   it('should return the agent URL for a supported language', () => {
     const agentMarket = new AgentMarket();
-    const url = agentMarket.getAgentUrl('agent-123', 'es-ES');
+    const url = agentMarket.getAgentUrl('agent-123', 'ru-RU');
     expect(url).toBe(`${baseURL}/agent-123.es-ES.json`);
   });
 
   it('should return the agent URL without language suffix if the provided language is not supported', () => {
     const agentMarket = new AgentMarket();
-    const url = agentMarket.getAgentUrl('agent-123', 'fr' as any);
+    const url = agentMarket.getAgentUrl('agent-123', 'bg' as any);
     expect(url).toBe(`${baseURL}/agent-123.json`);
   });
 });

@@ -10,9 +10,7 @@ export default {
   },
   about: '关于',
   advanceSettings: '高级设置',
-
-  appInitializing: 'LobeChat 启动中，请耐心等待...',
-
+  appInitializing: 'ChatAI 启动中...',
   autoGenerate: '自动补全',
   autoGenerateTooltip: '基于提示词自动补全助手描述',
   cancel: '取消',
@@ -115,7 +113,7 @@ export default {
     zhipu: '智谱AI',
   },
   noDescription: '暂无描述',
-  oauth: 'SSO 登录',
+  oauth: 'OAuth',
   ok: '确定',
   password: '密码',
   pin: '置顶',
@@ -161,15 +159,15 @@ export default {
   telemetry: {
     allow: '允许',
     deny: '拒绝',
-    desc: '我们希望匿名获取你的使用信息，进而帮助我们改进 LobeChat，并为你提供更好的产品体验。你可以在「设置」 - 「关于」随时关闭。',
+    desc: '是否参与匿名的产品体验改进计划？你可以在「设置」 - 「关于」随时关闭。',
     learnMore: '了解更多',
-    title: '帮助 LobeChat 做得更好',
+    title: '产品体验',
   },
   temp: '临时',
   updateAgent: '更新助理信息',
   upgradeVersion: {
     action: '升级',
-    hasNew: '有可用更新',
-    newVersion: '有新版本可用：{{version}}',
+    hasNew: 'NEW',
+    newVersion: 'NEW：{{version}}',
   },
 };

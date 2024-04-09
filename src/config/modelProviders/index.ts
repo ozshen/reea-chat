@@ -14,7 +14,7 @@ import TogetherAIProvider from './togetherai';
 import ZeroOneProvider from './zeroone';
 import ZhiPuProvider from './zhipu';
 
-export const LOBE_DEFAULT_MODEL_LIST: ChatModelCard[] = [
+export const DEFAULT_MODEL_LIST: ChatModelCard[] = [
   OpenAIProvider.chatModels,
   ZhiPuProvider.chatModels,
   BedrockProvider.chatModels,

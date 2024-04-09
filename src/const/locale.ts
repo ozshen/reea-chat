@@ -1,7 +1,7 @@
 import { normalizeLocale, supportLocales } from '@/locales/resources';
 
 export const DEFAULT_LANG = 'en-US';
-export const LOBE_LOCALE_COOKIE = 'LOBE_LOCALE';
+export const LOCALE_COOKIE = 'REEA_LOCALE';
 
 /**
  * Check if the language is supported

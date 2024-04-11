@@ -480,7 +480,7 @@
     },
     "webrtc": {
       "channelName": {
-        "desc": "O WebRTC usará este nome para criar um canal de sincronização. Certifique-se de que o nome do canal seja único",
+        "desc": "O RTC usará este nome para criar um canal de sincronização. Certifique-se de que o nome do canal seja único",
         "placeholder": "Insira o nome do canal de sincronização",
         "shuffle": "Gerar aleatoriamente",
         "title": "Nome do canal de sincronização"

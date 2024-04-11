@@ -25,6 +25,7 @@ export const ABOUT = pkg.homepage;
 export const FEEDBACK = pkg.bugs.url;
 export const DISCORD = 'https://discord.gg/AYFPHvv2jT';
 export const PRIVACY_URL = 'https://lobehub.com/privacy';
+export const SHOPPING = 'https://api.reea.cc';
 
 export const AGENTS_INDEX_URL = 'https://chat-agents.lobehub.com';
 export const PLUGINS_INDEX_URL = 'https://chat-plugins.lobehub.com';

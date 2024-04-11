@@ -1,4 +1,4 @@
-import { TokenTag, Tooltip } from '@lobehub/ui';
+import { Tooltip } from '@lobehub/ui';
 import numeral from 'numeral';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -13,6 +13,8 @@ import { useSessionStore } from '@/store/session';
 import { agentSelectors } from '@/store/session/selectors';
 import { useToolStore } from '@/store/tool';
 import { toolSelectors } from '@/store/tool/selectors';
+
+import TokenTagIner from './TokenTagIner';
 
 const format = (number: number) => numeral(number).format('0,0');
 
@@ -87,7 +89,7 @@ const Token = memo(() => {
         </Flexbox>
       }
     >
-      <TokenTag
+      <TokenTagIner
         displayMode={'used'}
         maxValue={maxTokens}
         style={{ marginLeft: 8 }}

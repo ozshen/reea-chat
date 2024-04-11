@@ -1,49 +1,47 @@
 import { Icon } from '@lobehub/ui';
 import { Button, Divider, Tag } from 'antd';
-import { Github, Settings, Share2 } from 'lucide-react';
+import { ShoppingCart, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import { memo } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Flexbox } from 'react-layout-kit';
 
-import { AGENTS_INDEX_GITHUB, imageUrl } from '@/const/url';
+import { SHOPPING, imageUrl } from '@/const/url';
 
 const AdsInner = memo(() => {
-  const { t } = useTranslation('market');
   return (
     <>
       <Image
         alt={'banner'}
         height={602}
-        src={imageUrl('banner_market_modal.webp')}
+        src={imageUrl('banner_support_ads_.png')}
         style={{ height: 'auto', marginBottom: 24, width: '100%' }}
         width={1602}
       />
       <h3>
-        <Tag color={'cyan'}>{t('guide.func1.tag')}</Tag>
-        <span>{t('guide.func1.title')}</span>
+        <Tag color={'gold'}>{'提供高速率接入服务'}</Tag>
       </h3>
       <p>
-        <Icon icon={Settings} />
-        {' - '}
-        {t('guide.func1.desc1')}
+        <Icon icon={Sparkles} />
+        {' - 使用高质量的账号池，突破官方API速率限制，接口调用 不限速！不限速！不限速！'}
         <br />
-        <Icon icon={Share2} />
-        {' - '}
-        {t('guide.func1.desc2')}
+        <br />
+        <Icon icon={Sparkles} />
+        {' - 接口消耗的token计算方式与官方公布的算法一致，日志72小时定时自动清理不留存。'}
+        <br />
+        <br />
+        <Icon icon={Sparkles} />
+        {' - 多个高速服务器为你提供服务，7x24小时AI智能故障处理，生产稳定有保障。'}
+        <br />
+        <br />
+        <Icon icon={Sparkles} />
+        {' - 账号永不过期，可用token数永不清零，有效额不因市场价格浮动。'}
       </p>
       <Divider />
-      <h3>
-        <Tag color={'cyan'}>{t('guide.func2.tag')}</Tag>
-        <span>{t('guide.func2.title')}</span>
-      </h3>
-      <p>{t('guide.func2.desc')}</p>
-      <br />
-      <Button
-        icon={<Icon icon={Github} />}
-        onClick={() => window.open(AGENTS_INDEX_GITHUB, '__blank')}
-        type={'primary'}
-      >
-        {t('guide.func2.button')}
+      <Button onClick={() => window.open(SHOPPING, '__blank')} type={'default'}>
+        <Flexbox align={'center'} gap={4} horizontal justify={'center'}>
+          Get KEY
+          <Icon icon={ShoppingCart} />
+        </Flexbox>
       </Button>
     </>
   );

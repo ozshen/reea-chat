@@ -485,7 +485,7 @@
     },
     "webrtc": {
       "channelName": {
-        "desc": "WebRTC will use this name to create a sync channel. Ensure the channel name is unique.",
+        "desc": "RTC will use this name to create a sync channel. Ensure the channel name is unique.",
         "placeholder": "Enter sync channel name",
         "shuffle": "Generate Randomly",
         "title": "Sync Channel Name"
@@ -500,7 +500,7 @@
         "invalid": "Please enter a sync channel name before enabling",
         "title": "Enable Sync"
       },
-      "title": "WebRTC Sync"
+      "title": "RTC Sync"
     }
   },
   "tab": {

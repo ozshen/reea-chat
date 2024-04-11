@@ -9,7 +9,7 @@ import { MORE_MODEL_PROVIDER_REQUEST_URL } from '@/const/url';
 
 import Footer from '../features/Footer';
 import Anthropic from './Anthropic';
-import AzureAI from './Azure';
+// import AzureAI from './Azure';
 import Bedrock from './Bedrock';
 import Google from './Google';
 import Groq from './Groq';
@@ -30,7 +30,7 @@ export default memo<{ showOllama: boolean }>(() => {
     <>
       <PageTitle title={t('tab.llm')} />
       <OpenAI />
-      <AzureAI />
+      {/* <AzureAI /> */}
       <Ollama />
       <Anthropic />
       <Google />

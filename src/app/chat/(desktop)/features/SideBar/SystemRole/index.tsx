@@ -7,13 +7,13 @@ import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 import useMergeState from 'use-merge-value';
 
+import SidebarHeader from '@/app/chat/components/SidebarHeader';
 import AgentInfo from '@/features/AgentInfo';
 import { useGlobalStore } from '@/store/global';
 import { useSessionStore } from '@/store/session';
 import { agentSelectors, sessionSelectors } from '@/store/session/selectors';
 import { pathString } from '@/utils/url';
 
-import SidebarHeader from '../../../../components/SidebarHeader';
 import { useStyles } from './style';
 
 const SystemRole = memo(() => {

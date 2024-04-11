@@ -6,7 +6,7 @@ import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
 import { MOBILE_HEADER_ICON_SIZE } from '@/const/layoutTokens';
-import SyncStatusInspector from '@/features/SyncStatusInspector';
+// import SyncStatusInspector from '@/features/SyncStatusInspector';
 import { useGlobalStore } from '@/store/global';
 import { commonSelectors } from '@/store/global/selectors';
 import { useSessionStore } from '@/store/session';
@@ -37,7 +37,7 @@ const Header = memo(() => {
             ChatAI
           </Flexbox>
           {/* <Logo type={'text'} /> */}
-          <SyncStatusInspector placement={'bottom'} />
+          {/* <SyncStatusInspector placement={'bottom'} /> */}
         </Flexbox>
       }
       right={

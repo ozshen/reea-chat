@@ -26,16 +26,17 @@ enum HarmBlockThreshold {
   BLOCK_NONE = 'BLOCK_NONE',
 }
 
+const DEFAULT_BASE_URL = 'https://generativelanguage.googleapis.com';
+
 export class LobeGoogleAI implements LobeRuntimeAI {
   private client: GoogleGenerativeAI;
 
   baseURL?: string;
 
-  constructor({ apiKey, baseURL }: { apiKey?: string; baseURL?: string }) {
+  constructor({ apiKey, baseURL = DEFAULT_BASE_URL }: { apiKey?: string; baseURL?: string }) {
     if (!apiKey) throw AgentRuntimeError.createError(AgentRuntimeErrorType.InvalidGoogleAPIKey);
 
     this.client = new GoogleGenerativeAI(apiKey);
-
     this.baseURL = baseURL;
   }
 

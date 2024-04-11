@@ -480,7 +480,7 @@
     },
     "webrtc": {
       "channelName": {
-        "desc": "WebRTC zal deze naam gebruiken om een synchronisatiekanaal te maken, zorg ervoor dat de kanaalnaam uniek is",
+        "desc": "RTC zal deze naam gebruiken om een synchronisatiekanaal te maken, zorg ervoor dat de kanaalnaam uniek is",
         "placeholder": "Voer de synchronisatiekanaalnaam in",
         "shuffle": "Willekeurig genereren",
         "title": "Synchronisatiekanaalnaam"
@@ -495,7 +495,7 @@
         "invalid": "Schakel de synchronisatie in nadat u de synchronisatiekanaalnaam heeft ingevuld",
         "title": "Synchronisatie inschakelen"
       },
-      "title": "WebRTC Synchronisatie"
+      "title": "RTC Synchronisatie"
     }
   },
   "tab": {

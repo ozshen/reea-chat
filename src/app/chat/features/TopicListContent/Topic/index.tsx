@@ -21,7 +21,7 @@ const container = css`
   }
 `;
 
-export const Topic = memo(() => {
+export const Topic = memo<{ more?: boolean }>(({ more }) => {
   const { t } = useTranslation('chat');
   const virtuosoRef = useRef<VirtuosoHandle>(null);
   const { isDarkMode } = useThemeMode();
@@ -50,9 +50,16 @@ export const Topic = memo(() => {
   const itemContent = useCallback(
     (index: number, { id, favorite, title }: ChatTopic) =>
       index === 0 ? (
-        <TopicItem active={!activeTopicId} fav={favorite} title={title} />
+        <TopicItem active={!activeTopicId} fav={favorite} more={more} title={title} />
       ) : (
-        <TopicItem active={activeTopicId === id} fav={favorite} id={id} key={id} title={title} />
+        <TopicItem
+          active={activeTopicId === id}
+          fav={favorite}
+          id={id}
+          key={id}
+          more={more}
+          title={title}
+        />
       ),
     [activeTopicId],
   );

@@ -485,7 +485,7 @@
     },
     "webrtc": {
       "channelName": {
-        "desc": "WebRTC verwendet diesen Namen, um einen Synchronisierungskanal zu erstellen. Stellen Sie sicher, dass der Kanalname eindeutig ist",
+        "desc": "RTC verwendet diesen Namen, um einen Synchronisierungskanal zu erstellen. Stellen Sie sicher, dass der Kanalname eindeutig ist",
         "placeholder": "Geben Sie den Synchronisierungskanalnamen ein",
         "shuffle": "Zufällige Generierung",
         "title": "Synchronisierungskanalname"
@@ -500,7 +500,7 @@
         "invalid": "Bitte geben Sie zuerst den Synchronisierungskanalnamen ein, bevor Sie die Synchronisierung aktivieren",
         "title": "Synchronisierung aktivieren"
       },
-      "title": "WebRTC-Synchronisierung"
+      "title": "Synchronisierung"
     }
   },
   "tab": {

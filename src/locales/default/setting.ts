@@ -486,7 +486,7 @@ export default {
     },
     webrtc: {
       channelName: {
-        desc: 'WebRTC 将使用此名创建同步频道，确保频道名称唯一',
+        desc: 'RTC 将使用此名创建同步频道',
         placeholder: '请输入同步频道名称',
         shuffle: '随机生成',
         title: '同步频道名称',
@@ -496,13 +496,13 @@ export default {
         placeholder: '请输入同步频道密码',
         title: '同步频道密码',
       },
-      desc: '实时、点对点的数据通信，需设备同时在线才可同步',
+      desc: '需设备同时在线才可同步',
       enabled: {
         invalid: '请填写同步频道名称后再开启',
-        // desc: 'WebRTC 将使用此名创建同步频道，确保频道名称唯一',
+        // desc: 'RTC 将使用此名创建同步频道，确保频道名称唯一',
         title: '开启同步',
       },
-      title: 'WebRTC 同步',
+      title: 'RTC 同步',
     },
   },
   tab: {

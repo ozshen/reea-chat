@@ -480,7 +480,7 @@
     },
     "webrtc": {
       "channelName": {
-        "desc": "WebRTC 将使用此名创建同步频道，确保频道名称唯一",
+        "desc": "RTC 将使用此名创建同步频道，确保频道名称唯一",
         "placeholder": "请输入同步频道名称",
         "shuffle": "随机生成",
         "title": "同步频道名称"
@@ -495,7 +495,7 @@
         "invalid": "请填写同步频道名称后再开启",
         "title": "开启同步"
       },
-      "title": "WebRTC 同步"
+      "title": "RTC 同步"
     }
   },
   "tab": {

@@ -21,7 +21,7 @@ const ChatInputMobileLayout = memo(() => {
       expand={expand}
       loading={loading}
       onInput={onInput}
-      onSend={onSend}
+      //onSend={onSend}
       placeholder={t('sendPlaceholder')}
       ref={ref}
       safeArea

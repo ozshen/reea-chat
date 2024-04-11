@@ -20,7 +20,7 @@ const InputArea = forwardRef<TextAreaRef, ChatInputAreaInnerProps>(
       className,
       onInput,
       loading,
-      //onSend,
+      onSend,
       onBlur,
       onChange,
       ...rest
@@ -50,11 +50,10 @@ const InputArea = forwardRef<TextAreaRef, ChatInputAreaInnerProps>(
         }}
         onPressEnter={(e) => {
           onPressEnter?.(e);
-          if (loading || e.shiftKey || isChineseInput.current) return;
-          // if (!loading && !e.shiftKey && !isChineseInput.current) {
-          //   e.preventDefault();
-          //   onSend?.();
-          // }
+          if (!loading && !e.shiftKey && !isChineseInput.current) {
+            e.preventDefault();
+            onSend?.();
+          }
         }}
         ref={ref}
         resize={resize}

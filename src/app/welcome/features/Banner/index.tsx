@@ -2,12 +2,13 @@
 
 import { Icon } from '@lobehub/ui';
 import { Button } from 'antd';
-import { SendHorizonal } from 'lucide-react';
+import { SendHorizonal, ShoppingCart } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
+import { SHOPPING } from '@/const/url';
 // import DataImporter from '@/features/DataImporter';
 import { useGlobalStore } from '@/store/global';
 
@@ -41,6 +42,17 @@ const Banner = memo<{ mobile?: boolean }>(({ mobile }) => {
             {t('button.import')}
           </Button>
         </DataImporter> */}
+        <Button
+          block={mobile}
+          onClick={() => window.open(SHOPPING, '__blank')}
+          size={'large'}
+          type={'default'}
+        >
+          <Flexbox align={'center'} gap={4} horizontal justify={'center'}>
+            Get KEY
+            <Icon icon={ShoppingCart} />
+          </Flexbox>
+        </Button>
         <Button
           block={mobile}
           onClick={() => (isMobile ? router.push('/chat') : switchBackToChat())}

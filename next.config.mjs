@@ -60,10 +60,6 @@ const nextConfig = {
       type: 'javascript/auto',
     });
 
-    config.resolve.fallback = {
-      child_process: false,
-    };
-
     return config;
   },
 };

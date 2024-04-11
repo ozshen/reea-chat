@@ -480,7 +480,7 @@
     },
     "webrtc": {
       "channelName": {
-        "desc": "WebRTC sẽ sử dụng tên này để tạo kênh đồng bộ, đảm bảo tên kênh là duy nhất",
+        "desc": "RTC sẽ sử dụng tên này để tạo kênh đồng bộ, đảm bảo tên kênh là duy nhất",
         "placeholder": "Nhập tên kênh đồng bộ",
         "shuffle": "Tạo ngẫu nhiên",
         "title": "Tên kênh đồng bộ"
@@ -495,7 +495,7 @@
         "invalid": "Vui lòng nhập tên kênh đồng bộ trước khi bật",
         "title": "Bật đồng bộ"
       },
-      "title": "WebRTC Đồng bộ"
+      "title": "RTC Đồng bộ"
     }
   },
   "tab": {

@@ -28,7 +28,7 @@ export default memo(() => {
 
   return (
     <>
-      <PageTitle title={t('tab.tts')} />
+      <PageTitle title={t('tab.about')} />
       <Flexbox align={'center'} className={styles.container} gap={12}>
         <AboutList />
         {/* {enabledTelemetryChat && <Analytics />} */}

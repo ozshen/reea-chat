@@ -1,7 +1,7 @@
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 import OpenAI, { ClientOptions } from 'openai';
 
-import { LOBE_DEFAULT_MODEL_LIST } from '@/config/modelProviders';
+import { DEFAULT_MODEL_LIST } from '@/config/modelProviders';
 import { ChatModelCard } from '@/types/llm';
 
 import { LobeRuntimeAI } from '../../BaseAI';
@@ -135,7 +135,7 @@ export const LobeOpenAICompatibleFactory = ({
             return models.transformModel(item);
           }
 
-          const knownModel = LOBE_DEFAULT_MODEL_LIST.find((model) => model.id === item.id);
+          const knownModel = DEFAULT_MODEL_LIST.find((model) => model.id === item.id);
 
           if (knownModel) return knownModel;
 

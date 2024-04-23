@@ -1,6 +1,6 @@
-const PREV_KEY = 'LOBE_GLOBAL';
+const PREV_KEY = 'CHAT_GLOBAL';
 
-type StorageKey = 'LOBE_PREFERENCE';
+type StorageKey = 'CHAT_PREFERENCE';
 
 export class AsyncLocalStorage<State> {
   private storageKey: StorageKey;
@@ -18,7 +18,7 @@ export class AsyncLocalStorage<State> {
       const preference = data.state.preference;
 
       if (data.state?.preference) {
-        localStorage.setItem('LOBE_PREFERENCE', JSON.stringify(preference));
+        localStorage.setItem('CHAT_PREFERENCE', JSON.stringify(preference));
       }
       localStorage.removeItem(PREV_KEY);
     }

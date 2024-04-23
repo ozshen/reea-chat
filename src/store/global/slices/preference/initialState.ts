@@ -47,5 +47,5 @@ export const initialPreferenceState: GlobalPreferenceState = {
     telemetry: null,
     useCmdEnterToSend: false,
   },
-  preferenceStorage: new AsyncLocalStorage('LOBE_PREFERENCE'),
+  preferenceStorage: new AsyncLocalStorage('CHAT_PREFERENCE'),
 };

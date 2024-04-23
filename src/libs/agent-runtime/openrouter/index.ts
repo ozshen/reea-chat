@@ -1,4 +1,4 @@
-import { LOBE_DEFAULT_MODEL_LIST } from '@/config/modelProviders';
+import { DEFAULT_MODEL_LIST } from '@/config/modelProviders';
 
 import { AgentRuntimeErrorType } from '../error';
 import { ModelProvider } from '../types';
@@ -28,7 +28,7 @@ export const LobeOpenRouterAI = LobeOpenAICompatibleFactory({
       return {
         description: model.description,
         displayName: model.name,
-        enabled: LOBE_DEFAULT_MODEL_LIST.find((m) => model.id.endsWith(m.id))?.enabled || false,
+        enabled: DEFAULT_MODEL_LIST.find((m) => model.id.endsWith(m.id))?.enabled || false,
         functionCall: model.description.includes('function calling'),
         id: model.id,
         maxTokens:

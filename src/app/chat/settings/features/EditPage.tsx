@@ -4,7 +4,9 @@ import isEqual from 'fast-deep-equal';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Agent from '@/app/settings/agent/Agent';
 import PageTitle from '@/components/PageTitle';
+import { INBOX_SESSION_ID } from '@/const/session';
 import AgentSetting from '@/features/AgentSetting';
 import { useSessionStore } from '@/store/session';
 import { agentSelectors } from '@/store/session/selectors';
@@ -23,13 +25,17 @@ const EditPage = memo(() => {
   return (
     <>
       <PageTitle title={t('header.sessionWithName', { name: title })} />
-      <AgentSetting
-        config={config}
-        id={id}
-        meta={meta}
-        onConfigChange={updateAgentConfig}
-        onMetaChange={updateAgentMeta}
-      />
+      {id === INBOX_SESSION_ID ? (
+        <Agent />
+      ) : (
+        <AgentSetting
+          config={config}
+          id={id}
+          meta={meta}
+          onConfigChange={updateAgentConfig}
+          onMetaChange={updateAgentMeta}
+        />
+      )}
     </>
   );
 });

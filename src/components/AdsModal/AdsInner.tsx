@@ -22,7 +22,7 @@ const AdsInner = memo(() => {
       </h3>
       <p>
         <Icon icon={Sparkles} />
-        {' - 数千个高质量提速账号，突破官方API速率限制，接口调用目前不限速！'}
+        {' - 数千个高质量提速账号，突破官方API速率限制，接口调用不限速。'}
         <br />
         <br />
         <Icon icon={Sparkles} />

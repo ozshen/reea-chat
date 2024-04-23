@@ -5,7 +5,7 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
-import Token from '@/features/ChatInput/ActionBar/Token';
+import TokenTag from '@/features/ChatInput/ActionBar/Token';
 import { useSessionStore } from '@/store/session';
 import { agentSelectors, sessionSelectors } from '@/store/session/selectors';
 import { pathString } from '@/utils/url';
@@ -52,7 +52,7 @@ const Main = memo(() => {
         title={title}
       />
       <ChatHeaderTitle desc={displayDesc} tag={<Tags />} title={displayTitle} />
-      <Token />
+      <TokenTag />
     </Flexbox>
   );
 });

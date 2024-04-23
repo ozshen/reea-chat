@@ -38,7 +38,7 @@ const AddPluginButton = forwardRef<HTMLButtonElement>((props, ref) => {
           setModal(true);
         }}
         ref={ref}
-        size={'small'}
+        size={'middle'}
       >
         {t('plugin.addTooltip')}
       </Button>

@@ -133,7 +133,7 @@ const AgentPlugin = memo(() => {
                           toggleAgentPlugin(i.tag as string);
                         }
                       }}
-                      size={'small'}
+                      size={'middle'}
                     />
                   </Tooltip>
                 ) : null}
@@ -144,7 +144,7 @@ const AgentPlugin = memo(() => {
                       e.stopPropagation();
                       setShowStore(true);
                     }}
-                    size={'small'}
+                    size={'middle'}
                   />
                 </Tooltip>
               </Space.Compact>

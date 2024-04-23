@@ -1,20 +1,20 @@
 import resources from './default';
 
 export const locales = [
-  'ar',
-  'bg-BG',
+  // 'ar',
+  // 'bg-BG',
   'de-DE',
   'en-US',
-  'es-ES',
-  'fr-FR',
+  // 'es-ES',
+  // 'fr-FR',
   'ja-JP',
   'ko-KR',
-  'pt-BR',
+  // 'pt-BR',
   'ru-RU',
-  'tr-TR',
+  // 'tr-TR',
   'zh-CN',
   'zh-TW',
-  'vi-VN',
+  // 'vi-VN',
 ] as const;
 
 export type DefaultResources = typeof resources;
@@ -64,50 +64,50 @@ export const localeOptions: LocaleOptions = [
     label: 'Deutsch',
     value: 'de-DE',
   },
-  {
-    label: 'Español',
-    value: 'es-ES',
-  },
-  {
-    label: 'العربية',
-    value: 'ar',
-  },
-  {
-    label: 'Français',
-    value: 'fr-FR',
-  },
+  // {
+  //   label: 'Español',
+  //   value: 'es-ES',
+  // },
+  // {
+  //   label: 'العربية',
+  //   value: 'ar',
+  // },
+  // {
+  //   label: 'Français',
+  //   value: 'fr-FR',
+  // },
   {
     label: 'Português',
     value: 'pt-BR',
   },
-  {
-    label: 'Русский',
-    value: 'ru-RU',
-  },
-  {
-    label: 'Türkçe',
-    value: 'tr-TR',
-  },
-  {
-    label: 'Polski',
-    value: 'pl-PL',
-  },
-  {
-    label: 'Nederlands',
-    value: 'nl-NL',
-  },
-  {
-    label: 'Italiano',
-    value: 'it-IT',
-  },
-  {
-    label: 'Tiếng Việt',
-    value: 'vi-VN',
-  },
-  {
-    label: 'Български',
-    value: 'bg-BG',
-  },
+  // {
+  //   label: 'Русский',
+  //   value: 'ru-RU',
+  // },
+  // {
+  //   label: 'Türkçe',
+  //   value: 'tr-TR',
+  // },
+  // {
+  //   label: 'Polski',
+  //   value: 'pl-PL',
+  // },
+  // {
+  //   label: 'Nederlands',
+  //   value: 'nl-NL',
+  // },
+  // {
+  //   label: 'Italiano',
+  //   value: 'it-IT',
+  // },
+  // {
+  //   label: 'Tiếng Việt',
+  //   value: 'vi-VN',
+  // },
+  // {
+  //   label: 'Български',
+  //   value: 'bg-BG',
+  // },
 ] as LocaleOptions;
 
 export const supportLocales: string[] = [...locales, 'en', 'zh'];

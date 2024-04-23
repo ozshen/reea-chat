@@ -4,6 +4,7 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
+import TokenTagIner from '@/features/TokenTag';
 import { useTokenCount } from '@/hooks/useTokenCount';
 import { useChatStore } from '@/store/chat';
 import { chatSelectors } from '@/store/chat/selectors';
@@ -14,11 +15,9 @@ import { agentSelectors } from '@/store/session/selectors';
 import { useToolStore } from '@/store/tool';
 import { toolSelectors } from '@/store/tool/selectors';
 
-import TokenTagIner from './TokenTagIner';
-
 const format = (number: number) => numeral(number).format('0,0');
 
-const Token = memo(() => {
+const TokenTag = memo(() => {
   const { t } = useTranslation('chat');
 
   const [input, messageString] = useChatStore((s) => [
@@ -104,4 +103,4 @@ const Token = memo(() => {
   );
 });
 
-export default Token;
+export default TokenTag;

@@ -22,7 +22,7 @@ const AdsInner = memo(() => {
       </h3>
       <p>
         <Icon icon={Sparkles} />
-        {' - 使用高质量的账号池，突破官方API速率限制，接口调用 不限速！不限速！不限速！'}
+        {' - 数千个高质量提速账号，突破官方API速率限制，接口调用目前不限速！'}
         <br />
         <br />
         <Icon icon={Sparkles} />
@@ -30,7 +30,7 @@ const AdsInner = memo(() => {
         <br />
         <br />
         <Icon icon={Sparkles} />
-        {' - 多个高速服务器为你提供服务，7x24小时AI智能故障处理，生产稳定有保障。'}
+        {' - 多个高速服务器为你提供服务，7x24小时智能故障处理，生产稳定有保障。'}
         <br />
         <br />
         <Icon icon={Sparkles} />

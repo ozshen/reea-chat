@@ -60,3 +60,6 @@ sitemap*.xml
 robots.txt
 
 *.patch
+
+*.test.ts
+*.test.tsx

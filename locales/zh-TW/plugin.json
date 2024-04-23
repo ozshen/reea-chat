@@ -58,18 +58,18 @@
       },
       "formFieldRequired": "此欄位必填",
       "homepage": {
-        "desc": "外掛的官方首頁",
+        "desc": "外掛的首頁",
         "label": "首頁"
       },
       "identifier": {
-        "desc": "外掛的唯一識別碼，只支援英數字元、連字號 -，以及底線 _",
+        "desc": "外掛的唯一識別碼，將從 manifest 中自動識別",
         "errorDuplicate": "此識別碼已被其他外掛使用，請更改識別碼",
         "label": "識別碼",
         "pattenErrorMessage": "只允許英數字元、連字號 -，以及底線 _"
       },
       "manifest": {
-        "desc": "ChatAI 會使用此連結安裝外掛",
-        "label": "插件描述檔 (Manifest) URL",
+        "desc": "ChatAI 將會通過該鏈接安裝插件",
+        "label": "插件描述文件 (Manifest) URL",
         "preview": "預覽 Manifest",
         "refresh": "重新載入"
       },

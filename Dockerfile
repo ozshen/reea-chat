@@ -25,9 +25,7 @@ COPY package.json ./
 RUN pnpm i
 
 COPY . .
-
-# run build standalone for docker version
-RUN pnpm run build:docker
+RUN pnpm run build:docker # run build standalone for docker version
 
 ## Production image, copy all the files and run next
 FROM base AS runner
@@ -60,13 +58,13 @@ ENV PORT=3210
 
 # General Variables
 ENV ACCESS_CODE ""
-ENV CUSTOM_MODELS ""
 
 ENV API_KEY_SELECT_MODE ""
 
 # OpenAI
 ENV OPENAI_API_KEY ""
 ENV OPENAI_PROXY_URL ""
+ENV OPENAI_MODEL_LIST ""
 
 # Azure OpenAI
 ENV USE_AZURE_OPENAI ""
@@ -84,6 +82,7 @@ ENV MOONSHOT_API_KEY ""
 
 # Ollama
 ENV OLLAMA_PROXY_URL ""
+ENV OLLAMA_MODEL_LIST ""
 
 # Perplexity
 ENV PERPLEXITY_API_KEY ""
@@ -96,7 +95,7 @@ ENV MISTRAL_API_KEY ""
 
 # OpenRouter
 ENV OPENROUTER_API_KEY ""
-ENV OPENROUTER_CUSTOM_MODELS ""
+ENV OPENROUTER_MODEL_LIST ""
 
 # 01.AI
 ENV ZEROONE_API_KEY ""

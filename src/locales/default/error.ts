@@ -97,7 +97,7 @@ export default {
     OllamaBizError: '请求 Ollama 服务出错，请根据以下信息排查或重试',
     OllamaServiceUnavailable: '未检测到 Ollama 服务，请检查是否正常启动',
 
-    AgentRuntimeError: '语言模型运行时执行出错，请根据以下信息排查或重试',
+    AgentRuntimeError: 'AI Agent Runtime 执行出错，请根据以下信息排查或重试',
     /* eslint-enable */
   },
   stt: {
@@ -107,73 +107,22 @@ export default {
     responseError: '服务请求失败，请检查配置或重试',
   },
   unlock: {
-    apikey: {
-      Anthropic: {
-        description: '输入你的 Anthropic API Key 即可开始会话。应用不会记录你的 API Key',
-        title: 'Anthropic API Key',
-      },
-      Bedrock: {
-        customRegion: '自定义服务区域',
-        description:
-          '输入你的 AWS AccessKeyId / SecretAccessKey 即可开始会话。应用不会记录你的鉴权配置',
-        title: 'Bedrock 鉴权信息',
-      },
-      Google: {
-        description: '输入你的 Google API Key 即可开始会话。应用不会记录你的 API Key',
-        title: 'Google API Key',
-      },
-      Groq: {
-        description: '输入你的 Groq API Key 即可开始会话。应用不会记录你的 API Key',
-        title: 'Groq API Key',
-      },
-      Mistral: {
-        description: '输入你的 Mistral AI API Key 即可开始会话。应用不会记录你的 API Key',
-        title: 'Mistral AI API Key',
-      },
-      Moonshot: {
-        description: '输入你的 Moonshot AI API Key 即可开始会话。应用不会记录你的 API Key',
-        title: 'Moonshot AI API Key',
-      },
-      OpenAI: {
-        addProxyUrl: '添加 OpenAI 代理地址（可选）',
-        description: '输入你的 OpenAI API Key 即可开始会话。应用不会记录你的 API Key',
-        title: 'OpenAI API Key',
-      },
-      OpenRouter: {
-        description: '输入你的 OpenRouter API Key 即可开始会话。应用不会记录你的 API Key',
-        title: 'OpenRouter API Key',
-      },
-      Perplexity: {
-        description: '输入你的 Perplexity API Key 即可开始会话。应用不会记录你的 API Key',
-        title: 'Perplexity API Key',
-      },
-      TogetherAI: {
-        description: '输入你的 TogetherAI API Key 即可开始会话。应用不会记录你的 API Key',
-        title: 'TogetherAI API Key',
-      },
-      ZeroOne: {
-        description: '输入你的零一万物 API Key 即可开始会话。应用不会记录你的 API Key',
-        title: '零一万物 API Key',
-      },
-      Zhipu: {
-        description: '输入你的 Zhipu API Key 即可开始会话。应用不会记录你的 API Key',
-        title: 'Zhipu API Key',
-      },
-    },
-    closeMessage: '忽略提示',
+    addProxyUrl: '添加 OpenAI 代理地址（可选）',
+    closeMessage: '关闭提示',
     confirm: '确认并重试',
-    model: {
-      Ollama: {
-        confirm: '下载',
-        description: '输入你的 Ollama 模型标签，完成即可继续会话',
-        title: '下载指定的 Ollama 模型',
-      },
-    },
     oauth: {
       description: '请点击下方按钮登录',
       success: '登录成功',
       title: '未登录',
       welcome: '欢迎你！',
+    },
+    ollama: {
+      cancel: '取消下载',
+      confirm: '下载',
+      description: '输入你的 Ollama 模型标签，完成即可继续会话',
+      downloaded: '{{completed}} / {{total}}',
+      starting: '开始下载...',
+      title: '下载指定的 Ollama 模型',
     },
     password: {
       description: '请输入授权密码，密码只需填写一次',

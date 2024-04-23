@@ -9,7 +9,7 @@ import { getAntdLocale } from '@/utils/locale';
 
 import AppTheme from './AppTheme';
 import Locale from './Locale';
-import StoreHydration from './StoreHydration';
+import StoreInitialization from './StoreInitialization';
 import StyleRegistry from './StyleRegistry';
 
 let DebugUI: FC = () => null;
@@ -46,7 +46,7 @@ const GlobalLayout = async ({ children }: GlobalLayoutProps) => {
           defaultNeutralColor={neutralColor?.value as any}
           defaultPrimaryColor={primaryColor?.value as any}
         >
-          <StoreHydration />
+          <StoreInitialization />
           {children}
           <DebugUI />
         </AppTheme>

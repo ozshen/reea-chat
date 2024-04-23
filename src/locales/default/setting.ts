@@ -31,221 +31,65 @@ export default {
     sessionWithName: '会话设置 · {{name}}',
   },
   llm: {
-    anthropic: {
-      endpoint: {
-        desc: '除默认地址外，必须包含 http(s)://',
-        placeholder: 'https://api.anthropic.com',
-        title: 'API 代理地址',
-      },
-      title: 'Anthropic',
-      token: {
-        desc: '填入来自 Anthropic 的 API Key',
-        placeholder: 'Anthropic API Key',
-        title: 'API Key',
-      },
-    },
-    azure: {
-      azureApiVersion: {
-        desc: 'Azure 的 API 版本，遵循 YYYY-MM-DD 格式，查阅[最新版本](https://learn.microsoft.com/zh-cn/azure/ai-services/openai/reference#chat-completions)',
-        fetch: '获取列表',
-        title: 'Azure Api Version',
-      },
-      deployments: {
-        desc: '使用 id=name 的语法填写你的部署模型（如部署名和模型同名，可以只填写模型名称），多个模型使用逗号（,） 隔开',
-        title: 'Azure 部署模型列表',
-      },
-
-      endpoint: {
-        desc: '从 Azure 门户检查资源时，可在“密钥和终结点”部分中找到此值',
-        placeholder: 'https://docs-test-001.openai.azure.com',
-        title: 'Azure API 地址',
-      },
-      models: {
-        desc: '支持的模型',
-        title: '模型列表',
-      },
-      title: 'Azure OpenAI',
-      token: {
-        desc: '从 Azure 门户检查资源时，可在“密钥和终结点”部分中找到此值。 可以使用 KEY1 或 KEY2',
-        placeholder: 'Azure API Key',
-        title: 'API Key',
-      },
-    },
-    bedrock: {
-      accessKeyId: {
-        desc: '填入AWS Access Key Id',
-        placeholder: 'AWS Access Key Id',
-        title: 'AWS Access Key Id',
-      },
-      checker: {
-        desc: '测试 AccessKeyId / SecretAccessKey 是否填写正确',
-      },
-      region: {
-        desc: '填入 AWS Region',
-        placeholder: 'AWS Region',
-        title: 'AWS Region',
-      },
-      secretAccessKey: {
-        desc: '填入 AWS Secret Access Key',
-        placeholder: 'AWS Secret Access Key',
-        title: 'AWS Secret Access Key',
-      },
-      title: 'Bedrock',
-    },
     checker: {
       button: '检查',
       desc: '测试 Api Key 与代理地址是否正确填写',
+      ollamaDesc: '测试代理地址是否正确填写',
       pass: '检查通过',
       title: '连通性检查',
     },
-    google: {
-      endpoint: {
-        desc: '地址必须包含 http(s)://',
-        placeholder: 'https://generativelanguage.googleapis.com',
-        title: '接口代理地址',
-      },
-      title: 'Google',
-      token: {
-        desc: '填入来自 Google 的 API Key',
-        placeholder: 'Google API Key',
-        title: 'API Key',
-      },
-    },
-    groq: {
-      title: 'Groq',
-      token: {
-        desc: '填入来自 Groq 的 API Key',
-        placeholder: 'Groq API Key',
-        title: 'API Key',
-      },
-    },
-    mistral: {
-      title: 'Mistral AI',
-      token: {
-        desc: '填入来自 Mistral AI 的 API Key',
-        placeholder: 'Mistral AI API Key',
-        title: 'API Key',
-      },
-    },
-    moonshot: {
-      title: '月之暗面',
-      token: {
-        desc: '填入来自 Moonshot AI 的 API Key',
-        placeholder: 'Moonshot AI API Key',
-        title: 'API Key',
+    customModelCards: {
+      addNew: '创建并添加 {{id}} 模型',
+      config: '配置模型',
+      confirmDelete: '即将删除该自定义模型，删除后将不可恢复，请谨慎操作。',
+      modelConfig: {
+        azureDeployName: {
+          extra: '在 Azure OpenAI 中实际请求的字段',
+          placeholder: '请输入 Azure 中的模型部署名称',
+          title: '模型部署名称',
+        },
+        displayName: {
+          placeholder: '请输入模型的展示名称，例如 ChatGPT、GPT-4 等',
+          title: '模型展示名称',
+        },
+        files: {
+          extra: '当前的文件上传实现仅为一种 Hack 方案，完整文件上传能力请等待后续实现',
+          title: '支持文件上传',
+        },
+        functionCall: {
+          extra: '此配置将开启函数调用能力，是否支持函数调用完全取决于模型本身',
+          title: '支持函数调用',
+        },
+        id: {
+          extra: '将作为模型标签进行展示',
+          placeholder: '请输入模型id，例如 gpt-4-turbo-preview 或 claude-2.1',
+          title: '模型 ID',
+        },
+        modalTitle: '自定义模型配置',
+        tokens: { title: '最大 token 数' },
+        vision: {
+          extra: '此配置将开启图片视觉识别，是否支持视觉识别完全取决于模型本身',
+          title: '支持视觉识别',
+        },
       },
     },
-    ollama: {
-      checker: {
-        desc: '测试代理地址是否正确填写',
-      },
-      customModelName: {
-        desc: '增加自定义模型，多个模型使用逗号（,）隔开',
-        placeholder: 'vicuna,llava,codellama,llama2:13b-text,gamma:7b',
-        title: '自定义模型名称',
-      },
-      endpoint: {
-        desc: '地址必须包含 http(s)://',
-        placeholder: 'http://127.0.0.1:11434/v1',
-        title: '接口代理地址',
-      },
-      title: 'Ollama',
+    fetchOnClient: {
+      desc: '客户端请求模式将从浏览器直接发起会话请求，可提升响应速度',
+      title: '使用客户端请求模式',
     },
-    openai: {
-      azureApiVersion: {
-        desc: 'Azure 的 API 版本，遵循 YYYY-MM-DD 格式，查阅[最新版本](https://learn.microsoft.com/zh-cn/azure/ai-services/openai/reference#chat-completions)',
-        fetch: '获取列表',
-        title: 'Azure Api Version',
-      },
-      customModelName: {
-        desc: '增加自定义模型，多个模型使用逗号（,） 隔开',
-        placeholder: 'model1,model2,model3',
-        title: '自定义模型名称',
-      },
-      endpoint: {
-        desc: '地址必须包含 http(s)://',
-        placeholder: 'https://api.openai.com/v1',
-        title: '接口代理地址',
-      },
-      models: {
-        count: '共支持 {{count}} 个模型',
-        desc: '支持的模型',
-        fetch: '获取模型列表',
-        notSupport: 'Azure OpenAI 暂不支持查看模型列表',
-        notSupportTip: '你需要自行确保部署名称与模型名称一致',
-        refetch: '重新获取模型列表',
-        title: '模型列表',
-      },
-      title: 'OpenAI',
-      token: {
-        desc: '填入来自 OpenAI 的 Api Key',
-        placeholder: 'OpenAI API Key',
-        title: 'API Key',
-      },
-      useAzure: {
-        desc: '使用 Azure 提供的 OpenAI 服务',
-        fetch: '获取列表',
-        serverConfig: '管理员在服务端配置开启了 Azure OpenAI，禁止切换',
-        title: 'Azure OpenAI',
-      },
+    fetcher: {
+      fetch: '获取模型列表',
+      fetching: '正在获取模型列表...',
+      latestTime: '上次更新时间：{{time}}',
+      noLatestTime: '暂未获取列表',
     },
-    openrouter: {
-      checker: {
-        desc: '测试代理地址是否正确填写',
-      },
-      customModelName: {
-        desc: '增加自定义模型，多个模型使用逗号（,）隔开',
-        placeholder: 'mistralai/mistral-7b-instruct:free,openchat/openchat-7b:free',
-        title: '自定义模型名称',
-      },
-      title: 'OpenRouter',
-      token: {
-        desc: '填入来自 OpenRouter AI 的 API Key',
-        placeholder: 'OpenRouter AI API Key',
-        title: 'API Key',
-      },
-    },
-    perplexity: {
-      title: 'Perplexity',
-      token: {
-        desc: '填入来自 Perplexity AI 的 API Key',
-        placeholder: 'Perplexity AI API Key',
-        title: 'API Key',
-      },
-    },
-    togetherai: {
-      checker: {
-        desc: '测试代理地址是否正确填写',
-      },
-      customModelName: {
-        desc: '增加自定义模型，多个模型使用逗号（,）隔开',
-        placeholder: 'togethercomputer/Llama-2-7B-32K-Instruct,teknium/OpenHermes-2-Mistral-7B',
-        title: '自定义模型名称',
-      },
-      title: 'TogetherAI',
-      token: {
-        desc: '填入来自 TogetherAI AI 的 API Key',
-        placeholder: 'TogetherAI AI API Key',
-        title: 'API Key',
-      },
+    modelList: {
+      desc: '选择在会话中展示的模型，选择的模型会在模型列表中展示',
+      placeholder: '请从列表中选择模型',
+      title: '模型列表',
+      total: '共 {{count}} 个模型可用',
     },
     waitingForMore: '✨ <1>更多模型，敬请期待</1> ✨',
-    zeroone: {
-      title: '01.AI 零一万物',
-      token: {
-        desc: '填入来自 零一万物 的 API Key',
-        placeholder: '零一万物 API Key',
-        title: 'API Key',
-      },
-    },
-    zhipu: {
-      title: '智谱',
-      token: {
-        desc: '填入来自 智谱 的 API Key',
-        placeholder: 'Zhipu API Key',
-        title: 'API Key',
-      },
-    },
   },
   ollama: {
     download: {
@@ -367,8 +211,8 @@ export default {
     },
     title: '模型参数',
     topP: {
-      desc: '随机采样率，不建议更改',
-      title: '采样率',
+      desc: '随机核采样，不建议更改',
+      title: '核采样',
     },
   },
   settingPlugin: {
@@ -401,6 +245,7 @@ export default {
   settingTTS: {
     openai: {
       sttModel: 'OpenAI 语音识别模型',
+      title: 'OpenAI',
       ttsModel: 'OpenAI 语音合成模型',
     },
     showAllLocaleVoice: {
@@ -496,7 +341,7 @@ export default {
         placeholder: '请输入同步频道密码',
         title: '同步频道密码',
       },
-      desc: '需设备同时在线才可同步',
+      desc: '实时、点对点的数据通信，需设备同时在线才可同步',
       enabled: {
         invalid: '请填写同步频道名称后再开启',
         // desc: 'RTC 将使用此名创建同步频道，确保频道名称唯一',

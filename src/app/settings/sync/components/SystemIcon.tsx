@@ -1,19 +1,35 @@
-import { SiAndroid, SiApple, SiWindows11 } from '@icons-pack/react-simple-icons';
+import {
+  SiAndroid,
+  SiApple,
+  SiBlackberry,
+  SiGooglechrome,
+  SiLinux,
+  SiWindows11,
+} from '@icons-pack/react-simple-icons';
 import { memo } from 'react';
 
 // TODO: 等 simple icons 修复类型，移除 ignore
 
-const SystemIcon = memo<{ size: number; title?: string }>(({ size, title }) => {
+const SystemIcon = memo<{ title?: string }>(({ title }) => {
   if (!title) return;
 
   // @ts-ignore
-  if (['Mac OS', 'iOS'].includes(title)) return <SiApple size={size} />;
+  if (['Mac OS', 'iOS', 'iPadOS'].includes(title)) return <SiApple size={32} />;
 
   // @ts-ignore
-  if (title === 'Windows') return <SiWindows11 size={size} />;
+  if (['Windows'].includes(title)) return <SiWindows11 size={32} />;
 
   // @ts-ignore
-  if (title === 'Android') return <SiAndroid size={size} />;
+  if (title === 'Android') return <SiAndroid size={32} />;
+
+  // @ts-ignore
+  if (['BlackBerry'].includes(title)) return <SiBlackberry size={32} />;
+
+  // @ts-ignore
+  if (title === 'Linux') return <SiLinux size={32} />;
+
+  // @ts-ignore
+  if (title === 'Chrome OS') return <SiGooglechrome size={32} />;
 
   return null;
 });

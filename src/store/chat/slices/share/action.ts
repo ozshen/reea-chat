@@ -18,7 +18,7 @@ interface ShareMessage {
 
 const Footer: ShareMessage = {
   from: 'gpt',
-  value: `Share from [**ChatAI**](https://github.com/ozshen/reea-chat) - ${dayjs().format(
+  value: `Share from [**ReeChat**](https://github.com/ozshen/reea-chat) - ${dayjs().format(
     'YYYY-MM-DD',
   )}`,
 };
@@ -47,7 +47,7 @@ export interface ShareAction {
     avatar?: string;
     withPluginInfo?: boolean;
     withSystemRole?: boolean;
-  }) => void;
+  }) => Promise<void>;
 }
 
 export const chatShare: StateCreator<ChatStore, [['zustand/devtools', never]], [], ShareAction> = (

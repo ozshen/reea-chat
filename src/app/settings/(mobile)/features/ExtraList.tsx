@@ -8,6 +8,7 @@ import {
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
+// import { CHANGELOG, FEEDBACK } from '@/const/url';
 import { useImportConfig } from '@/hooks/useImportConfig';
 import { configService } from '@/services/config';
 import { SettingsTabs } from '@/store/global/initialState';

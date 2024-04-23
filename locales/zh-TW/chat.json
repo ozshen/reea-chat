@@ -8,15 +8,21 @@
   "clearCurrentMessages": "清空當前對話",
   "confirmClearCurrentMessages": "即將清空當前對話，清空後將無法找回，請確認你的操作",
   "confirmRemoveSessionItemAlert": "即將刪除該助手，刪除後將無法找回，請確認你的操作",
+  "confirmRemoveSessionSuccess": "助手刪除成功",
   "defaultAgent": "自定義助手",
   "defaultList": "預設清單",
   "defaultSession": "自定義助手",
+  "duplicateSession": {
+    "loading": "複製中...",
+    "success": "複製成功",
+    "title": "{{title}} 副本"
+  },
   "duplicateTitle": "{{title}} 副本",
   "historyRange": "歷史範圍",
   "inbox": {
     "defaultMessage": "你好，我是你的智能助手，你可以問我任何問題，我會盡力回答你。如果需要獲得更專業或定制的助手，可以點擊`+`創建自定義助手",
-    "desc": "開啟大腦集群，激發思維火花。你的智能助理，在這裡與你交流一切",
-    "title": "隨便聊聊"
+    "desc": "我是你的智能助手，在這裡與你交流一切",
+    "title": "智能助理"
   },
   "input": {
     "more": "更多",
@@ -47,8 +53,8 @@
     "inputPlaceholder": "請輸入分組名稱...",
     "moveGroup": "移動到分組",
     "newGroup": "新分組",
-    "rename": "重新命名分組",
-    "renameSuccess": "重新命名成功",
+    "rename": "重命名分組",
+    "renameSuccess": "重命名成功",
     "tooLong": "分組名稱長度需在 1-20 之內"
   },
   "shareModal": {
@@ -65,14 +71,14 @@
   "stt": {
     "action": "語音輸入",
     "loading": "識別中...",
-    "prettifying": "潤色中..."
+    "prettifying": "修飾中..."
   },
   "temp": "臨時",
   "tokenDetails": {
     "chats": "聊天訊息",
     "rest": "剩餘可用",
     "systemRole": "角色設定",
-    "tools": "外掛程式設定",
+    "tools": "外掛設定",
     "total": "總共可用",
     "used": "總計使用"
   },
@@ -83,9 +89,9 @@
   },
   "topic": {
     "actions": {
-      "autoRename": "智能重新命名",
-      "duplicate": "建立副本",
-      "export": "匯出主題"
+      "autoRename": "智能重命名",
+      "duplicate": "創建副本",
+      "export": "匯出話題"
     },
     "confirmRemoveAll": "即將刪除全部話題，刪除後將不可恢復，請謹慎操作。",
     "confirmRemoveTopic": "即將刪除該話題，刪除後將不可恢復，請謹慎操作。",
@@ -112,9 +118,12 @@
   },
   "updateAgent": "更新助理信息",
   "upload": {
+    "actionFiletip": "上傳文件",
     "actionTooltip": "上傳圖片",
-    "disabled": "當前模型不支援視覺識別，請切換模型後使用",
+    "disabled": "當前模型不支援視覺識別和文件分析，請切換模型後使用",
     "dragDesc": "拖拽文件到這裡，支持上傳多個圖片。按住 Shift 直接發送圖片",
+    "dragFileDesc": "拖拽圖片和文件到這裡，支援上傳多個圖片和文件。按住 Shift 直接發送圖片或文件",
+    "dragFileTitle": "上傳文件",
     "dragTitle": "上傳圖片"
   }
 }

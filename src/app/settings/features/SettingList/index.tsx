@@ -19,8 +19,8 @@ const SettingList = memo<SettingListProps>(({ activeTab, mobile }) => {
     { icon: Settings2, label: t('tab.common'), value: SettingsTabs.Common },
     { icon: Bot, label: t('tab.agent'), value: SettingsTabs.Agent },
     { icon: Webhook, label: t('tab.llm'), value: SettingsTabs.LLM },
-    { icon: Cloudy, label: t('tab.sync'), value: SettingsTabs.Sync },
     { icon: Mic2, label: t('tab.tts'), value: SettingsTabs.TTS },
+    { icon: Cloudy, label: t('tab.sync'), value: SettingsTabs.Sync },
     { icon: Info, label: t('tab.about'), value: SettingsTabs.About },
   ];
 

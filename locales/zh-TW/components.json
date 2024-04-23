@@ -1,0 +1,15 @@
+{
+  "ModelSelect": {
+    "featureTag": {
+      "custom": "自訂模型，預設支援函式呼叫與視覺辨識，請驗證上述功能是否可用",
+      "file": "該模型支援檔案辨識",
+      "functionCall": "該模型支援函式执行",
+      "tokens": "該模型單一對話最多支援 {{tokens}} Tokens",
+      "vision": "該模型支援視覺辨識"
+    }
+  },
+  "ModelSwitchPanel": {
+    "emptyModel": "沒有啟用的模型，請前往設定開啟",
+    "provider": "提供商"
+  }
+}

@@ -34,7 +34,7 @@ const Token = memo(() => {
   const maxTokens = useGlobalStore(modelProviderSelectors.modelMaxToken(model));
 
   // Tool usage token
-  const canUseTool = useGlobalStore(modelProviderSelectors.modelEnabledFunctionCall(model));
+  const canUseTool = useGlobalStore(modelProviderSelectors.isModelEnabledFunctionCall(model));
   const plugins = useSessionStore(agentSelectors.currentAgentPlugins);
   const toolsString = useToolStore((s) => {
     const pluginSystemRoles = toolSelectors.enabledSystemRoles(plugins)(s);

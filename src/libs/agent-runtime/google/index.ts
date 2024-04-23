@@ -1,4 +1,4 @@
-import { Content, GoogleGenerativeAI, Part } from '@fuyun/generative-ai';
+import { Content, GoogleGenerativeAI, Part } from '@google/generative-ai';
 import { GoogleGenerativeAIStream, StreamingTextResponse } from 'ai';
 
 import { LobeRuntimeAI } from '../BaseAI';
@@ -30,7 +30,6 @@ const DEFAULT_BASE_URL = 'https://generativelanguage.googleapis.com';
 
 export class LobeGoogleAI implements LobeRuntimeAI {
   private client: GoogleGenerativeAI;
-
   baseURL?: string;
 
   constructor({ apiKey, baseURL = DEFAULT_BASE_URL }: { apiKey?: string; baseURL?: string }) {
@@ -76,7 +75,7 @@ export class LobeGoogleAI implements LobeRuntimeAI {
               },
             ],
           },
-          { apiVersion: 'v1beta', baseURL: this.baseURL },
+          { apiVersion: 'v1beta', baseUrl: this.baseURL },
         )
         .generateContentStream({ contents });
 

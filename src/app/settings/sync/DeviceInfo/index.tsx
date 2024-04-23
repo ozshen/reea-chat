@@ -96,12 +96,9 @@ const DeviceCard = memo<DeviceCardProps>(({ browser, os }) => {
         <Flexbox align={'center'} className={styles.content} flex={1} padding={12}>
           <DeviceName />
           <Flexbox className={styles.cards} gap={12}>
+            <Card icon={<SystemIcon title={os} />} title={os || t('sync.device.unknownOS')} />
             <Card
-              icon={<SystemIcon size={22} title={os} />}
-              title={os || t('sync.device.unknownOS')}
-            />
-            <Card
-              icon={browser && <BrowserIcon browser={browser} size={22} />}
+              icon={browser && <BrowserIcon browser={browser} size={32} />}
               title={browser || t('sync.device.unknownBrowser')}
             />
           </Flexbox>

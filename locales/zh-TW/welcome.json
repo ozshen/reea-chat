@@ -1,10 +1,11 @@
 {
   "button": {
     "import": "匯入設定檔",
+    "market": "随便逛逛",
     "start": "馬上開始"
   },
-  "header": "歡迎使用",
-  "pickAgent": "或從下列助手模板選擇",
+  "header": "歡迎",
+  "pickAgent": "或從以下助理範本中選擇",
   "skip": "跳過建立步驟",
   "slogan": {
     "desc1": "Further refined, exceedingly intelligent, and overflowing with innovation.",

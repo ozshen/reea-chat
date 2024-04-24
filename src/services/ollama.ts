@@ -7,7 +7,7 @@ import { modelConfigSelectors } from '@/store/global/selectors';
 import { ChatErrorType } from '@/types/fetch';
 import { getMessageError } from '@/utils/fetch';
 
-const DEFAULT_BASE_URL = 'http://127.0.0.1:11434/v1';
+const DEFAULT_BASE_URL = 'http://127.0.0.1:11434';
 
 interface OllamaServiceParams {
   fetch?: typeof fetch;
@@ -51,7 +51,7 @@ export class OllamaService {
     } catch {
       response = createErrorResponse(ChatErrorType.OllamaServiceUnavailable, {
         host: this.getHost(),
-        message: 'please check whether your ollama service is available',
+        message: 'please check whether your ollama service is available or set the CORS rules',
         provider: ModelProvider.Ollama,
       });
     }
@@ -71,7 +71,7 @@ export class OllamaService {
     } catch {
       response = createErrorResponse(ChatErrorType.OllamaServiceUnavailable, {
         host: this.getHost(),
-        message: 'please check whether your ollama service is available',
+        message: 'please check whether your ollama service is available or set the CORS rules',
         provider: ModelProvider.Ollama,
       });
     }

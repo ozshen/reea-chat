@@ -11,21 +11,22 @@ export const OFFICIAL_URL = 'https://chat-preview.lobehub.com/';
 export const getCanonicalUrl = (path: string) => urlJoin(OFFICIAL_URL, path);
 
 export const GITHUB = pkg.homepage;
-export const CHANGELOG = urlJoin(GITHUB, 'blob/main/CHANGELOG.md');
 
-const { REEA_CHAT_DOCS } = getClientConfig();
+const { ABOUT_URL, DOCS_URL, SHOP_URL, CHANGELOG_URL, PRIVACY_URL } = getClientConfig();
 
-export const DOCUMENTS = !!REEA_CHAT_DOCS ? '/docs' : 'https://chat-docs.lobehub.com';
+export const ABOUT = !!ABOUT_URL ? ABOUT_URL : GITHUB;
+export const FEEDBACK = pkg.bugs.url;
+export const DISCORD = 'https://discord.gg/AYFPHvv2jT';
+export const PRIVACYS = !!PRIVACY_URL ? PRIVACY_URL : 'https://lobehub.com/privacy';
+export const SHOPPING = !!SHOP_URL ? SHOP_URL : '';
+export const DOCUMENTS = !!DOCS_URL ? '/docs' : 'https://chat-docs.lobehub.com';
+export const CHANGELOG = !!CHANGELOG_URL
+  ? CHANGELOG_URL
+  : urlJoin(GITHUB, 'blob/main/CHANGELOG.md');
 
 export const WIKI_PLUGIN_GUIDE = urlJoin(GITHUB, 'wiki', 'Plugin-Development');
 
 export const MANUAL_UPGRADE_URL = urlJoin(GITHUB, 'wiki', 'Upstream-Sync');
-
-export const ABOUT = pkg.homepage;
-export const FEEDBACK = pkg.bugs.url;
-export const DISCORD = 'https://discord.gg/AYFPHvv2jT';
-export const PRIVACY_URL = 'https://lobehub.com/privacy';
-export const SHOPPING = 'https://api.reea.cc';
 
 export const AGENTS_INDEX_URL = 'https://chat-agents.lobehub.com';
 export const PLUGINS_INDEX_URL = 'https://chat-plugins.lobehub.com';

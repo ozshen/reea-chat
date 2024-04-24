@@ -30,13 +30,14 @@ const useStyle = createStyles(
 
 interface AvatarWithUploadProps {
   compressSize?: number;
+  enable?: boolean;
   id?: string;
   size?: number;
   style?: CSSProperties;
 }
 
 const AvatarWithUpload = memo<AvatarWithUploadProps>(
-  ({ size = 40, compressSize = 256, style, id }) => {
+  ({ size = 40, compressSize = 256, style, id, enable = true }) => {
     const { styles } = useStyle();
     const [avatar, updateAvatar] = useGlobalStore((s) => [
       commonSelectors.userAvatar(s),
@@ -57,7 +58,17 @@ const AvatarWithUpload = memo<AvatarWithUploadProps>(
 
     return (
       <div className={styles} id={id} style={{ maxHeight: size, maxWidth: size, ...style }}>
-        <Upload beforeUpload={handleUploadAvatar} itemRender={() => void 0} maxCount={1}>
+        {!!enable ? (
+          <Upload beforeUpload={handleUploadAvatar} itemRender={() => void 0} maxCount={1}>
+            <NextImage
+              alt={avatar ? 'userAvatar' : 'ReeaChat'}
+              height={size}
+              src={!!avatar ? avatar : DEFAULT_USER_AVATAR_URL}
+              unoptimized
+              width={size}
+            />
+          </Upload>
+        ) : (
           <NextImage
             alt={avatar ? 'userAvatar' : 'ReeaChat'}
             height={size}
@@ -65,7 +76,7 @@ const AvatarWithUpload = memo<AvatarWithUploadProps>(
             unoptimized
             width={size}
           />
-        </Upload>
+        )}
       </div>
     );
   },

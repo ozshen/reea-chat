@@ -8,7 +8,6 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
-import { SHOPPING } from '@/const/url';
 // import DataImporter from '@/features/DataImporter';
 import { useGlobalStore } from '@/store/global';
 
@@ -44,12 +43,12 @@ const Banner = memo<{ mobile?: boolean }>(({ mobile }) => {
         </DataImporter> */}
         <Button
           block={mobile}
-          onClick={() => window.open(SHOPPING, '__blank')}
+          onClick={() => router.push('/market')}
           size={'large'}
           type={'default'}
         >
           <Flexbox align={'center'} gap={4} horizontal justify={'center'}>
-            Get KEY
+            {t('button.market')}
             <Icon icon={ShoppingCart} />
           </Flexbox>
         </Button>
@@ -57,7 +56,7 @@ const Banner = memo<{ mobile?: boolean }>(({ mobile }) => {
           block={mobile}
           onClick={() => (isMobile ? router.push('/chat') : switchBackToChat())}
           size={'large'}
-          type={'primary'}
+          type={'default'}
         >
           <Flexbox align={'center'} gap={4} horizontal justify={'center'}>
             {t('button.start')}

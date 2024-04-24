@@ -1,6 +1,7 @@
 export default {
   button: {
     import: '导入配置',
+    market: '随便看看',
     start: '立即开始',
   },
   header: '欢迎使用',

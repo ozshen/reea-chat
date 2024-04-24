@@ -8,7 +8,7 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
-import { PRIVACY_URL } from '@/const/url';
+import { PRIVACYS } from '@/const/url';
 import { useGlobalStore } from '@/store/global';
 import { commonSelectors } from '@/store/global/selectors';
 
@@ -85,7 +85,7 @@ const TelemetryNotification = memo<{ mobile?: boolean }>(({ mobile }) => {
               <div className={styles.desc}>
                 {t('telemetry.desc')}
                 <span>
-                  <Link href={PRIVACY_URL} target={'_blank'}>
+                  <Link href={PRIVACYS} target={'_blank'}>
                     {t('telemetry.learnMore')}
                     <Icon icon={LucideArrowUpRightFromSquare} style={{ marginInlineStart: 4 }} />
                   </Link>

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
 import AdsInner from '@/components/AdsModal/AdsInner';
-import { ABOUT, CHANGELOG, FEEDBACK } from '@/const/url';
+import { ABOUT, CHANGELOG, FEEDBACK, SHOPPING } from '@/const/url';
 
 import Item from '../features/SettingList/Item';
 import { useStyles } from './style';
@@ -32,14 +32,13 @@ const AboutList = memo(() => {
       label: t('about', { ns: 'common' }),
       onClick: () => window.open(ABOUT, '__blank'),
       value: 'about',
-      visible: false,
+      visible: true,
     },
   ];
 
   return (
     <div className={styles.wrapper}>
       <Flexbox className={styles.container} gap={24} padding={16}>
-        <AdsInner />
         {/* <Flexbox className={styles.title} gap={8} horizontal>
           {t('about.title')}
         </Flexbox> */}
@@ -52,6 +51,7 @@ const AboutList = memo(() => {
               </div>
             ))}
         </Flexbox>
+        <AdsInner content={SHOPPING} />
       </Flexbox>
     </div>
   );

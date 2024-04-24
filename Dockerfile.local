@@ -60,6 +60,12 @@ EXPOSE 3210
 ENV HOSTNAME "0.0.0.0"
 ENV PORT 3210
 
+# set default link urls
+ENV SITE_URL ""
+ENV SHOP_URL ""
+ENV ABOUT_URL ""
+ENV PRIVACY_URL ""
+
 # set host proxy dns
 ENV HTTP_PROXY_URL ""
 

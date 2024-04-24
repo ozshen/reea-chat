@@ -40,7 +40,11 @@ export const getClientConfig = () => ({
   BASE_PATH: process.env.NEXT_PUBLIC_BASE_PATH || '',
 
   // docs
-  REEA_CHAT_DOCS: process.env.NEXT_PUBLIC_CHAT_DOCS,
+  DOCS_URL: process.env.NEXT_PUBLIC_CHAT_DOCS,
+  SHOP_URL: process.env.SHOP_URL,
+  ABOUT_URL: process.env.ABOUT_URL,
+  PRIVACY_URL: process.env.PRIVACY_URL,
+  CHANGELOG_URL: process.env.CHANGELOG_URL,
 
   // Plausible Analytics
   ANALYTICS_PLAUSIBLE: process.env.NEXT_PUBLIC_ANALYTICS_PLAUSIBLE === '1',

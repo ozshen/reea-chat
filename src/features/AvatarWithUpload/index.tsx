@@ -61,7 +61,7 @@ const AvatarWithUpload = memo<AvatarWithUploadProps>(
         {!!enable ? (
           <Upload beforeUpload={handleUploadAvatar} itemRender={() => void 0} maxCount={1}>
             <NextImage
-              alt={avatar ? 'userAvatar' : 'ReeaChat'}
+              alt={avatar ? 'userAvatar' : 'ChatAI'}
               height={size}
               src={!!avatar ? avatar : DEFAULT_USER_AVATAR_URL}
               unoptimized
@@ -70,7 +70,7 @@ const AvatarWithUpload = memo<AvatarWithUploadProps>(
           </Upload>
         ) : (
           <NextImage
-            alt={avatar ? 'userAvatar' : 'ReeaChat'}
+            alt={avatar ? 'userAvatar' : 'ChatAI'}
             height={size}
             src={!!avatar ? avatar : DEFAULT_USER_AVATAR_URL}
             unoptimized

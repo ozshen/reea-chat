@@ -6,8 +6,8 @@ export enum UpgradeStatus {
   UPGRADE_FAILED,
 }
 
-export const V1DB_NAME = 'ReeaChat';
-export const V1DB_TABLE_NAME = 'REEA_CHAT';
+export const V1DB_NAME = 'ChatAI';
+export const V1DB_TABLE_NAME = 'CHAT_CHAT';
 
 export interface MigrationError {
   message: string;

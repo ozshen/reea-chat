@@ -1,7 +1,7 @@
 import { normalizeLocale, supportLocales } from '@/locales/resources';
 
 export const DEFAULT_LANG = 'en-US';
-export const LOCALE_COOKIE = 'REEA_LOCALE';
+export const LOCALE_COOKIE = 'CHAT_LOCALE';
 
 /**
  * Check if the language is supported

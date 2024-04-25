@@ -30,7 +30,7 @@ const createStore: StateCreator<SessionStore, [['zustand/devtools', never]]> = (
 export const useSessionStore = createWithEqualityFn<SessionStore>()(
   subscribeWithSelector(
     devtools(createStore, {
-      name: 'ReeaChat_Session' + (isDev ? '_DEV' : ''),
+      name: 'ChatAI_Session' + (isDev ? '_DEV' : ''),
     }),
   ),
   shallow,

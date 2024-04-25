@@ -20,12 +20,17 @@ WORKDIR /app
 
 COPY package.json ./
 
+# To increase the memory limit for the Node.js process
+ENV NODE_OPTIONS=--max_old_space_size=4096
+
 # If you want to build docker in China
 # RUN npm config set registry https://registry.npmmirror.com/
 RUN pnpm i
 
 COPY . .
-RUN pnpm run build:docker # run build standalone for docker version
+
+# run build standalone for docker version
+RUN pnpm run build:std
 
 ## Production image, copy all the files and run next
 FROM base AS runner

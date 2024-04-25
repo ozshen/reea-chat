@@ -27,7 +27,7 @@ export const AssistantActionsBar: RenderAction = memo(({ id, onActionClick, erro
         delAndRegenerate,
         del,
       ]}
-      items={[regenerate, copy]}
+      items={[regenerate, edit, copy]}
       onActionClick={onActionClick}
       type="ghost"
     />

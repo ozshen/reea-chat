@@ -133,6 +133,30 @@
       "placeholder": "http://127.0.0.1:11434/v1",
       "title": "プロキシインターフェースアドレス"
     },
+    "setup": {
+      "cors": {
+        "description": "ブラウザのセキュリティ制限により、Ollama を正常に使用するにはクロスオリジンリクエストを許可する必要があります。",
+        "linux": {
+          "env": "[Service] セクションに `Environment` を追加し、OLLAMA_ORIGINS 環境変数を追加してください：",
+          "reboot": "systemd を再読み込みして Ollama を再起動してください",
+          "systemd": "systemd を呼び出して ollama サービスを編集してください："
+        },
+        "macos": "「ターミナル」アプリを開いて、以下のコマンドを貼り付けて、Enter キーを押して実行してください",
+        "reboot": "実行が完了したら、Ollama サービスを再起動してください",
+        "title": "Ollama のクロスオリジンアクセスを許可する設定",
+        "windows": "Windows 上で、[コントロールパネル] をクリックし、システム環境変数を編集してください。ユーザーアカウントに「OLLAMA_ORIGINS」という名前の環境変数を作成し、値を * に設定し、「OK/適用」をクリックして保存してください"
+      },
+      "install": {
+        "description": "Ollama を開始していない場合は、Ollama をダウンロードしてください。",
+        "docker": "Docker を使用する場合は、公式 Docker イメージも提供されています。次のコマンドを使用して取得できます：",
+        "linux": {
+          "command": "次のコマンドを使用してインストールしてください：",
+          "manual": "または、<1>Linux 手動インストールガイド</1>を参照して手動でインストールできます"
+        },
+        "title": "ローカルで Ollama アプリをインストールして開始する",
+        "windowsTab": "Windows (プレビュー版)"
+      }
+    },
     "title": "Ollama"
   },
   "openai": {

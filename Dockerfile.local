@@ -1,34 +1,37 @@
-FROM node:20-alpine AS base
+FROM node:21-alpine3.18 AS base
 # If you want to build docker in China
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 ## Install dependencies only when needed
 FROM base AS builder
-
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
 ENV NPM_CONFIG_LOGLEVEL warn
-
-# To increase the memory limit for the Node.js process
-ENV NODE_OPTIONS=--max_old_space_size=4096
-
 RUN corepack enable
 
 RUN apk add --upgrade --no-cache vips-dev build-base
 RUN apk add --upgrade --no-cache g++ make python3
+
+# To increase the memory limit for the Node.js process
+ENV NODE_OPTIONS=--max_old_space_size=4096
 
 WORKDIR /app
 
 COPY package.json ./
 
 # If you want to build docker in China
-RUN npm config set registry https://registry.npmmirror.com/
+RUN pnpm config set registry https://registry.npmmirror.com
+RUN pnpm config set sharp_binary_host https://npmmirror.com/mirrors/sharp
+RUN pnpm config set sharp_libvips_binary_host https://npmmirror.com/mirrors/sharp-libvips
 
 RUN pnpm install
+RUN pnpm add sharp
 
 COPY . .
 
- # run build standalone for docker version
-RUN pnpm build:docker
+# run build standalone for docker version
+RUN pnpm build:std
 
 ## Production image, copy all the files and run next
 FROM base AS runner

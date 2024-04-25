@@ -11,7 +11,7 @@ import { type StoreState, initialState } from './initialState';
 
 export type Store = StoreAction & StoreState;
 
-const AGENT_MARKET = 'REEA_AGENT_MARKET';
+const AGENT_MARKET = 'AGENT_MARKET';
 
 const persistOptions: PersistOptions<Store> = {
   name: AGENT_MARKET,
@@ -20,7 +20,7 @@ const persistOptions: PersistOptions<Store> = {
 
   storage: createHyperStorage({
     localStorage: {
-      dbName: 'ReeaChat',
+      dbName: 'ChatAI',
       selectors: ['agentMap'],
     },
     url: {

@@ -153,9 +153,7 @@
           "command": "다음 명령을 사용하여 설치하십시오:",
           "manual": "또는 <1>Linux 수동 설치 안내</1>를 참조하여 직접 설치할 수도 있습니다."
         },
-        "macos": "<0>macOS 버전 Ollama 다운로드</0> 후 압축을 풀고 설치하십시오.",
         "title": "로컬에서 Ollama 애플리케이션을 설치하고 시작하십시오",
-        "windows": "<0>Windows 버전 Ollama 다운로드</0> 후 압축을 풀고 설치하십시오.",
         "windowsTab": "Windows (미리보기판)"
       }
     },

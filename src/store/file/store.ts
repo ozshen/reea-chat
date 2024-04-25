@@ -23,7 +23,7 @@ const createStore: StateCreator<FileStore, [['zustand/devtools', never]]> = (...
 
 export const useFileStore = createWithEqualityFn<FileStore>()(
   devtools(createStore, {
-    name: 'ReeaChat_File' + (isDev ? '_DEV' : ''),
+    name: 'ChatAI_File' + (isDev ? '_DEV' : ''),
   }),
   shallow,
 );

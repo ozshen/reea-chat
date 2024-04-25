@@ -100,7 +100,7 @@ export class BrowserDB extends Dexie {
 
     // if no user, create one
     if ((await users.count()) === 0) {
-      const data = localStorage.getItem('REEA_SETTINGS');
+      const data = localStorage.getItem('CHAT_SETTINGS');
 
       if (data) {
         let json;

@@ -41,7 +41,7 @@ const createStore: StateCreator<ChatStore, [['zustand/devtools', never]]> = (...
 export const useChatStore = createWithEqualityFn<ChatStore>()(
   subscribeWithSelector(
     devtools(createStore, {
-      name: 'ReeaChat_Chat' + (isDev ? '_DEV' : ''),
+      name: 'ChatAI_Chat' + (isDev ? '_DEV' : ''),
     }),
   ),
   shallow,

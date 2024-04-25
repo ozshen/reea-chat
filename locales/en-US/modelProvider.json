@@ -153,9 +153,7 @@
           "command": "Install using the following command:",
           "manual": "Alternatively, you can refer to the <1>Linux Manual Installation Guide</1> for manual installation."
         },
-        "macos": "Download the macOS version of Ollama, unzip, and install it.",
         "title": "Install and Start Ollama Locally",
-        "windows": "Download the Windows version of Ollama, unzip, and install it.",
         "windowsTab": "Windows (Preview)"
       }
     },

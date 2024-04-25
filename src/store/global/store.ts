@@ -26,7 +26,7 @@ const createStore: StateCreator<GlobalStore, [['zustand/devtools', never]]> = (.
 export const useGlobalStore = createWithEqualityFn<GlobalStore>()(
   subscribeWithSelector(
     devtools(createStore, {
-      name: 'ReeaChat_Global' + (isDev ? '_DEV' : ''),
+      name: 'ChatAI_Global' + (isDev ? '_DEV' : ''),
     }),
   ),
   shallow,

@@ -12,6 +12,8 @@ import { Flexbox } from 'react-layout-kit';
 
 import AgentInfo from '@/app/market/features/AgentDetailContent';
 import { agentMarketSelectors, useMarketStore } from '@/store/market';
+import { useSessionStore } from '@/store/session';
+import { sessionSelectors } from '@/store/session/selectors';
 
 const { Paragraph } = Typography;
 
@@ -54,17 +56,22 @@ const AgentsSuggest = memo(() => {
   const { t } = useTranslation('welcome');
   const { styles } = useStyles();
   const router = useRouter();
+  const [tempId, setTempId] = useState<string>('');
   const [sliceStart, setSliceStart] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const isInbox = useSessionStore(sessionSelectors.isInboxSession);
   const agentList = useMarketStore((s) => agentMarketSelectors.getAgentList(s), isEqual);
-
-  const [onActivateAgent, onDeactivateAgent, useFetchAgentList] = useMarketStore((s) => [
+  const useFetchAgentList = useMarketStore((s) => s.useFetchAgentList);
+  const { isLoading } = useFetchAgentList();
+  const [onActivateAgent, onDeactivateAgent] = useMarketStore((s) => [
     s.activateAgent,
     s.deactivateAgent,
-    s.useFetchAgentList,
   ]);
-  const { isLoading } = useFetchAgentList();
+
+  if (isInbox && !isModalOpen) {
+    onDeactivateAgent();
+    onActivateAgent(tempId);
+  }
 
   const loadingCards = Array.from({ length: 4 }).map((_, index) => (
     <Flexbox className={styles.card} key={index}>
@@ -86,6 +93,7 @@ const AgentsSuggest = memo(() => {
           horizontal
           key={agent.identifier}
           onClick={() => {
+            setTempId(agent.identifier);
             onActivateAgent(agent.identifier);
             setIsModalOpen(true);
           }}
@@ -130,9 +138,12 @@ const AgentsSuggest = memo(() => {
         allowFullscreen
         footer={null}
         onCancel={() => {
-          onDeactivateAgent();
-          onActivateAgent('');
           setIsModalOpen(false);
+          if (isInbox) {
+            setTempId('');
+            onDeactivateAgent();
+            onActivateAgent(tempId);
+          }
         }}
         open={isModalOpen}
       >

@@ -7,7 +7,7 @@ import { Flexbox } from 'react-layout-kit';
 
 import TokenTag from '@/features/ChatInput/ActionBar/Token';
 import { useSessionStore } from '@/store/session';
-import { agentSelectors, sessionSelectors } from '@/store/session/selectors';
+import { sessionMetaSelectors, sessionSelectors } from '@/store/session/selectors';
 import { pathString } from '@/utils/url';
 
 import Tags from './Tags';
@@ -20,10 +20,10 @@ const Main = memo(() => {
   const [init, isInbox, title, description, avatar, backgroundColor] = useSessionStore((s) => [
     sessionSelectors.isSomeSessionActive(s),
     sessionSelectors.isInboxSession(s),
-    agentSelectors.currentAgentTitle(s),
-    agentSelectors.currentAgentDescription(s),
-    agentSelectors.currentAgentAvatar(s),
-    agentSelectors.currentAgentBackgroundColor(s),
+    sessionMetaSelectors.currentAgentTitle(s),
+    sessionMetaSelectors.currentAgentDescription(s),
+    sessionMetaSelectors.currentAgentAvatar(s),
+    sessionMetaSelectors.currentAgentBackgroundColor(s),
   ]);
 
   const displayTitle = isInbox ? t('inbox.title') : title;

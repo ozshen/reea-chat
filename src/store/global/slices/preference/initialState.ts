@@ -44,7 +44,7 @@ export const initialPreferenceState: GlobalPreferenceState = {
     showChatSideBar: true,
     showSessionPanel: true,
     showSystemRole: false,
-    telemetry: null,
+    telemetry: false,
     useCmdEnterToSend: false,
   },
   preferenceStorage: new AsyncLocalStorage('CHAT_PREFERENCE'),

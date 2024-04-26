@@ -16,7 +16,7 @@ import {
   preferenceSelectors,
 } from '@/store/global/selectors';
 import { useSessionStore } from '@/store/session';
-import { agentSelectors } from '@/store/session/selectors';
+import { sessionMetaSelectors } from '@/store/session/selectors';
 import { useToolStore } from '@/store/tool';
 import { pluginSelectors, toolSelectors } from '@/store/tool/selectors';
 import { ChatErrorType } from '@/types/fetch';
@@ -169,18 +169,6 @@ export function initializeWithClientStore(provider: string, payload: any) {
   });
 }
 
-/**
- * Fetch chat completion on the client side.
- * @param provider - The provider name.
- * @param payload - The payload data for the chat stream.
- * @returns A promise that resolves to the chat response.
- */
-export async function fetchOnClient(provider: string, payload: Partial<ChatStreamPayload>) {
-  const agentRuntime = await initializeWithClientStore(provider, payload);
-  const data = payload as ChatStreamPayload;
-  return await agentRuntime.chat(data);
-}
-
 class ChatService {
   createAssistantMessage = async (
     { plugins: enabledPlugins, messages, ...params }: GetChatCompletionPayload,
@@ -283,7 +271,7 @@ class ChatService {
      */
     if (enableFetchOnClient) {
       try {
-        return await fetchOnClient(provider, payload);
+        return await this.fetchOnClient({ payload, provider, signal });
       } catch (e) {
         const {
           errorType = ChatErrorType.BadRequest,
@@ -445,7 +433,7 @@ class ChatService {
     return produce(postMessages, (draft) => {
       // Inject InboxGuide SystemRole
       const inboxGuideSystemRole =
-        options?.trace?.sessionId === INBOX_SESSION_ID && INBOX_GUIDE_SYSTEMROLE();
+        false && options?.trace?.sessionId === INBOX_SESSION_ID && INBOX_GUIDE_SYSTEMROLE();
 
       // Inject Tool SystemRole
       const hasTools = tools && tools?.length > 0;
@@ -477,7 +465,7 @@ class ChatService {
   };
 
   private mapTrace(trace?: TracePayload, tag?: TraceTagMap): TracePayload {
-    const tags = agentSelectors.currentAgentMeta(useSessionStore.getState()).tags || [];
+    const tags = sessionMetaSelectors.currentAgentMeta(useSessionStore.getState()).tags || [];
 
     const enabled = preferenceSelectors.userAllowTrace(useGlobalStore.getState());
 
@@ -490,6 +478,21 @@ class ChatService {
       userId: commonSelectors.userId(useGlobalStore.getState()),
     };
   }
+
+  /**
+   * Fetch chat completion on the client side.
+
+   */
+  private fetchOnClient = async (params: {
+    payload: Partial<ChatStreamPayload>;
+    provider: string;
+    signal?: AbortSignal;
+  }) => {
+    const agentRuntime = await initializeWithClientStore(params.provider, params.payload);
+    const data = params.payload as ChatStreamPayload;
+
+    return agentRuntime.chat(data, { signal: params.signal });
+  };
 }
 
 export const chatService = new ChatService();

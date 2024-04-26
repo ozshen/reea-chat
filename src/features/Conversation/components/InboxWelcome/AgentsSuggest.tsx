@@ -52,17 +52,19 @@ const useStyles = createStyles(({ css, token }) => ({
 
 const AgentsSuggest = memo(() => {
   const { t } = useTranslation('welcome');
+  const { styles } = useStyles();
   const router = useRouter();
   const [sliceStart, setSliceStart] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const agentList = useMarketStore((s) => agentMarketSelectors.getAgentList(s), isEqual);
+
   const [onActivateAgent, onDeactivateAgent, useFetchAgentList] = useMarketStore((s) => [
     s.activateAgent,
     s.deactivateAgent,
     s.useFetchAgentList,
   ]);
   const { isLoading } = useFetchAgentList();
-  const agentList = useMarketStore((s) => agentMarketSelectors.getAgentList(s), isEqual);
-  const { styles } = useStyles();
 
   const loadingCards = Array.from({ length: 4 }).map((_, index) => (
     <Flexbox className={styles.card} key={index}>

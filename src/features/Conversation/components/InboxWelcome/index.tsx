@@ -7,7 +7,8 @@ import { useTranslation } from 'react-i18next';
 import { Center, Flexbox } from 'react-layout-kit';
 
 import AgentsSuggest from './AgentsSuggest';
-import QuestionSuggest from './QuestionSuggest';
+
+// import QuestionSuggest from './QuestionSuggest';
 
 const useStyles = createStyles(({ css, responsive }) => ({
   container: css`
@@ -67,7 +68,7 @@ const InboxWelcome = memo(() => {
           {t('guide.defaultMessage')}
         </Markdown>
         <AgentsSuggest />
-        <QuestionSuggest />
+        {/* <QuestionSuggest /> */}
         {/*{t('inbox.defaultMessage')}*/}
       </Flexbox>
     </Center>

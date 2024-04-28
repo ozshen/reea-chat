@@ -13,13 +13,13 @@ export default {
     },
 
     unlock: {
-      description: '输入你的 Anthropic API Key 即可开始会话。应用不会记录你的 API Key',
+      description: '输入你的 Anthropic API Key，应用不会记录你的 API Key',
       title: 'Anthropic API Key',
     },
   },
   azure: {
     azureApiVersion: {
-      desc: 'Azure 的 API 版本，遵循 YYYY-MM-DD 格式，查阅[最新版本](https://learn.microsoft.com/zh-cn/azure/ai-services/openai/reference#chat-completions)',
+      desc: 'Azure 的 OpenAI API 版本，查阅[Azure API 文档](https://learn.microsoft.com/zh-cn/azure/ai-services/openai/reference#chat-completions)',
       fetch: '获取列表',
       title: 'Azure Api Version',
     },
@@ -63,8 +63,7 @@ export default {
     title: 'Bedrock',
     unlock: {
       customRegion: '自定义服务区域',
-      description:
-        '输入你的 AWS AccessKeyId / SecretAccessKey 即可开始会话。应用不会记录你的鉴权配置',
+      description: '输入你的 AWS AccessKeyId / SecretAccessKey，应用不会记录你的鉴权配置',
       title: 'Bedrock 鉴权信息',
     },
   },
@@ -81,7 +80,7 @@ export default {
       title: 'API Key',
     },
     unlock: {
-      description: '输入你的 Google API Key 即可开始会话。应用不会记录你的 API Key',
+      description: '输入你的 Google API Key，应用不会记录你的 API Key',
       title: 'Google API Key',
     },
   },
@@ -93,7 +92,7 @@ export default {
       title: 'API Key',
     },
     unlock: {
-      description: '输入你的 Groq API Key 即可开始会话。应用不会记录你的 API Key',
+      description: '输入你的 Groq API Key，应用不会记录你的 API Key',
       title: 'Groq API Key',
     },
   },
@@ -105,7 +104,7 @@ export default {
       title: 'API Key',
     },
     unlock: {
-      description: '输入你的 Mistral AI API Key 即可开始会话。应用不会记录你的 API Key',
+      description: '输入你的 Mistral AI API Key，应用不会记录你的 API Key',
       title: 'Mistral AI API Key',
     },
   },
@@ -117,7 +116,7 @@ export default {
       title: 'API Key',
     },
     unlock: {
-      description: '输入你的 Moonshot AI API Key 即可开始会话。应用不会记录你的 API Key',
+      description: '输入你的 Moonshot AI API Key，应用不会记录你的 API Key',
       title: 'Moonshot AI API Key',
     },
   },
@@ -176,7 +175,7 @@ export default {
       title: 'OpenAI API Key',
     },
     unlock: {
-      description: '输入你的 OpenAI API Key 即可开始会话。应用不会记录你的 API Key',
+      description: '输入你的 OpenAI API Key，应用不会记录你的 API Key',
       title: 'OpenAI API Key',
     },
   },
@@ -197,7 +196,7 @@ export default {
     },
 
     unlock: {
-      description: '输入你的 OpenRouter API Key 即可开始会话。应用不会记录你的 API Key',
+      description: '输入你的 OpenRouter API Key，应用不会记录你的 API Key',
       title: 'OpenRouter API Key',
     },
   },
@@ -209,7 +208,7 @@ export default {
       title: 'API Key',
     },
     unlock: {
-      description: '输入你的 Perplexity API Key 即可开始会话。应用不会记录你的 API Key',
+      description: '输入你的 Perplexity API Key，应用不会记录你的 API Key',
       title: 'Perplexity API Key',
     },
   },
@@ -229,7 +228,7 @@ export default {
       title: 'API Key',
     },
     unlock: {
-      description: '输入你的 TogetherAI API Key 即可开始会话。应用不会记录你的 API Key',
+      description: '输入你的 TogetherAI API Key，应用不会记录你的 API Key',
       title: 'TogetherAI API Key',
     },
   },
@@ -241,7 +240,7 @@ export default {
       title: 'API Key',
     },
     unlock: {
-      description: '输入你的零一万物 API Key 即可开始会话。应用不会记录你的 API Key',
+      description: '输入你的零一万物 API Key，应用不会记录你的 API Key',
       title: '零一万物 API Key',
     },
   },
@@ -253,7 +252,7 @@ export default {
       title: 'API Key',
     },
     unlock: {
-      description: '输入你的 Zhipu API Key 即可开始会话。应用不会记录你的 API Key',
+      description: '输入你的 Zhipu API Key，应用不会记录你的 API Key',
       title: 'Zhipu API Key',
     },
   },

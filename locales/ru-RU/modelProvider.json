@@ -12,8 +12,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Введите свой ключ API Anthropic, чтобы начать сеанс. Приложение не будет сохранять ваш ключ API",
-      "title": "Использовать пользовательский ключ API Anthropic"
+      "description": "Введите свой Anthropic API-ключ, приложение не будет сохранять ваш API-ключ",
+      "title": "Anthropic API-ключ"
     }
   },
   "azure": {
@@ -37,7 +37,7 @@
     },
     "unlock": {
       "description": "Введите свой ключ API Azure OpenAI, чтобы начать сеанс",
-      "title": "Использовать пользовательский ключ API Azure OpenAI"
+      "title": "Ключ API Azure OpenAI"
     }
   },
   "bedrock": {
@@ -61,9 +61,9 @@
     },
     "title": "Bedrock",
     "unlock": {
-      "customRegion": "Пользовательский регион обслуживания",
-      "description": "Введите свой ключ доступа AWS AccessKeyId / SecretAccessKey, чтобы начать сеанс. Приложение не будет сохранять вашу конфигурацию аутентификации",
-      "title": "Использовать пользовательскую информацию аутентификации Bedrock"
+      "customRegion": "Пользовательский регион",
+      "description": "Введите свой AWS AccessKeyId / SecretAccessKey, приложение не будет сохранять вашу конфигурацию аутентификации",
+      "title": "Информация об аутентификации Bedrock"
     }
   },
   "google": {
@@ -79,8 +79,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Введите свой ключ API Google, чтобы начать сеанс. Приложение не будет сохранять ваш ключ API",
-      "title": "Использовать пользовательский ключ API Google"
+      "description": "Введите свой ключ API Google, приложение не будет сохранять ваш API-ключ",
+      "title": "Ключ API Google"
     }
   },
   "groq": {
@@ -91,8 +91,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Введите свой ключ API Groq, чтобы начать сеанс. Приложение не будет сохранять ваш ключ API",
-      "title": "Использовать пользовательский ключ API Groq"
+      "description": "Введите свой ключ API Groq, приложение не будет сохранять ваш API-ключ",
+      "title": "Ключ API Groq"
     }
   },
   "mistral": {
@@ -103,8 +103,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Введите свой ключ API Mistral AI, чтобы начать сеанс. Приложение не будет сохранять ваш ключ API",
-      "title": "Использовать пользовательский ключ API Mistral AI"
+      "description": "Введите свой ключ API Mistral AI, приложение не будет сохранять ваш API-ключ",
+      "title": "Ключ API Mistral AI"
     }
   },
   "moonshot": {
@@ -115,8 +115,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Введите свой ключ API Moonshot AI, чтобы начать сеанс. Приложение не будет сохранять ваш ключ API",
-      "title": "Использовать пользовательский ключ API Moonshot AI"
+      "description": "Введите свой ключ API Moonshot AI, приложение не будет сохранять ваш API-ключ",
+      "title": "Ключ API Moonshot AI"
     }
   },
   "ollama": {
@@ -172,8 +172,8 @@
       "title": "OpenAI API Key"
     },
     "unlock": {
-      "description": "Введите свой ключ API OpenAI, чтобы начать сеанс. Приложение не будет сохранять ваш ключ API",
-      "title": "Использовать пользовательский ключ API OpenAI"
+      "description": "Введите свой ключ API OpenAI, приложение не будет сохранять ваш API-ключ",
+      "title": "Ключ API OpenAI"
     }
   },
   "openrouter": {
@@ -192,8 +192,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Введите свой ключ API OpenRouter, чтобы начать сеанс. Приложение не будет сохранять ваш ключ API",
-      "title": "Использовать пользовательский ключ API OpenRouter"
+      "description": "Введите свой ключ API OpenRouter, приложение не будет сохранять ваш API-ключ",
+      "title": "Ключ API OpenRouter"
     }
   },
   "perplexity": {
@@ -204,8 +204,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Введите свой ключ API Perplexity, чтобы начать сеанс. Приложение не будет сохранять ваш ключ API",
-      "title": "Использовать пользовательский ключ API Perplexity"
+      "description": "Введите свой ключ API Perplexity, приложение не будет сохранять ваш API-ключ",
+      "title": "Ключ API Perplexity"
     }
   },
   "togetherai": {
@@ -224,8 +224,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Введите свой ключ API TogetherAI, чтобы начать сеанс. Приложение не будет сохранять ваш ключ API",
-      "title": "Использовать пользовательский ключ API TogetherAI"
+      "description": "Введите свой ключ API TogetherAI, приложение не будет сохранять ваш API-ключ",
+      "title": "Ключ API TogetherAI"
     }
   },
   "zeroone": {
@@ -236,8 +236,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Введите свой ключ API ZeroOne, чтобы начать сеанс. Приложение не будет сохранять ваш ключ API",
-      "title": "Использовать пользовательский ключ API ZeroOne"
+      "description": "Введите свой ключ API ZeroOne, приложение не будет сохранять ваш API-ключ",
+      "title": "Ключ API ZeroOne"
     }
   },
   "zhipu": {
@@ -248,8 +248,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Введите свой ключ API Zhipu, чтобы начать сеанс. Приложение не будет сохранять ваш ключ API",
-      "title": "Использовать пользовательский ключ API Zhipu"
+      "description": "Введите свой ключ API Zhipu, приложение не будет сохранять ваш API-ключ",
+      "title": "Ключ API Zhipu"
     }
   }
 }

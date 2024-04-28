@@ -8,18 +8,19 @@ import EnableSync from './EnableSync';
 
 interface SyncStatusTagProps {
   hiddenActions?: boolean;
+  hiddenDisableSync?: boolean;
   hiddenEnableGuide?: boolean;
   placement?: TooltipPlacement;
 }
 
 const SyncStatusTag = memo<SyncStatusTagProps>(
-  ({ hiddenActions, placement, hiddenEnableGuide }) => {
+  ({ hiddenActions, hiddenDisableSync, hiddenEnableGuide, placement }) => {
     const [enableSync] = useGlobalStore((s) => [s.syncEnabled]);
 
     return enableSync ? (
       <EnableSync hiddenActions={hiddenActions} placement={placement} />
     ) : (
-      <DisableSync noPopover={hiddenEnableGuide} placement={placement} />
+      !hiddenDisableSync && <DisableSync noPopover={hiddenEnableGuide} placement={placement} />
     );
   },
 );

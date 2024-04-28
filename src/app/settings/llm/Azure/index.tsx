@@ -1,6 +1,6 @@
-import { Azure, OpenAI } from '@lobehub/icons';
+import { Azure } from '@lobehub/icons';
 import { Markdown } from '@lobehub/ui';
-import { AutoComplete, Divider, Input } from 'antd';
+import { AutoComplete, Input } from 'antd';
 import { createStyles } from 'antd-style';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -96,8 +96,6 @@ const AzureOpenAIProvider = memo(() => {
       title={
         <Flexbox align={'center'} gap={8} horizontal>
           <Azure.Combine size={24} type={'color'}></Azure.Combine>
-          <Divider style={{ margin: '0 4px' }} type={'vertical'} />
-          <OpenAI.Combine size={24}></OpenAI.Combine>
         </Flexbox>
       }
     />

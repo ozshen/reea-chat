@@ -18,7 +18,7 @@ import { merge } from '@/utils/merge';
 import { browserInfo } from '@/utils/platform';
 import { setNamespace } from '@/utils/storeDebug';
 
-import { preferenceSelectors } from '../preference/selectors';
+// import { preferenceSelectors } from '../preference/selectors';
 import { settingsSelectors, syncSettingsSelectors } from '../settings/selectors';
 import { commonSelectors } from './selectors';
 
@@ -119,12 +119,12 @@ export const createCommonSlice: StateCreator<
     useSWR<boolean>(
       ['checkTrace', shouldFetch],
       () => {
-        const userAllowTrace = preferenceSelectors.userAllowTrace(get());
+        //const userAllowTrace = preferenceSelectors.userAllowTrace(get());
         // if not init with server side, return false
         if (!shouldFetch) return Promise.resolve(false);
 
         // if user have set the trace, return false
-        if (typeof userAllowTrace === 'boolean') return Promise.resolve(false);
+        // if (typeof userAllowTrace === 'boolean') return Promise.resolve(false);
 
         return messageService.messageCountToCheckTrace();
       },

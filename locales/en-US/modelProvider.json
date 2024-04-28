@@ -12,8 +12,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Enter your Anthropic API Key to start the session. The app will not store your API Key",
-      "title": "Use Custom Anthropic API Key"
+      "description": "Enter your Anthropic API Key, the application will not store your API Key",
+      "title": "Anthropic API Key"
     }
   },
   "azure": {
@@ -36,8 +36,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Enter your Azure OpenAI API Key to start the session",
-      "title": "Use Custom Azure OpenAI API Key"
+      "description": "Enter your Azure OpenAI API Key, the application will not store your API Key",
+      "title": "Azure OpenAI API Key"
     }
   },
   "bedrock": {
@@ -62,8 +62,8 @@
     "title": "Bedrock",
     "unlock": {
       "customRegion": "Custom Service Region",
-      "description": "Enter your AWS AccessKeyId / SecretAccessKey to start the session. The app will not store your authentication configuration",
-      "title": "Use Custom Bedrock Authentication Information"
+      "description": "Enter your AWS AccessKeyId / SecretAccessKey, the application will not store your authentication configuration",
+      "title": "Bedrock Authentication Information"
     }
   },
   "google": {
@@ -79,8 +79,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Enter your Google API Key to start the session. The app will not store your API Key",
-      "title": "Use Custom Google API Key"
+      "description": "Enter your Google API Key, the application will not store your API Key",
+      "title": "Google API Key"
     }
   },
   "groq": {
@@ -91,8 +91,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Enter your Groq API Key to start the session. The app will not store your API Key",
-      "title": "Use Custom Groq API Key"
+      "description": "Enter your Groq API Key, the application will not store your API Key",
+      "title": "Groq API Key"
     }
   },
   "mistral": {
@@ -103,8 +103,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Enter your Mistral AI API Key to start the session. The app will not store your API Key",
-      "title": "Use Custom Mistral AI API Key"
+      "description": "Enter your Mistral AI API Key, the application will not store your API Key",
+      "title": "Mistral AI API Key"
     }
   },
   "moonshot": {
@@ -115,8 +115,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Enter your Moonshot AI API Key to start the session. The app will not store your API Key",
-      "title": "Use custom Moonshot AI API Key"
+      "description": "Enter your Moonshot AI API Key, the application will not store your API Key",
+      "title": "Moonshot AI API Key"
     }
   },
   "ollama": {
@@ -172,8 +172,8 @@
       "title": "OpenAI API Key"
     },
     "unlock": {
-      "description": "Enter your OpenAI API Key to start the session. The app will not store your API Key",
-      "title": "Use custom OpenAI API Key"
+      "description": "Enter your OpenAI API Key, the application will not store your API Key",
+      "title": "OpenAI API Key"
     }
   },
   "openrouter": {
@@ -192,8 +192,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Enter your OpenRouter API Key to start the session. The app will not store your API Key",
-      "title": "Use custom OpenRouter API Key"
+      "description": "Enter your OpenRouter API Key, the application will not store your API Key",
+      "title": "OpenRouter API Key"
     }
   },
   "perplexity": {
@@ -204,8 +204,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Enter your Perplexity API Key to start the session. The app will not store your API Key",
-      "title": "Use custom Perplexity API Key"
+      "description": "Enter your Perplexity API Key, the application will not store your API Key",
+      "title": "Perplexity API Key"
     }
   },
   "togetherai": {
@@ -224,8 +224,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Enter your TogetherAI API Key to start the session. The app will not store your API Key",
-      "title": "Use custom TogetherAI API Key"
+      "description": "Enter your TogetherAI API Key, the application will not store your API Key",
+      "title": "TogetherAI API Key"
     }
   },
   "zeroone": {
@@ -236,8 +236,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Enter your 01.AI Zero One Everything API Key to start the session. The app will not store your API Key.",
-      "title": "Use Custom 01.AI Zero One Everything API Key"
+      "description": "Enter your ZeroOne API Key, the application will not store your API Key",
+      "title": "ZeroOne API Key"
     }
   },
   "zhipu": {
@@ -248,8 +248,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Enter your Zhipu API Key to start the session. The app will not store your API Key.",
-      "title": "Use Custom Zhipu API Key"
+      "description": "Enter your Zhipu API Key, the application will not store your API Key",
+      "title": "Zhipu API Key"
     }
   }
 }

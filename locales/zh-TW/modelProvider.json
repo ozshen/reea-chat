@@ -12,7 +12,7 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "輸入你的 Anthropic API Key即可開始會話。應用程式不會記錄你的 API Key",
+      "description": "輸入您的 Anthropic API Key，應用程式不會記錄您的 API Key",
       "title": "Anthropic API Key"
     }
   },
@@ -36,7 +36,7 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "輸入你的 Azure OpenAI API Key即可開始會話",
+      "description": "輸入您的 Azure OpenAI API Key即可開始會話",
       "title": "Azure OpenAI API Key"
     }
   },
@@ -61,8 +61,8 @@
     },
     "title": "Bedrock",
     "unlock": {
-      "customRegion": "自定義服務區域",
-      "description": "輸入你的 AWS AccessKeyId / SecretAccessKey 即可開始會話。應用程式不會記錄你的驗證配置",
+      "customRegion": "自訂服務區域",
+      "description": "輸入您的 AWS AccessKeyId / SecretAccessKey，應用程式不會記錄您的驗證配置",
       "title": "Bedrock 驗證資訊"
     }
   },
@@ -79,7 +79,7 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "輸入你的 Google API Key即可開始會話。應用程式不會記錄你的 API Key",
+      "description": "輸入您的 Google API Key，應用程式不會記錄您的 API Key",
       "title": "Google API Key"
     }
   },
@@ -91,7 +91,7 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "輸入你的 Groq API Key即可開始會話。應用程式不會記錄你的 API Key",
+      "description": "輸入您的 Groq API Key，應用程式不會記錄您的 API Key",
       "title": "Groq API Key"
     }
   },
@@ -103,7 +103,7 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "輸入你的 Mistral AI API Key即可開始會話。應用程式不會記錄你的 API Key",
+      "description": "輸入您的 Mistral AI API Key，應用程式不會記錄您的 API Key",
       "title": "Mistral AI API Key"
     }
   },
@@ -115,7 +115,7 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "輸入你的 Moonshot AI API Key即可開始會話。應用程式不會記錄你的 API Key",
+      "description": "輸入您的 Moonshot AI API Key，應用程式不會記錄您的 API Key",
       "title": "Moonshot AI API Key"
     }
   },
@@ -172,7 +172,7 @@
       "title": "OpenAI API Key"
     },
     "unlock": {
-      "description": "輸入你的 OpenAI API Key即可開始會話。應用程式不會記錄你的 API Key",
+      "description": "輸入您的 OpenAI API Key，應用程式不會記錄您的 API Key",
       "title": "OpenAI API Key"
     }
   },
@@ -192,7 +192,7 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "輸入你的 OpenRouter API Key即可開始會話。應用程式不會記錄你的 API Key",
+      "description": "輸入您的 OpenRouter API Key，應用程式不會記錄您的 API Key",
       "title": "OpenRouter API Key"
     }
   },
@@ -204,7 +204,7 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "輸入你的 Perplexity API Key即可開始會話。應用程式不會記錄你的 API Key",
+      "description": "輸入您的 Perplexity API Key，應用程式不會記錄您的 API Key",
       "title": "Perplexity API Key"
     }
   },
@@ -224,7 +224,7 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "輸入你的 TogetherAI API Key即可開始會話。應用程式不會記錄你的 API Key",
+      "description": "輸入您的 TogetherAI API Key，應用程式不會記錄您的 API Key",
       "title": "TogetherAI API Key"
     }
   },
@@ -236,7 +236,7 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "輸入你的零一萬物 API Key即可開始會話。應用程式不會記錄你的 API Key",
+      "description": "輸入您的零一萬物 API Key，應用程式不會記錄您的 API Key",
       "title": "零一萬物 API Key"
     }
   },
@@ -248,7 +248,7 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "輸入你的 Zhipu API Key即可開始會話。應用程式不會記錄你的 API Key",
+      "description": "輸入您的 Zhipu API Key，應用程式不會記錄您的 API Key",
       "title": "Zhipu API Key"
     }
   }

@@ -30,8 +30,8 @@ export default memo(() => {
     <>
       <PageTitle title={t('tab.llm')} />
       <OpenAI />
-      <Azure />
       <Ollama />
+      <Azure />
       <Google />
       <Anthropic />
       <Bedrock />
@@ -45,11 +45,9 @@ export default memo(() => {
       <ZeroOne />
       <Footer>
         <Trans i18nKey="llm.waitingForMore" ns={'setting'}>
-          更多模型正在
           <Link aria-label={'todo'} href={MORE_MODEL_PROVIDER_REQUEST_URL} target="_blank">
-            计划接入
+            ✨ 更多模型，敬请期待 ✨
           </Link>
-          中 ，敬请期待 ✨
         </Trans>
       </Footer>
     </>

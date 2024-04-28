@@ -12,8 +12,8 @@
       "title": "API 키"
     },
     "unlock": {
-      "description": "Anthropic API 키를 입력하면 세션이 시작됩니다. 애플리케이션은 API 키를 기록하지 않습니다.",
-      "title": "사용자 정의 Anthropic API 키 사용"
+      "description": "Anthropic API 키를 입력하면 애플리케이션이 키를 기록하지 않습니다",
+      "title": "Anthropic API 키"
     }
   },
   "azure": {
@@ -36,8 +36,8 @@
       "title": "API 키"
     },
     "unlock": {
-      "description": "Azure OpenAI API 키를 입력하면 세션이 시작됩니다.",
-      "title": "사용자 정의 Azure OpenAI API 키 사용"
+      "description": "Azure OpenAI API 키를 입력하면 대화를 시작할 수 있습니다",
+      "title": "Azure OpenAI API 키"
     }
   },
   "bedrock": {
@@ -61,9 +61,9 @@
     },
     "title": "Bedrock",
     "unlock": {
-      "customRegion": "사용자 정의 서비스 지역",
-      "description": "AWS AccessKeyId / SecretAccessKey를 입력하면 세션이 시작됩니다. 애플리케이션은 인증 구성을 기록하지 않습니다.",
-      "title": "사용자 정의 Bedrock 인증 정보 사용"
+      "customRegion": "사용자 정의 지역",
+      "description": "AWS AccessKeyId / SecretAccessKey를 입력하면 애플리케이션이 인증 구성을 기록하지 않습니다",
+      "title": "Bedrock 인증 정보"
     }
   },
   "google": {
@@ -79,8 +79,8 @@
       "title": "API 키"
     },
     "unlock": {
-      "description": "Google API 키를 입력하면 세션이 시작됩니다. 애플리케이션은 API 키를 기록하지 않습니다.",
-      "title": "사용자 정의 Google API 키 사용"
+      "description": "Google API 키를 입력하면 애플리케이션이 키를 기록하지 않습니다",
+      "title": "Google API 키"
     }
   },
   "groq": {
@@ -91,8 +91,8 @@
       "title": "API 키"
     },
     "unlock": {
-      "description": "Groq API 키를 입력하면 세션이 시작됩니다. 애플리케이션은 API 키를 기록하지 않습니다.",
-      "title": "사용자 정의 Groq API 키 사용"
+      "description": "Groq API 키를 입력하면 애플리케이션이 키를 기록하지 않습니다",
+      "title": "Groq API 키"
     }
   },
   "mistral": {
@@ -103,8 +103,8 @@
       "title": "API 키"
     },
     "unlock": {
-      "description": "Mistral AI API 키를 입력하면 세션이 시작됩니다. 애플리케이션은 API 키를 기록하지 않습니다.",
-      "title": "사용자 정의 Mistral AI API 키 사용"
+      "description": "Mistral AI API 키를 입력하면 애플리케이션이 키를 기록하지 않습니다",
+      "title": "Mistral AI API 키"
     }
   },
   "moonshot": {
@@ -115,8 +115,8 @@
       "title": "API 키"
     },
     "unlock": {
-      "description": "Moonshot AI API 키를 입력하면 세션을 시작할 수 있습니다. 애플리케이션은 API 키를 기록하지 않습니다",
-      "title": "사용자 정의 Moonshot AI API 키 사용"
+      "description": "Moonshot AI API 키를 입력하면 애플리케이션이 키를 기록하지 않습니다",
+      "title": "Moonshot AI API 키"
     }
   },
   "ollama": {
@@ -172,8 +172,8 @@
       "title": "OpenAI API 키"
     },
     "unlock": {
-      "description": "OpenAI API 키를 입력하면 세션을 시작할 수 있습니다. 애플리케이션은 API 키를 기록하지 않습니다",
-      "title": "사용자 정의 OpenAI API 키 사용"
+      "description": "OpenAI API 키를 입력하면 애플리케이션이 키를 기록하지 않습니다",
+      "title": "OpenAI API 키"
     }
   },
   "openrouter": {
@@ -192,8 +192,8 @@
       "title": "API 키"
     },
     "unlock": {
-      "description": "OpenRouter API 키를 입력하면 세션을 시작할 수 있습니다. 애플리케이션은 API 키를 기록하지 않습니다",
-      "title": "사용자 정의 OpenRouter API 키 사용"
+      "description": "OpenRouter API 키를 입력하면 애플리케이션이 키를 기록하지 않습니다",
+      "title": "OpenRouter API 키"
     }
   },
   "perplexity": {
@@ -204,8 +204,8 @@
       "title": "API 키"
     },
     "unlock": {
-      "description": "Perplexity API 키를 입력하면 세션을 시작할 수 있습니다. 애플리케이션은 API 키를 기록하지 않습니다",
-      "title": "사용자 정의 Perplexity API 키 사용"
+      "description": "Perplexity API 키를 입력하면 애플리케이션이 키를 기록하지 않습니다",
+      "title": "Perplexity API 키"
     }
   },
   "togetherai": {
@@ -224,8 +224,8 @@
       "title": "API 키"
     },
     "unlock": {
-      "description": "TogetherAI API 키를 입력하면 세션을 시작할 수 있습니다. 애플리케이션은 API 키를 기록하지 않습니다",
-      "title": "사용자 정의 TogetherAI API 키 사용"
+      "description": "TogetherAI API 키를 입력하면 애플리케이션이 키를 기록하지 않습니다",
+      "title": "TogetherAI API 키"
     }
   },
   "zeroone": {
@@ -236,8 +236,8 @@
       "title": "API 키"
     },
     "unlock": {
-      "description": "귀하의 Zero One All Things API 키를 입력하면 세션을 시작할 수 있습니다. 애플리케이션은 귀하의 API 키를 기록하지 않습니다",
-      "title": "사용자 정의 Zero One All Things API 키 사용"
+      "description": "0과 1만물 API 키를 입력하면 애플리케이션이 키를 기록하지 않습니다",
+      "title": "0과 1만물 API 키"
     }
   },
   "zhipu": {
@@ -248,8 +248,8 @@
       "title": "API 키"
     },
     "unlock": {
-      "description": "귀하의 지푸 API 키를 입력하면 세션을 시작할 수 있습니다. 애플리케이션은 귀하의 API 키를 기록하지 않습니다",
-      "title": "사용자 정의 지푸 API 키 사용"
+      "description": "Zhipu API 키를 입력하면 애플리케이션이 키를 기록하지 않습니다",
+      "title": "Zhipu API 키"
     }
   }
 }

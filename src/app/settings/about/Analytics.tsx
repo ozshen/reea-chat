@@ -15,10 +15,10 @@ const Analytics = memo(() => {
 
   return (
     <div className={styles.wrapper}>
-      <Flexbox className={styles.container} gap={24} padding={16}>
-        <Flexbox className={styles.title} gap={8} horizontal>
+      <Flexbox className={styles.container} gap={8} padding={16}>
+        {/* <Flexbox className={styles.title} gap={8} horizontal>
           {t('analytics.title')}
-        </Flexbox>
+        </Flexbox> */}
         <Flexbox gap={24} horizontal>
           <Switch
             checked={!!checked}

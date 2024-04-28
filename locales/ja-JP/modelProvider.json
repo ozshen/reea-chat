@@ -12,8 +12,8 @@
       "title": "APIキー"
     },
     "unlock": {
-      "description": "あなたのAnthropic APIキーを入力すると、セッションを開始できます。アプリはあなたのAPIキーを記録しません。",
-      "title": "カスタムAnthropic APIキーを使用する"
+      "description": "Anthropic APIキーを入力してください。アプリはAPIキーを記録しません。",
+      "title": "Anthropic APIキー"
     }
   },
   "azure": {
@@ -36,8 +36,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Azure OpenAI API Key を入力するとセッションを開始できます",
-      "title": "使用カスタム Azure OpenAI API Key"
+      "description": "Azure OpenAI APIキーを入力して会話を開始できます。",
+      "title": "Azure OpenAI APIキー"
     }
   },
   "bedrock": {
@@ -61,9 +61,9 @@
     },
     "title": "Bedrock",
     "unlock": {
-      "customRegion": "カスタムサービスリージョン",
-      "description": "AWS AccessKeyId / SecretAccessKey を入力するとセッションを開始できます。アプリは認証情報を記録しません",
-      "title": "使用カスタム Bedrock 認証情報"
+      "customRegion": "カスタムリージョン",
+      "description": "AWS AccessKeyId / SecretAccessKeyを入力してください。アプリは認証情報を記録しません。",
+      "title": "Bedrock認証情報"
     }
   },
   "google": {
@@ -79,8 +79,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Google API Key を入力するとセッションを開始できます。アプリは API Key を記録しません",
-      "title": "使用カスタム Google API Key"
+      "description": "Google APIキーを入力してください。アプリはAPIキーを記録しません。",
+      "title": "Google APIキー"
     }
   },
   "groq": {
@@ -91,8 +91,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Groq API Key を入力するとセッションを開始できます。アプリは API Key を記録しません",
-      "title": "使用カスタム Groq API Key"
+      "description": "Groq APIキーを入力してください。アプリはAPIキーを記録しません。",
+      "title": "Groq APIキー"
     }
   },
   "mistral": {
@@ -103,8 +103,8 @@
       "title": "API Key"
     },
     "unlock": {
-      "description": "Mistral AI API Key を入力するとセッションを開始できます。アプリは API Key を記録しません",
-      "title": "使用カスタム Mistral AI API Key"
+      "description": "Mistral AI APIキーを入力してください。アプリはAPIキーを記録しません。",
+      "title": "Mistral AI APIキー"
     }
   },
   "moonshot": {
@@ -115,8 +115,8 @@
       "title": "APIキー"
     },
     "unlock": {
-      "description": "Moonshot AIのAPIキーを入力するとセッションが開始されます。アプリはAPIキーを記録しません",
-      "title": "カスタムMoonshot AI APIキーを使用する"
+      "description": "Moonshot AI APIキーを入力してください。アプリはAPIキーを記録しません。",
+      "title": "Moonshot AI APIキー"
     }
   },
   "ollama": {
@@ -172,8 +172,8 @@
       "title": "OpenAI APIキー"
     },
     "unlock": {
-      "description": "OpenAIのAPIキーを入力するとセッションが開始されます。アプリはAPIキーを記録しません",
-      "title": "カスタムOpenAI APIキーを使用する"
+      "description": "OpenAI APIキーを入力してください。アプリはAPIキーを記録しません。",
+      "title": "OpenAI APIキー"
     }
   },
   "openrouter": {
@@ -192,8 +192,8 @@
       "title": "APIキー"
     },
     "unlock": {
-      "description": "OpenRouterのAPIキーを入力するとセッションが開始されます。アプリはAPIキーを記録しません",
-      "title": "カスタムOpenRouter APIキーを使用する"
+      "description": "OpenRouter APIキーを入力してください。アプリはAPIキーを記録しません。",
+      "title": "OpenRouter APIキー"
     }
   },
   "perplexity": {
@@ -204,8 +204,8 @@
       "title": "APIキー"
     },
     "unlock": {
-      "description": "PerplexityのAPIキーを入力するとセッションが開始されます。アプリはAPIキーを記録しません",
-      "title": "カスタムPerplexity APIキーを使用する"
+      "description": "Perplexity APIキーを入力してください。アプリはAPIキーを記録しません。",
+      "title": "Perplexity APIキー"
     }
   },
   "togetherai": {
@@ -224,8 +224,8 @@
       "title": "APIキー"
     },
     "unlock": {
-      "description": "TogetherAIのAPIキーを入力するとセッションが開始されます。アプリはAPIキーを記録しません",
-      "title": "カスタムTogetherAI APIキーを使用する"
+      "description": "TogetherAI APIキーを入力してください。アプリはAPIキーを記録しません。",
+      "title": "TogetherAI APIキー"
     }
   },
   "zeroone": {
@@ -236,8 +236,8 @@
       "title": "APIキー"
     },
     "unlock": {
-      "description": "あなたのZeroOne APIキーを入力すると、セッションを開始できます。アプリはあなたのAPIキーを記録しません。",
-      "title": "カスタムZeroOne APIキーを使用する"
+      "description": "零一万物APIキーを入力してください。アプリはAPIキーを記録しません。",
+      "title": "零一万物APIキー"
     }
   },
   "zhipu": {
@@ -248,8 +248,8 @@
       "title": "APIキー"
     },
     "unlock": {
-      "description": "あなたのZhipu APIキーを入力すると、セッションを開始できます。アプリはあなたのAPIキーを記録しません。",
-      "title": "カスタムZhipu APIキーを使用する"
+      "description": "Zhipu APIキーを入力してください。アプリはAPIキーを記録しません。",
+      "title": "Zhipu APIキー"
     }
   }
 }

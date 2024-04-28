@@ -5,7 +5,7 @@ const sessionGroupKeys = (s: GlobalStore): string[] =>
   s.preference.expandSessionGroupKeys || [SessionDefaultGroup.Pinned, SessionDefaultGroup.Default];
 
 const useCmdEnterToSend = (s: GlobalStore): boolean =>
-  !!s.preference.useCmdEnterToSend ? s.preference.useCmdEnterToSend : false;
+  !!s.preference.useCmdEnterToSend ? s.preference.useCmdEnterToSend : true;
 
 const userAllowTrace = (s: GlobalStore): boolean =>
   !!s.preference.telemetry ? s.preference.telemetry : false;

@@ -8,6 +8,7 @@ import { Flexbox } from 'react-layout-kit';
 import { DESKTOP_HEADER_ICON_SIZE } from '@/const/layoutTokens';
 // import SyncStatusInspector from '@/features/SyncStatusInspector';
 import { useActionSWR } from '@/libs/swr';
+import { featureFlagsSelectors, useFeatureFlagStore } from '@/store/featureFlags';
 import { useSessionStore } from '@/store/session';
 
 import SessionSearchBar from '../../features/SessionSearchBar';
@@ -26,6 +27,7 @@ const Header = memo(() => {
   const { styles } = useStyles();
   const { t } = useTranslation('chat');
   const [createSession] = useSessionStore((s) => [s.createSession]);
+  const { /*enableWebrtc,*/ showCreateSession } = useFeatureFlagStore(featureFlagsSelectors);
 
   const { mutate, isValidating } = useActionSWR('session.createSession', () => createSession());
 
@@ -37,16 +39,18 @@ const Header = memo(() => {
           <Flexbox flex={1} style={{ fontSize: 18, fontWeight: 600 }}>
             ChatAI
           </Flexbox>
-          {/* <SyncStatusInspector /> */}
+          {/* {enableWebrtc && <SyncStatusInspector />} */}
         </Flexbox>
-        <ActionIcon
-          icon={MessageSquarePlus}
-          loading={isValidating}
-          onClick={() => mutate()}
-          size={DESKTOP_HEADER_ICON_SIZE}
-          style={{ flex: 'none' }}
-          title={t('newAgent')}
-        />
+        {showCreateSession && (
+          <ActionIcon
+            icon={MessageSquarePlus}
+            loading={isValidating}
+            onClick={() => mutate()}
+            size={DESKTOP_HEADER_ICON_SIZE}
+            style={{ flex: 'none' }}
+            title={t('newAgent')}
+          />
+        )}
       </Flexbox>
       <SessionSearchBar />
     </Flexbox>

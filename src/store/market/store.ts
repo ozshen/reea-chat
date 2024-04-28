@@ -11,7 +11,7 @@ import { type StoreState, initialState } from './initialState';
 
 export type Store = StoreAction & StoreState;
 
-const AGENT_MARKET = 'AGENT_MARKET';
+const AGENT_MARKET = 'CHAT_AGENT_MARKET';
 
 const persistOptions: PersistOptions<Store> = {
   name: AGENT_MARKET,

@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import SettingButton from '@/app/chat/features/SettingButton';
 import ShareButton from '@/app/chat/features/ShareButton';
 import { DESKTOP_HEADER_ICON_SIZE } from '@/const/layoutTokens';
+import { featureFlagsSelectors, useFeatureFlagStore } from '@/store/featureFlags';
 import { useGlobalStore } from '@/store/global';
 
 const HeaderAction = memo(() => {
@@ -16,6 +17,8 @@ const HeaderAction = memo(() => {
     s.toggleChatSideBar,
   ]);
 
+  const { isAgentEditable } = useFeatureFlagStore(featureFlagsSelectors);
+
   return (
     <>
       <ShareButton />
@@ -25,7 +28,7 @@ const HeaderAction = memo(() => {
         size={DESKTOP_HEADER_ICON_SIZE}
         title={t('roleAndArchive')}
       />
-      <SettingButton />
+      {isAgentEditable && <SettingButton />}
     </>
   );
 });

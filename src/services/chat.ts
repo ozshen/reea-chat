@@ -435,6 +435,7 @@ class ChatService {
       const inboxGuideSystemRole =
         false && options?.trace?.sessionId === INBOX_SESSION_ID && INBOX_GUIDE_SYSTEMROLE();
 
+      if (!tools || tools.length === 0) return;
       // Inject Tool SystemRole
       const hasTools = tools && tools?.length > 0;
       const hasFC =

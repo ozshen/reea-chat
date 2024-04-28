@@ -5,22 +5,26 @@ import {
 } from '@lobehub/ui';
 import { Badge, ConfigProvider, Dropdown, MenuProps } from 'antd';
 import {
-  BoltIcon, // Book,
-  // Feather,
+  BoltIcon,
+  Book, // Feather,
   // FileClock,
   // Github,
   HardDriveDownload,
   HardDriveUpload, //Heart,
   Settings,
 } from 'lucide-react';
-// import Link from 'next/link';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
 import AdsButton from '@/components/AdsModal';
-// import { ABOUT, CHANGELOG, DISCORD, DOCUMENTS, FEEDBACK, GITHUB } from '@/const/url';
+import {
+  /*ABOUT, CHANGELOG, DISCORD,*/
+  DOCUMENTS,
+  /*, FEEDBACK, GITHUB*/
+} from '@/const/url';
 import DataImporter from '@/features/DataImporter';
 import { configService } from '@/services/config';
 import { GlobalStore, useGlobalStore } from '@/store/global';
@@ -127,10 +131,10 @@ const BottomActions = memo<BottomActionProps>(({ tab }) => {
     <>
       {/* <Link aria-label={'GitHub'} href={GITHUB} target={'_blank'}>
         <ActionIcon icon={Github} placement={'right'} title={'GitHub'} />
-      </Link>
+      </Link> */}
       <Link aria-label={t('document')} href={DOCUMENTS} target={'_blank'}>
         <ActionIcon icon={Book} placement={'right'} title={t('document')} />
-      </Link> */}
+      </Link>
       <AdsButton />
       <Dropdown arrow={false} menu={{ items }} trigger={['click']}>
         {hasNewVersion ? (

@@ -5,17 +5,22 @@ import Image from 'next/image';
 import { memo } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-import { imageUrl } from '@/const/url';
+import { SHOPPING, imageUrl } from '@/const/url';
 
 const AdsInner = memo<{ content?: string }>(({ content }) => {
+  const html = !!content ? content : SHOPPING;
   return (
     <>
-      {content && content.startsWith('http') ? (
-        <iframe
-          src={content}
-          style={{ border: 'none', height: '100vh', width: '100%' }}
-          title="about"
-        />
+      {html ? (
+        html.startsWith('http') ? (
+          <iframe
+            src={html}
+            style={{ border: 'none', height: '100vh', width: '100%' }}
+            title="about"
+          />
+        ) : (
+          <div dangerouslySetInnerHTML={{ __html: html }}></div>
+        )
       ) : (
         <>
           <Image

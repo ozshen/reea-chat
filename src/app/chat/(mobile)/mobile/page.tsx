@@ -7,7 +7,7 @@ import { Flexbox } from 'react-layout-kit';
 import Conversation from '@/features/Conversation';
 
 import SessionHydration from '../../components/SessionHydration';
-// import TelemetryNotification from '../../features/TelemetryNotification';
+import TelemetryNotification from '../../features/TelemetryNotification';
 import ChatInput from '../features/ChatInput';
 import ChatHeader from './ChatHeader';
 
@@ -20,7 +20,7 @@ const Chat = memo(() => {
       <Flexbox height={'calc(100% - 44px)'} horizontal>
         <Conversation chatInput={<ChatInput />} mobile />
         <TopicList />
-        {/* <TelemetryNotification mobile /> */}
+        <TelemetryNotification mobile />
       </Flexbox>
       <SessionHydration />
     </>

@@ -156,7 +156,7 @@ export const chatTopic: StateCreator<
     internal_updateTopicLoading(id, true);
     const messages = await messageService.getMessages(sessionId, id);
 
-    await summaryTopicTitle(id, messages);
+    await summaryTopicTitle(id, messages.filter((m) => m.role === 'user').slice(0, 0));
     internal_updateTopicLoading(id, false);
   },
 

@@ -62,7 +62,7 @@ export const chatToolSlice: StateCreator<
     });
   },
   text2image: async (id, data) => {
-    // const isAutoGen = settingsSelectors.isDalleAutoGenerating(useGlobalStore.getState());
+    // const isAutoGen = settingsSelectors.isDalleAutoGenerating(useUserStore.getState());
     // if (!isAutoGen) return;
 
     await get().generateImageFromPrompts(data, id);
@@ -81,6 +81,6 @@ export const chatToolSlice: StateCreator<
     const data: DallEImageItem[] = JSON.parse(message.content);
 
     const nextContent = produce(data, updater);
-    await get().internalUpdateMessageContent(id, JSON.stringify(nextContent));
+    await get().internal_updateMessageContent(id, JSON.stringify(nextContent));
   },
 });

@@ -27,9 +27,12 @@
     }
   },
   "header": {
+    "desc": "Preferences and Model Settings",
     "global": "Global Settings",
     "session": "Session Settings",
-    "sessionWithName": "Session Settings · {{name}}"
+    "sessionDesc": "Role Settings and Session Preferences",
+    "sessionWithName": "Session Settings · {{name}}",
+    "title": "Settings"
   },
   "llm": {
     "checker": {
@@ -162,7 +165,7 @@
       "title": "Auto Create Topic"
     },
     "enableCompressThreshold": {
-      "title": "Enable History Message Length Compression Threshold"
+      "title": "Enable Message Compression"
     },
     "enableHistoryCount": {
       "alias": "Unlimited",

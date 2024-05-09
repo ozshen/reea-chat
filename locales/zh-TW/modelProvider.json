@@ -95,6 +95,18 @@
       "title": "Groq API Key"
     }
   },
+  "minimax": {
+    "title": "極小化",
+    "token": {
+      "desc": "填入來自極小化的 API 金鑰",
+      "placeholder": "極小化 API 金鑰",
+      "title": "API 金鑰"
+    },
+    "unlock": {
+      "description": "輸入你的極小化 API 金鑰，應用程式不會記錄你的 API 金鑰",
+      "title": "極小化 API 金鑰"
+    }
+  },
   "mistral": {
     "title": "Mistral AI",
     "token": {

@@ -27,9 +27,12 @@
     }
   },
   "header": {
+    "desc": "偏好与模型设置",
     "global": "全局设置",
     "session": "会话设置",
-    "sessionWithName": "会话设置 · {{name}}"
+    "sessionDesc": "角色设定与会话偏好",
+    "sessionWithName": "会话设置 · {{name}}",
+    "title": "设置"
   },
   "llm": {
     "checker": {
@@ -162,7 +165,7 @@
       "title": "自动创建话题"
     },
     "enableCompressThreshold": {
-      "title": "是否开启历史消息长度压缩阈值"
+      "title": "历史消息压缩"
     },
     "enableHistoryCount": {
       "alias": "不限制",

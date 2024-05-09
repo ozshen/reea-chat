@@ -10,6 +10,10 @@
       "desc": "Geben Sie Ihren API-Key von Anthropic ein",
       "placeholder": "Anthropic API Key",
       "title": "API Key"
+    },
+    "unlock": {
+      "description": "Geben Sie Ihren Anthropic API-Schlüssel ein. Die Anwendung wird Ihren API-Schlüssel nicht speichern.",
+      "title": "Anthropic API-Schlüssel"
     }
   },
   "azure": {
@@ -30,6 +34,10 @@
       "desc": "Diesen Wert finden Sie im Abschnitt 'Schlüssel und Endpunkte', wenn Sie in Azure Portal Ihre Ressource überprüfen. Sie können KEY1 oder KEY2 verwenden",
       "placeholder": "Azure API Key",
       "title": "API Key"
+    },
+    "unlock": {
+      "description": "Geben Sie Ihren Azure OpenAI API-Schlüssel ein, um das Gespräch zu beginnen.",
+      "title": "Azure OpenAI API-Schlüssel"
     }
   },
   "bedrock": {
@@ -51,7 +59,12 @@
       "placeholder": "AWS Secret Access Key",
       "title": "AWS Secret Access Key"
     },
-    "title": "Bedrock"
+    "title": "Bedrock",
+    "unlock": {
+      "customRegion": "Benutzerdefinierter Bereich",
+      "description": "Geben Sie Ihren AWS AccessKeyId / SecretAccessKey ein. Die Anwendung wird Ihre Authentifizierungsinformationen nicht speichern.",
+      "title": "Bedrock Authentifizierungsinformationen"
+    }
   },
   "google": {
     "endpoint": {
@@ -64,6 +77,10 @@
       "desc": "Geben Sie Ihren API-Key von Google ein",
       "placeholder": "Google API Key",
       "title": "API Key"
+    },
+    "unlock": {
+      "description": "Geben Sie Ihren Google API-Schlüssel ein. Die Anwendung wird Ihren API-Schlüssel nicht speichern.",
+      "title": "Google API-Schlüssel"
     }
   },
   "groq": {
@@ -72,6 +89,22 @@
       "desc": "Geben Sie Ihren API-Key von Groq ein",
       "placeholder": "Groq API Key",
       "title": "API Key"
+    },
+    "unlock": {
+      "description": "Geben Sie Ihren Groq API-Schlüssel ein. Die Anwendung wird Ihren API-Schlüssel nicht speichern.",
+      "title": "Groq API-Schlüssel"
+    }
+  },
+  "minimax": {
+    "title": "Minimax",
+    "token": {
+      "desc": "Geben Sie den API-Schlüssel von Minimax ein.",
+      "placeholder": "Minimax API-Schlüssel",
+      "title": "API-Schlüssel"
+    },
+    "unlock": {
+      "description": "Geben Sie Ihren Minimax API-Schlüssel ein. Die Anwendung wird Ihren API-Schlüssel nicht speichern.",
+      "title": "Minimax API-Schlüssel"
     }
   },
   "mistral": {
@@ -80,6 +113,10 @@
       "desc": "Geben Sie Ihren API-Key von Mistral AI ein",
       "placeholder": "Mistral AI API Key",
       "title": "API Key"
+    },
+    "unlock": {
+      "description": "Geben Sie Ihren Mistral AI API-Schlüssel ein. Die Anwendung wird Ihren API-Schlüssel nicht speichern.",
+      "title": "Mistral AI API-Schlüssel"
     }
   },
   "moonshot": {
@@ -88,6 +125,10 @@
       "desc": "Geben Sie Ihren API-Key von Moonshot AI ein",
       "placeholder": "Moonshot AI API Key",
       "title": "API Key"
+    },
+    "unlock": {
+      "description": "Geben Sie Ihren Moonshot AI API-Schlüssel ein. Die Anwendung wird Ihren API-Schlüssel nicht speichern.",
+      "title": "Moonshot AI API-Schlüssel"
     }
   },
   "ollama": {
@@ -104,6 +145,30 @@
       "placeholder": "http://127.0.0.1:11434/v1",
       "title": "Schnittstellen-Proxy-Adresse"
     },
+    "setup": {
+      "cors": {
+        "description": "Aufgrund von Browser-Sicherheitsbeschränkungen müssen Sie Ollama für den Cross-Origin-Zugriff konfigurieren, um es ordnungsgemäß zu verwenden.",
+        "linux": {
+          "env": "Fügen Sie unter [Service] `Environment` hinzu und fügen Sie die Umgebungsvariable OLLAMA_ORIGINS hinzu:",
+          "reboot": "Laden Sie systemd neu und starten Sie Ollama neu.",
+          "systemd": "Rufen Sie systemd auf, um den Ollama-Dienst zu bearbeiten:"
+        },
+        "macos": "Öffnen Sie das Terminal und fügen Sie den folgenden Befehl ein. Drücken Sie die Eingabetaste, um ihn auszuführen.",
+        "reboot": "Starten Sie nach Abschluss des Vorgangs den Ollama-Dienst neu.",
+        "title": "Konfigurieren Sie Ollama für den Cross-Origin-Zugriff",
+        "windows": "Klicken Sie auf Windows auf 'Systemsteuerung', um die Systemumgebungsvariablen zu bearbeiten. Erstellen Sie eine Umgebungsvariable mit dem Namen 'OLLAMA_ORIGINS' für Ihr Benutzerkonto und setzen Sie den Wert auf *, klicken Sie auf 'OK/Anwenden', um zu speichern."
+      },
+      "install": {
+        "description": "Stellen Sie sicher, dass Sie Ollama gestartet haben. Wenn Sie Ollama noch nicht heruntergeladen haben, besuchen Sie die offizielle Website und laden Sie es herunter.",
+        "docker": "Wenn Sie Docker bevorzugen, bietet Ollama auch offizielle Docker-Images an. Sie können sie mit dem folgenden Befehl abrufen:",
+        "linux": {
+          "command": "Installieren Sie mit dem folgenden Befehl:",
+          "manual": "Alternativ können Sie die <1>Linux-Installationsanleitung</1> für die manuelle Installation verwenden."
+        },
+        "title": "Installieren und Starten Sie die Ollama-Anwendung lokal",
+        "windowsTab": "Windows (Vorschau)"
+      }
+    },
     "title": "Ollama"
   },
   "openai": {
@@ -117,6 +182,10 @@
       "desc": "Verwenden Sie Ihren eigenen OpenAI-Key",
       "placeholder": "OpenAI API Key",
       "title": "OpenAI API Key"
+    },
+    "unlock": {
+      "description": "Geben Sie Ihren OpenAI API-Schlüssel ein. Die Anwendung wird Ihren API-Schlüssel nicht speichern.",
+      "title": "OpenAI API-Schlüssel"
     }
   },
   "openrouter": {
@@ -133,6 +202,10 @@
       "desc": "Geben Sie Ihren API-Key von OpenRouter AI ein",
       "placeholder": "OpenRouter AI API Key",
       "title": "API Key"
+    },
+    "unlock": {
+      "description": "Geben Sie Ihren OpenRouter API-Schlüssel ein. Die Anwendung wird Ihren API-Schlüssel nicht speichern.",
+      "title": "OpenRouter API-Schlüssel"
     }
   },
   "perplexity": {
@@ -141,6 +214,10 @@
       "desc": "Geben Sie Ihren API-Key von Perplexity AI ein",
       "placeholder": "Perplexity AI API Key",
       "title": "API Key"
+    },
+    "unlock": {
+      "description": "Geben Sie Ihren Perplexity API-Schlüssel ein. Die Anwendung wird Ihren API-Schlüssel nicht speichern.",
+      "title": "Perplexity API-Schlüssel"
     }
   },
   "togetherai": {
@@ -157,6 +234,10 @@
       "desc": "Geben Sie Ihren API-Key von TogetherAI AI ein",
       "placeholder": "TogetherAI AI API Key",
       "title": "API Key"
+    },
+    "unlock": {
+      "description": "Geben Sie Ihren TogetherAI API-Schlüssel ein. Die Anwendung wird Ihren API-Schlüssel nicht speichern.",
+      "title": "TogetherAI API-Schlüssel"
     }
   },
   "zeroone": {
@@ -165,6 +246,10 @@
       "desc": "Geben Sie Ihren API-Key von 01.AI Alles und Nichts ein",
       "placeholder": "01.AI Alles und Nichts API Key",
       "title": "API Key"
+    },
+    "unlock": {
+      "description": "Geben Sie Ihren ZeroOne万物 API-Schlüssel ein. Die Anwendung wird Ihren API-Schlüssel nicht speichern.",
+      "title": "ZeroOne万物 API-Schlüssel"
     }
   },
   "zhipu": {
@@ -173,6 +258,10 @@
       "desc": "Geben Sie Ihren API-Key von Zhipu ein",
       "placeholder": "Zhipu API Key",
       "title": "API Key"
+    },
+    "unlock": {
+      "description": "Geben Sie Ihren Zhipu API-Schlüssel ein. Die Anwendung wird Ihren API-Schlüssel nicht speichern.",
+      "title": "Zhipu API-Schlüssel"
     }
   }
 }

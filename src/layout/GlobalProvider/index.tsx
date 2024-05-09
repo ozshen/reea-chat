@@ -6,8 +6,10 @@ import { getClientConfig } from '@/config/client';
 import { getServerFeatureFlagsValue } from '@/config/server/featureFlags';
 import { LOCALE_COOKIE } from '@/const/locale';
 import { THEME_APPEARANCE, THEME_NEUTRAL_COLOR, THEME_PRIMARY_COLOR } from '@/const/theme';
-import { FeatureFlagStoreProvider } from '@/store/featureFlags';
+import { getServerGlobalConfig } from '@/server/globalConfig';
+import { ServerConfigStoreProvider } from '@/store/serverConfig';
 import { getAntdLocale } from '@/utils/locale';
+import { isMobileDevice } from '@/utils/responsive';
 
 import AppTheme from './AppTheme';
 import Locale from './Locale';
@@ -42,6 +44,8 @@ const GlobalLayout = async ({ children }: GlobalLayoutProps) => {
 
   // get default feature flags to use with ssr
   const serverFeatureFlags = getServerFeatureFlagsValue();
+  const serverConfig = getServerGlobalConfig();
+  const isMobile = isMobileDevice();
   return (
     <StyleRegistry>
       <Locale antdLocale={antdLocale} defaultLang={defaultLang?.value}>
@@ -51,9 +55,13 @@ const GlobalLayout = async ({ children }: GlobalLayoutProps) => {
           defaultPrimaryColor={primaryColor?.value as any}
         >
           <StoreInitialization />
-          <FeatureFlagStoreProvider featureFlags={serverFeatureFlags}>
+          <ServerConfigStoreProvider
+            featureFlags={serverFeatureFlags}
+            isMobile={isMobile}
+            serverConfig={serverConfig}
+          >
             {children}
-          </FeatureFlagStoreProvider>
+          </ServerConfigStoreProvider>
           <DebugUI />
         </AppTheme>
       </Locale>

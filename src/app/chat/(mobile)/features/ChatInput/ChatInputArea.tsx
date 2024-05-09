@@ -17,7 +17,7 @@ import {
 } from 'react';
 import { Flexbox } from 'react-layout-kit';
 
-import InputArea, { type ChatInputAreaInnerProps } from './TextArea';
+import ChatInputAreaInner, { type ChatInputAreaInnerProps } from './TextArea';
 
 const useStyles = createStyles(({ css, token }) => {
   return {
@@ -137,7 +137,7 @@ const MobileChatInputArea = forwardRef<TextAreaRef, MobileChatInputAreaProps>(
               />
             )}
             <InnerContainer>
-              <InputArea
+              <ChatInputAreaInner
                 autoSize={expand ? false : { maxRows: 6, minRows: 0 }}
                 className={cx(expand && styles.expandTextArea)}
                 loading={loading}

@@ -3,7 +3,7 @@ import { produce } from 'immer';
 import { StateCreator } from 'zustand/vanilla';
 
 import { DEFAULT_USER_AVATAR_URL } from '@/const/meta';
-import { shareGPTService } from '@/services/share';
+import { shareService } from '@/services/share';
 import { useAgentStore } from '@/store/agent';
 import { agentSelectors } from '@/store/agent/selectors';
 import { useSessionStore } from '@/store/session';
@@ -20,7 +20,7 @@ interface ShareMessage {
 
 const Footer: ShareMessage = {
   from: 'gpt',
-  value: `Share from [**ReeChat**](https://github.com/ozshen/reea-chat) - ${dayjs().format(
+  value: `Share from [**ChatAI**](https://github.com/ozshen/reea-chat) - ${dayjs().format(
     'YYYY-MM-DD',
   )}`,
 };
@@ -104,7 +104,7 @@ export const chatShare: StateCreator<ChatStore, [['zustand/devtools', never]], [
 
     set({ shareLoading: true });
 
-    const res = await shareGPTService.createShareGPTUrl({
+    const res = await shareService.createShareGPTUrl({
       avatarUrl: avatar || DEFAULT_USER_AVATAR_URL,
       items: shareMsgs,
     });

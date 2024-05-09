@@ -95,6 +95,18 @@
       "title": "Groq APIキー"
     }
   },
+  "minimax": {
+    "title": "Minimax",
+    "token": {
+      "desc": "Minimaxから取得したAPIキーを入力してください",
+      "placeholder": "Minimax APIキー",
+      "title": "APIキー"
+    },
+    "unlock": {
+      "description": "Minimax APIキーを入力してください。アプリはAPIキーを記録しません。",
+      "title": "Minimax APIキー"
+    }
+  },
   "mistral": {
     "title": "Mistral AI",
     "token": {

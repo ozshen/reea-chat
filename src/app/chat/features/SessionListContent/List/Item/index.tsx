@@ -6,6 +6,7 @@ import { shallow } from 'zustand/shallow';
 import ModelTag from '@/components/ModelTag';
 import { useAgentStore } from '@/store/agent';
 import { useChatStore } from '@/store/chat';
+import { chatSelectors } from '@/store/chat/selectors';
 import { useSessionStore } from '@/store/session';
 import { sessionHelpers } from '@/store/session/helpers';
 import { sessionMetaSelectors, sessionSelectors } from '@/store/session/selectors';
@@ -25,7 +26,7 @@ const SessionItem = memo<SessionItemProps>(({ id }) => {
 
   const { mobile } = useResponsive();
   const [active] = useSessionStore((s) => [s.activeId === id]);
-  const [loading] = useChatStore((s) => [!!s.chatLoadingId && id === s.activeId]);
+  const [loading] = useChatStore((s) => [chatSelectors.isAIGenerating(s) && id === s.activeId]);
 
   const [pin, title, description, avatar, avatarBackground, updateAt, model, group] =
     useSessionStore((s) => {
@@ -80,7 +81,7 @@ const SessionItem = memo<SessionItemProps>(({ id }) => {
         description={description}
         loading={loading}
         pin={pin}
-        showAction={open || mobile || false}
+        showAction={open || mobile}
         title={title}
       />
       <CreateGroupModal

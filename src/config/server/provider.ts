@@ -43,6 +43,10 @@ declare global {
       ANTHROPIC_API_KEY?: string;
       ANTHROPIC_PROXY_URL?: string;
 
+      // Minimax Provider
+      ENABLED_MINIMAX?: string;
+      MINIMAX_API_KEY?: string;
+
       // Mistral Provider
       ENABLED_MISTRAL?: string;
       MISTRAL_API_KEY?: string;
@@ -50,6 +54,7 @@ declare global {
       // Groq Provider
       ENABLED_GROQ?: string;
       GROQ_API_KEY?: string;
+      GROQ_PROXY_URL?: string;
 
       // OpenRouter Provider
       ENABLED_OPENROUTER?: string;
@@ -108,6 +113,8 @@ export const getProviderConfig = () => {
   const PERPLEXITY_API_KEY = process.env.PERPLEXITY_API_KEY || '';
 
   const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || '';
+
+  const MINIMAX_API_KEY = process.env.MINIMAX_API_KEY || '';
 
   const MISTRAL_API_KEY = process.env.MISTRAL_API_KEY || '';
 
@@ -171,6 +178,9 @@ export const getProviderConfig = () => {
     ANTHROPIC_API_KEY,
     ANTHROPIC_PROXY_URL: process.env.ANTHROPIC_PROXY_URL,
 
+    ENABLED_MINIMAX: !!MINIMAX_API_KEY,
+    MINIMAX_API_KEY,
+
     ENABLED_MISTRAL: !!MISTRAL_API_KEY,
     MISTRAL_API_KEY,
 
@@ -188,6 +198,7 @@ export const getProviderConfig = () => {
     MOONSHOT_PROXY_URL: process.env.MOONSHOT_PROXY_URL,
 
     ENABLED_GROQ: !!GROQ_API_KEY,
+    GROQ_PROXY_URL: process.env.GROQ_PROXY_URL,
     GROQ_API_KEY,
 
     ENABLED_ZEROONE: !!ZEROONE_API_KEY,
@@ -198,7 +209,7 @@ export const getProviderConfig = () => {
     AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY || '',
 
-    ENABLE_OLLAMA: process.env.ENABLE_OLLAMA as unknown as boolean,
+    ENABLE_OLLAMA: Boolean(process.env.ENABLE_OLLAMA),
     OLLAMA_PROXY_URL: process.env.OLLAMA_PROXY_URL || '',
     OLLAMA_MODEL_LIST: process.env.OLLAMA_MODEL_LIST || process.env.OLLAMA_CUSTOM_MODELS,
   };

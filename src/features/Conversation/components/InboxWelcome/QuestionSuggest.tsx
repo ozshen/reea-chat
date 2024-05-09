@@ -9,7 +9,8 @@ import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 import urlJoin from 'url-join';
 
-import { useChatInput } from '@/features/ChatInput/useChatInput';
+import { useSendMessage } from '@/features/ChatInput/useSend';
+import { useChatStore } from '@/store/chat';
 
 const BASE_DOC_URL = 'https://lobehub.com/docs/usage/features';
 
@@ -55,14 +56,15 @@ const qaqList = shuffle([
 ]);
 
 const QuestionSuggest = memo(() => {
-  const { onInput, onSend } = useChatInput();
+  const [updateInputMessage] = useChatStore((s) => [s.updateInputMessage]);
   const { t } = useTranslation('welcome');
   const { styles } = useStyles();
+  const sendMessage = useSendMessage();
   const [sliceStart, setSliceStart] = useState(0);
 
-  const handoleSend = (qa: string) => {
-    onInput(qa);
-    onSend();
+  const handoleSend = (text: string) => {
+    updateInputMessage(text);
+    sendMessage({ isWelcomeQuestion: true });
   };
 
   const cards = useMemo(

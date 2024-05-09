@@ -27,9 +27,12 @@
     }
   },
   "header": {
+    "desc": "偏好與模型設定",
     "global": "全局設置",
     "session": "會話設置",
-    "sessionWithName": "會話設置 · {{name}}"
+    "sessionDesc": "角色設定與會話偏好",
+    "sessionWithName": "會話設置 · {{name}}",
+    "title": "設定"
   },
   "llm": {
     "checker": {
@@ -162,7 +165,7 @@
       "title": "自動創建話題"
     },
     "enableCompressThreshold": {
-      "title": "是否開啟歷史消息長度壓縮閾值"
+      "title": "歷史訊息壓縮"
     },
     "enableHistoryCount": {
       "alias": "不限制",

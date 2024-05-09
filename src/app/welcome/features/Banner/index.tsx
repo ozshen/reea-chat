@@ -8,7 +8,6 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
-// import DataImporter from '@/features/DataImporter';
 import { useGlobalStore } from '@/store/global';
 
 import Hero from './Hero';
@@ -32,15 +31,6 @@ const Banner = memo<{ mobile?: boolean }>(({ mobile }) => {
         justify={'center'}
         width={'100%'}
       >
-        {/* <DataImporter
-          onFinishImport={() => {
-            router.push('/chat');
-          }}
-        >
-          <Button block={mobile} size={'large'}>
-            {t('button.import')}
-          </Button>
-        </DataImporter> */}
         <Button
           block={mobile}
           onClick={() => router.push('/market')}

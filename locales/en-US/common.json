@@ -4,12 +4,20 @@
   "appInitializing": "initializing, please wait...",
   "autoGenerate": "Auto Generate",
   "autoGenerateTooltip": "Auto-generate agent description based on prompts",
+  "autoGenerateTooltipDisabled": "Please fill in the prompt word before using the autocomplete function",
+  "blog": "Product Blog",
   "cancel": "Cancel",
   "changelog": "Changelog",
   "close": "Close",
   "copy": "Copy",
   "copyFail": "Copy failed",
   "copySuccess": "Copied successfully",
+  "dataStatistics": {
+    "messages": "Messages",
+    "sessions": "Assistants",
+    "today": "New Today",
+    "topics": "Topics"
+  },
   "defaultAgent": "Default Agent",
   "defaultSession": "Default Agent",
   "delete": "Delete",
@@ -26,6 +34,8 @@
     "globalSetting": "Export Global Settings"
   },
   "feedback": "Feedback",
+  "follow": "Follow us on {{name}}",
+  "fullscreen": "Full Screen Mode",
   "historyRange": "History Range",
   "import": "Import Configuration",
   "importModal": {
@@ -92,6 +102,7 @@
   "password": "Password",
   "pin": "Pin",
   "pinOff": "Unpin",
+  "privacy": "Privacy Policy",
   "regenerate": "Regenerate",
   "rename": "Rename",
   "reset": "Reset",
@@ -136,6 +147,7 @@
   "tab": {
     "chat": "Chat",
     "market": "Discover",
+    "me": "Me",
     "setting": "Settings"
   },
   "telemetry": {
@@ -146,10 +158,27 @@
     "title": "Help ChatAI be better"
   },
   "temp": "Temporary",
+  "terms": "Terms of Service",
   "updateAgent": "Update Agent Information",
   "upgradeVersion": {
     "action": "Upgrade",
-    "hasNew": "New update available",
-    "newVersion": "New version available: {{version}}"
+    "hasNew": "NEW",
+    "newVersion": "New Version: {{version}}"
+  },
+  "userPanel": {
+    "anonymousNickName": "Anonymous User",
+    "billing": "Billing Management",
+    "defaultNickname": "Community User",
+    "discord": "Community Support",
+    "docs": "Documentation",
+    "email": "Email Support",
+    "feedback": "Feedback and Suggestions",
+    "help": "Help Center",
+    "moveGuide": "The settings button has been moved here",
+    "plans": "Subscription Plans",
+    "preview": "Preview Version",
+    "profile": "Account Management",
+    "setting": "App Settings",
+    "usages": "Usage Statistics"
   }
 }

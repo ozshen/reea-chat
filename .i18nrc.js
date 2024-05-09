@@ -16,7 +16,7 @@ module.exports = defineConfig({
     // 'tr-TR',
     // 'es-ES',
     // 'pt-BR',
-    // 'de-DE',
+    'de-DE',
     // 'it-IT',
     // 'nl-NL',
     // 'pl-PL',

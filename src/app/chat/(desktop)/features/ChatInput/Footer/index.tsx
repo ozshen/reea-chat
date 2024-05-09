@@ -13,8 +13,9 @@ import { useSendMessage } from '@/features/ChatInput/useSend';
 import { useAgentStore } from '@/store/agent';
 import { agentSelectors } from '@/store/agent/slices/chat';
 import { useChatStore } from '@/store/chat';
-import { useGlobalStore } from '@/store/global';
-import { modelProviderSelectors, preferenceSelectors } from '@/store/global/selectors';
+import { chatSelectors } from '@/store/chat/selectors';
+import { useUserStore } from '@/store/user';
+import { modelProviderSelectors, preferenceSelectors } from '@/store/user/selectors';
 import { isMacOS } from '@/utils/platform';
 
 import DragUpload from './DragUpload';
@@ -60,13 +61,13 @@ const Footer = memo<FooterProps>(({ setExpand }) => {
   const { theme, styles } = useStyles();
 
   const [loading, stopGenerateMessage] = useChatStore((s) => [
-    !!s.chatLoadingId,
+    chatSelectors.isAIGenerating(s),
     s.stopGenerateMessage,
   ]);
 
   const model = useAgentStore(agentSelectors.currentAgentModel);
 
-  const [useCmdEnterToSend, canUpload] = useGlobalStore((s) => [
+  const [useCmdEnterToSend, canUpload] = useUserStore((s) => [
     preferenceSelectors.useCmdEnterToSend(s),
     modelProviderSelectors.isModelEnabledUpload(model)(s),
   ]);

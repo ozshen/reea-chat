@@ -12,6 +12,8 @@ import { MAX_WIDTH } from '@/const/layoutTokens';
 
 import AgentSearchBar from '../../features/AgentSearchBar';
 
+// import Header from './Header';
+
 const SideBar = dynamic(() => import('./AgentDetail'));
 
 const useStyles = createStyles(({ css }) => ({

@@ -95,6 +95,18 @@
       "title": "Ключ API Groq"
     }
   },
+  "minimax": {
+    "title": "Минимакс",
+    "token": {
+      "desc": "Введите ключ API от Minimax",
+      "placeholder": "Ключ API Minimax",
+      "title": "Ключ API Minimax"
+    },
+    "unlock": {
+      "description": "Введите свой ключ API от Minimax. Приложение не будет сохранять ваш ключ API",
+      "title": "Ключ API Minimax"
+    }
+  },
   "mistral": {
     "title": "Mistral AI",
     "token": {

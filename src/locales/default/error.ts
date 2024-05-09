@@ -1,4 +1,22 @@
 export default {
+  clerkAuth: {
+    loginSuccess: {
+      action: '继续会话',
+      desc: '{{greeting}}，很高兴能够继续为你服务。让我们接着刚刚的话题聊下去吧',
+      title: '欢迎回来， {{nickName}}',
+    },
+  },
+  error: {
+    backHome: '返回首页',
+    desc: '待会来试试，或者回到已知的世界',
+    retry: '重新加载',
+    title: '页面遇到一点问题..',
+  },
+  notFound: {
+    backHome: '返回首页',
+    desc: '我们找不到你正在寻找的页面，请检查链接是否正确',
+    title: '进入了未知领域？',
+  },
   pluginSettings: {
     desc: '完成以下配置，即可开始使用该插件',
     title: '{{name}} 插件配置',
@@ -52,6 +70,7 @@ export default {
     PluginOpenApiInitError: '很抱歉，OpenAPI 客户端初始化失败，请检查 OpenAPI 的配置信息是否正确',
 
     InvalidAccessCode: '请输入正确的访问密码，或者添加自定义 API Key',
+    InvalidClerkUser: '很抱歉，你当前尚未登录，请先登录或注册账号后继续操作',
     LocationNotSupportError: '很抱歉，此模型服务不可用，可能是由于地区限制或服务未开通',
 
     OpenAIBizError: '请求 OpenAI 服务出错，请根据以下信息排查或重试',
@@ -97,6 +116,9 @@ export default {
     OllamaBizError: '请求 Ollama 服务出错，请根据以下信息排查或重试',
     OllamaServiceUnavailable:
       'Ollama 服务连接失败，请检查 Ollama 是否运行正常，或是否正确设置 Ollama 的跨域配置',
+
+    MinimaxBizError: '请求 Minimax 服务出错，请根据以下信息排查或重试',
+    InvalidMinimaxAPIKey: 'Minimax API Key 不正确或为空，请检查 Minimax API Key 后重试',
 
     AgentRuntimeError: 'AI Agent Runtime 执行出错，请根据以下信息排查或重试',
     /* eslint-enable */

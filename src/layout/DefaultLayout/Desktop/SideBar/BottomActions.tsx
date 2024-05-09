@@ -27,11 +27,11 @@ import {
 } from '@/const/url';
 import DataImporter from '@/features/DataImporter';
 import { configService } from '@/services/config';
-import { GlobalStore, useGlobalStore } from '@/store/global';
+import { useGlobalStore } from '@/store/global';
 import { SidebarTabKey } from '@/store/global/initialState';
 
 export interface BottomActionProps {
-  tab?: GlobalStore['sidebarKey'];
+  tab?: SidebarTabKey;
 }
 
 const BottomActions = memo<BottomActionProps>(({ tab }) => {
@@ -133,7 +133,7 @@ const BottomActions = memo<BottomActionProps>(({ tab }) => {
         <ActionIcon icon={Github} placement={'right'} title={'GitHub'} />
       </Link> */}
       <Link aria-label={t('document')} href={DOCUMENTS} target={'_blank'}>
-        <ActionIcon icon={Book} placement={'right'} title={t('document')} />
+        <ActionIcon icon={Book} placement={'right'} size="large" title={t('document')} />
       </Link>
       <AdsButton />
       <Dropdown arrow={false} menu={{ items }} trigger={['click']}>

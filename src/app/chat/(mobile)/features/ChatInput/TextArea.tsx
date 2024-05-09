@@ -10,7 +10,7 @@ export interface ChatInputAreaInnerProps extends Omit<TextAreaProps, 'onInput'> 
   style?: CSSProperties;
 }
 
-const InputArea = forwardRef<TextAreaRef, ChatInputAreaInnerProps>(
+const ChatInputAreaInner = forwardRef<TextAreaRef, ChatInputAreaInnerProps>(
   (
     {
       resize = false,
@@ -63,4 +63,4 @@ const InputArea = forwardRef<TextAreaRef, ChatInputAreaInnerProps>(
   },
 );
 
-export default memo(InputArea);
+export default memo(ChatInputAreaInner);

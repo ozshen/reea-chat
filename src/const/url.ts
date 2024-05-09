@@ -4,6 +4,7 @@ import { getClientConfig } from '@/config/client';
 import { withBasePath } from '@/utils/basePath';
 
 import pkg from '../../package.json';
+import { INBOX_SESSION_ID } from './session';
 
 export const OFFICIAL_URL = 'https://chat-preview.lobehub.com/';
 export const OFFICIAL_SITE = 'https://lobehub.com/';
@@ -15,6 +16,7 @@ export const EMAIL_BUSINESS = 'hello@lobehub.com';
 export const getCanonicalUrl = (path: string) => urlJoin(OFFICIAL_URL, path);
 
 export const GITHUB = pkg.homepage;
+export const GITHUB_ISSUES = urlJoin(GITHUB, 'issues/new');
 
 const { ABOUT_URL, DOCS_URL, SHOP_URL, CHANGELOG_URL, PRIVACY_URL } = getClientConfig();
 
@@ -42,7 +44,8 @@ export const MORE_MODEL_PROVIDER_REQUEST_URL =
 export const AGENTS_INDEX_GITHUB = 'https://github.com/lobehub/lobe-chat-agents';
 export const AGENTS_INDEX_GITHUB_ISSUE = urlJoin(AGENTS_INDEX_GITHUB, 'issues/new');
 
-export const SESSION_CHAT_URL = (id: string = 'inbox', mobile?: boolean) =>
+export const SESSION_CHAT_URL = (id: string = INBOX_SESSION_ID, mobile?: boolean) =>
   mobile ? `/chat/mobile?session=${id}` : `/chat?session=${id}`;
 
 export const imageUrl = (filename: string) => withBasePath(`/images/${filename}`);
+export const LOBE_URL_IMPORT_NAME = 'settings';

@@ -27,9 +27,12 @@
     }
   },
   "header": {
+    "desc": "設定とモデル設定",
     "global": "グローバル設定",
     "session": "セッション設定",
-    "sessionWithName": "セッション設定 · {{name}}"
+    "sessionDesc": "ロール設定とセッションの好み",
+    "sessionWithName": "セッション設定 · {{name}}",
+    "title": "設定"
   },
   "llm": {
     "checker": {
@@ -162,7 +165,7 @@
       "title": "自動的にトピックを作成する"
     },
     "enableCompressThreshold": {
-      "title": "過去メッセージの長さの圧縮閾値を有効にする"
+      "title": "履歴メッセージの圧縮"
     },
     "enableHistoryCount": {
       "alias": "制限なし",

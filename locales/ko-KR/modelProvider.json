@@ -95,6 +95,18 @@
       "title": "Groq API 키"
     }
   },
+  "minimax": {
+    "title": "최소화",
+    "token": {
+      "desc": "Minimax의 API 키를 입력하십시오",
+      "placeholder": "Minimax API 키",
+      "title": "API 키"
+    },
+    "unlock": {
+      "description": "Minimax API 키를 입력하면 애플리케이션이 API 키를 기록하지 않습니다",
+      "title": "Minimax API 키"
+    }
+  },
   "mistral": {
     "title": "Mistral AI",
     "token": {

@@ -3,33 +3,35 @@ import { produce } from 'immer';
 import { merge } from 'lodash-es';
 
 import { createErrorResponse } from '@/app/api/errorResponse';
-import { INBOX_GUIDE_SYSTEMROLE, INBOX_SESSION_ID } from '@/const/session';
+import { INBOX_GUIDE_SYSTEMROLE } from '@/const/guide';
+import { INBOX_SESSION_ID } from '@/const/session';
 import { DEFAULT_AGENT_CONFIG } from '@/const/settings';
 import { TracePayload, TraceTagMap } from '@/const/trace';
 import { AgentRuntime, ChatCompletionErrorPayload, ModelProvider } from '@/libs/agent-runtime';
 import { filesSelectors, useFileStore } from '@/store/file';
-import { useGlobalStore } from '@/store/global';
+import { useSessionStore } from '@/store/session';
+import { sessionMetaSelectors } from '@/store/session/selectors';
+import { useToolStore } from '@/store/tool';
+import { pluginSelectors, toolSelectors } from '@/store/tool/selectors';
+import { useUserStore } from '@/store/user';
 import {
   commonSelectors,
   modelConfigSelectors,
   modelProviderSelectors,
   preferenceSelectors,
-} from '@/store/global/selectors';
-import { useSessionStore } from '@/store/session';
-import { sessionMetaSelectors } from '@/store/session/selectors';
-import { useToolStore } from '@/store/tool';
-import { pluginSelectors, toolSelectors } from '@/store/tool/selectors';
+} from '@/store/user/selectors';
 import { ChatErrorType } from '@/types/fetch';
 import { ChatMessage } from '@/types/message';
 import type { ChatStreamPayload, OpenAIChatMessage } from '@/types/openai/chat';
 import { UserMessageContentPart } from '@/types/openai/chat';
-import { FetchSSEOptions, OnFinishHandler, fetchSSE, getMessageError } from '@/utils/fetch';
+import { FetchSSEOptions, fetchSSE, getMessageError } from '@/utils/fetch';
 import { createTraceHeader, getTraceId } from '@/utils/trace';
 
 import { createHeaderWithAuth, getProviderAuthPayload } from './_auth';
 import { API_ENDPOINTS } from './_url';
 
-interface FetchOptions {
+interface FetchOptions extends FetchSSEOptions {
+  isWelcomeQuestion?: boolean;
   signal?: AbortSignal | undefined;
   trace?: TracePayload;
 }
@@ -38,23 +40,14 @@ interface GetChatCompletionPayload extends Partial<Omit<ChatStreamPayload, 'mess
   messages: ChatMessage[];
 }
 
-interface FetchAITaskResultParams {
+interface FetchAITaskResultParams extends FetchSSEOptions {
   abortController?: AbortController;
-  /**
-   * 错误处理函数
-   */
   onError?: (e: Error, rawError?: any) => void;
-  onFinish?: OnFinishHandler;
   /**
    * 加载状态变化处理函数
    * @param loading - 是否处于加载状态
    */
   onLoadingChange?: (loading: boolean) => void;
-  /**
-   * 消息处理函数
-   * @param text - 消息内容
-   */
-  onMessageHandle?: (text: string) => void;
   /**
    * 请求对象
    */
@@ -64,6 +57,7 @@ interface FetchAITaskResultParams {
 
 interface CreateAssistantMessageStream extends FetchSSEOptions {
   abortController?: AbortController;
+  isWelcomeQuestion?: boolean;
   params: GetChatCompletionPayload;
   trace?: TracePayload;
 }
@@ -199,7 +193,7 @@ class ChatService {
 
     // check this model can use function call
     const canUseFC = modelProviderSelectors.isModelEnabledFunctionCall(payload.model)(
-      useGlobalStore.getState(),
+      useUserStore.getState(),
     );
     // the rule that model can use tools:
     // 1. tools is not empty
@@ -219,20 +213,17 @@ class ChatService {
     onErrorHandle,
     onFinish,
     trace,
+    isWelcomeQuestion,
   }: CreateAssistantMessageStream) => {
-    await fetchSSE(
-      () =>
-        this.createAssistantMessage(params, {
-          signal: abortController?.signal,
-          trace: this.mapTrace(trace, TraceTagMap.Chat),
-        }),
-      {
-        onAbort,
-        onErrorHandle,
-        onFinish,
-        onMessageHandle,
-      },
-    );
+    await this.createAssistantMessage(params, {
+      isWelcomeQuestion,
+      onAbort,
+      onErrorHandle,
+      onFinish,
+      onMessageHandle,
+      signal: abortController?.signal,
+      trace: this.mapTrace(trace, TraceTagMap.Chat),
+    });
   };
 
   getChatCompletion = async (params: Partial<ChatStreamPayload>, options?: FetchOptions) => {
@@ -245,7 +236,7 @@ class ChatService {
     // if the provider is Azure, get the deployment name as the request model
     if (provider === ModelProvider.Azure) {
       const chatModelCards = modelProviderSelectors.getModelCardsById(provider)(
-        useGlobalStore.getState(),
+        useUserStore.getState(),
       );
 
       const deploymentName = chatModelCards.find((i) => i.id === model)?.deploymentName;
@@ -261,7 +252,7 @@ class ChatService {
      * Use browser agent runtime
      */
     const enableFetchOnClient = modelConfigSelectors.isProviderFetchOnClient(provider)(
-      useGlobalStore.getState(),
+      useUserStore.getState(),
     );
     /**
      * Notes:
@@ -294,10 +285,14 @@ class ChatService {
       provider,
     });
 
-    return fetch(API_ENDPOINTS.chat(provider), {
+    return fetchSSE(API_ENDPOINTS.chat(provider), {
       body: JSON.stringify(payload),
       headers,
       method: 'POST',
+      onAbort: options?.onAbort,
+      onErrorHandle: options?.onErrorHandle,
+      onFinish: options?.onFinish,
+      onMessageHandle: options?.onMessageHandle,
       signal,
     });
   };
@@ -355,20 +350,15 @@ class ChatService {
 
     onLoadingChange?.(true);
 
-    const data = await fetchSSE(
-      () =>
-        this.getChatCompletion(params, {
-          signal: abortController?.signal,
-          trace: this.mapTrace(trace, TraceTagMap.SystemChain),
-        }),
-      {
-        onErrorHandle: (error) => {
-          errorHandle(new Error(error.message), error);
-        },
-        onFinish,
-        onMessageHandle,
+    const data = await this.getChatCompletion(params, {
+      onErrorHandle: (error) => {
+        errorHandle(new Error(error.message), error);
       },
-    ).catch(errorHandle);
+      onFinish,
+      onMessageHandle,
+      signal: abortController?.signal,
+      trace: this.mapTrace(trace, TraceTagMap.SystemChain),
+    }).catch(errorHandle);
 
     onLoadingChange?.(false);
 
@@ -398,7 +388,7 @@ class ChatService {
       if (imageList.length === 0) return m.content;
 
       const canUploadFile = modelProviderSelectors.isModelEnabledUpload(model)(
-        useGlobalStore.getState(),
+        useUserStore.getState(),
       );
 
       if (!canUploadFile) {
@@ -419,9 +409,23 @@ class ChatService {
           return { content: getContent(m), role: m.role };
         }
 
+        case 'assistant': {
+          return { content: m.content, role: m.role, tool_calls: m.tool_calls };
+        }
+
+        // TODO: need to be removed after upgrade
         case 'function': {
           const name = m.plugin?.identifier as string;
           return { content: m.content, name, role: m.role };
+        }
+
+        case 'tool': {
+          return {
+            content: m.content,
+            name: m.tool_calls?.find((tool) => tool.id === m.tool_call_id)?.function.name,
+            role: m.role,
+            tool_call_id: m.tool_call_id,
+          };
         }
 
         default: {
@@ -431,16 +435,17 @@ class ChatService {
     });
 
     return produce(postMessages, (draft) => {
-      // Inject InboxGuide SystemRole
+      // if it's a welcome question, inject InboxGuide SystemRole
       const inboxGuideSystemRole =
-        false && options?.trace?.sessionId === INBOX_SESSION_ID && INBOX_GUIDE_SYSTEMROLE();
+        options?.isWelcomeQuestion &&
+        options?.trace?.sessionId === INBOX_SESSION_ID &&
+        INBOX_GUIDE_SYSTEMROLE;
 
-      if (!tools || tools.length === 0) return;
       // Inject Tool SystemRole
       const hasTools = tools && tools?.length > 0;
       const hasFC =
         hasTools &&
-        modelProviderSelectors.isModelEnabledFunctionCall(model)(useGlobalStore.getState());
+        modelProviderSelectors.isModelEnabledFunctionCall(model)(useUserStore.getState());
       const toolsSystemRoles =
         hasFC && toolSelectors.enabledSystemRoles(tools)(useToolStore.getState());
 
@@ -468,7 +473,7 @@ class ChatService {
   private mapTrace(trace?: TracePayload, tag?: TraceTagMap): TracePayload {
     const tags = sessionMetaSelectors.currentAgentMeta(useSessionStore.getState()).tags || [];
 
-    const enabled = preferenceSelectors.userAllowTrace(useGlobalStore.getState());
+    const enabled = preferenceSelectors.userAllowTrace(useUserStore.getState());
 
     if (!enabled) return { ...trace, enabled: false };
 
@@ -476,7 +481,7 @@ class ChatService {
       ...trace,
       enabled: true,
       tags: [tag, ...(trace?.tags || []), ...tags].filter(Boolean) as string[],
-      userId: commonSelectors.userId(useGlobalStore.getState()),
+      userId: commonSelectors.userId(useUserStore.getState()),
     };
   }
 

@@ -1,4 +1,4 @@
-import { MobileChatSendButton } from '@lobehub/ui';
+import { MobileChatInputArea, MobileChatSendButton } from '@lobehub/ui';
 import { useTheme } from 'antd-style';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -8,7 +8,6 @@ import STT from '@/features/ChatInput/STT';
 import SaveTopic from '@/features/ChatInput/Topic';
 import { useChatInput } from '@/features/ChatInput/useChatInput';
 
-import MobileChatInputArea from './ChatInputArea';
 import Files from './Files';
 
 const ChatInputMobileLayout = memo(() => {

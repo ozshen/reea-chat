@@ -1,6 +1,6 @@
 import { ModelProviderCard } from '@/types/llm';
 
-// refs to: https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4
+// ref https://platform.openai.com/docs/models
 const OpenAI: ModelProviderCard = {
   chatModels: [
     {
@@ -58,7 +58,7 @@ const OpenAI: ModelProviderCard = {
       tokens: 128_000,
     },
     {
-      description: 'GPT-4 视觉预览版，支持视觉任务',
+      description: 'GPT-4 Turbo Vision Preview',
       displayName: 'GPT-4 Turbo Vision Preview',
       id: 'gpt-4-vision-preview',
       tokens: 128_000,

@@ -1,6 +1,6 @@
 import { OpenAIStreamCallbacks } from 'ai';
 
-export type LLMRoleType = 'user' | 'system' | 'assistant' | 'function';
+export type LLMRoleType = 'user' | 'system' | 'assistant' | 'function' | 'tool';
 
 interface UserMessageContentPartText {
   text: string;

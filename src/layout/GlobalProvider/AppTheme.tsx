@@ -5,12 +5,13 @@ import { App } from 'antd';
 import { ThemeAppearance, createStyles } from 'antd-style';
 import 'antd/dist/reset.css';
 import Image from 'next/image';
+import Link from 'next/link';
 import { PropsWithChildren, ReactNode, memo, useEffect } from 'react';
 
 import AntdStaticMethods from '@/components/AntdStaticMethods';
 import { THEME_APPEARANCE, THEME_NEUTRAL_COLOR, THEME_PRIMARY_COLOR } from '@/const/theme';
-import { useGlobalStore } from '@/store/global';
-import { settingsSelectors } from '@/store/global/selectors';
+import { useUserStore } from '@/store/user';
+import { settingsSelectors } from '@/store/user/selectors';
 import { GlobalStyle } from '@/styles';
 import { setCookie } from '@/utils/cookie';
 
@@ -79,9 +80,9 @@ const AppTheme = memo<AppThemeProps>(
     // console.debug('server:appearance', defaultAppearance);
     // console.debug('server:primaryColor', defaultPrimaryColor);
     // console.debug('server:neutralColor', defaultNeutralColor);
-    const themeMode = useGlobalStore((s) => settingsSelectors.currentSettings(s).themeMode);
+    const themeMode = useUserStore((s) => settingsSelectors.currentSettings(s).themeMode);
 
-    const [primaryColor, neutralColor] = useGlobalStore((s) => [
+    const [primaryColor, neutralColor] = useUserStore((s) => [
       settingsSelectors.currentSettings(s).primaryColor,
       settingsSelectors.currentSettings(s).neutralColor,
     ]);
@@ -108,7 +109,7 @@ const AppTheme = memo<AppThemeProps>(
       >
         <GlobalStyle />
         <AntdStaticMethods />
-        <ConfigProvider config={{ imgAs: Image, imgUnoptimized: true }}>
+        <ConfigProvider config={{ aAs: Link, imgAs: Image, imgUnoptimized: true }}>
           <Container>{children}</Container>
         </ConfigProvider>
       </ThemeProvider>

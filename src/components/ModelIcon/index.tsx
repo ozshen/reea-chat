@@ -54,7 +54,7 @@ const ModelIcon = memo<ModelProviderIconProps>(({ model: originModel, size = 12 
   if (model.includes('gemma')) return <Gemma.Avatar size={size} />;
   if (model.includes('moonshot')) return <Moonshot.Avatar size={size} />;
   if (model.includes('qwen')) return <Tongyi.Avatar background={Tongyi.colorPrimary} size={size} />;
-  if (model.includes('minmax')) return <Minimax.Avatar size={size} />;
+  if (model.includes('minmax') || model.includes('abab')) return <Minimax.Avatar size={size} />;
   if (model.includes('mistral') || model.includes('mixtral')) return <Mistral.Avatar size={size} />;
   if (model.includes('pplx') || model.includes('sonar')) return <Perplexity.Avatar size={size} />;
   if (model.includes('yi-')) return <Yi.Avatar size={size} />;
@@ -87,6 +87,7 @@ const ModelIcon = memo<ModelProviderIconProps>(({ model: originModel, size = 12 
     return <Stability.Avatar size={size} />;
 
   if (model.includes('wizardlm')) return <Azure.Avatar size={size} />;
+  if (model.includes('phi3')) return <Azure.Avatar size={size} />;
   if (model.includes('firefly')) return <Adobe.Avatar size={size} />;
   if (model.includes('jamba') || model.includes('j2-')) return <Ai21.Avatar size={size} />;
 });

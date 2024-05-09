@@ -27,9 +27,12 @@
     }
   },
   "header": {
+    "desc": "설정 및 모델 설정",
     "global": "전역 설정",
     "session": "세션 설정",
-    "sessionWithName": "세션 설정 · {{name}}"
+    "sessionDesc": "역할 설정 및 세션 선호도",
+    "sessionWithName": "세션 설정 · {{name}}",
+    "title": "설정"
   },
   "llm": {
     "checker": {
@@ -162,7 +165,7 @@
       "title": "자동 주제 생성 활성화"
     },
     "enableCompressThreshold": {
-      "title": "이전 메시지 길이 압축 임계값 활성화"
+      "title": "이전 메시지 압축"
     },
     "enableHistoryCount": {
       "alias": "제한 없음",

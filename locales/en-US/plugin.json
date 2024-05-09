@@ -4,7 +4,9 @@
     "function_call": "Function Call",
     "off": "Turn off debug",
     "on": "View plugin invocation information",
-    "response": "Response"
+    "payload": "Plugin Payload",
+    "response": "Response",
+    "tool_call": "Tool Call Request"
   },
   "detailModal": {
     "info": {

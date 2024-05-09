@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next';
 import SettingButton from '@/app/chat/features/SettingButton';
 import ShareButton from '@/app/chat/features/ShareButton';
 import { DESKTOP_HEADER_ICON_SIZE } from '@/const/layoutTokens';
-import { featureFlagsSelectors, useFeatureFlagStore } from '@/store/featureFlags';
 import { useGlobalStore } from '@/store/global';
+import { featureFlagsSelectors, useServerConfigStore } from '@/store/serverConfig';
 
 const HeaderAction = memo(() => {
   const { t } = useTranslation('chat');
@@ -17,7 +17,7 @@ const HeaderAction = memo(() => {
     s.toggleChatSideBar,
   ]);
 
-  const { isAgentEditable } = useFeatureFlagStore(featureFlagsSelectors);
+  const { isAgentEditable } = useServerConfigStore(featureFlagsSelectors);
 
   return (
     <>

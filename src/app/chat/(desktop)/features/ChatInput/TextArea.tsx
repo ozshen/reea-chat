@@ -6,8 +6,9 @@ import { useTranslation } from 'react-i18next';
 
 import { useSendMessage } from '@/features/ChatInput/useSend';
 import { useChatStore } from '@/store/chat';
-import { useGlobalStore } from '@/store/global';
-import { preferenceSelectors } from '@/store/global/selectors';
+import { chatSelectors } from '@/store/chat/selectors';
+import { useUserStore } from '@/store/user';
+import { preferenceSelectors } from '@/store/user/selectors';
 import { isCommandPressed } from '@/utils/keyboard';
 
 import { useAutoFocus } from './useAutoFocus';
@@ -17,7 +18,8 @@ const useStyles = createStyles(({ css }) => {
     textarea: css`
       resize: none !important;
 
-      height: 100% !important;
+      flex: 1;
+
       padding: 0 24px;
 
       line-height: 1.5;
@@ -26,6 +28,7 @@ const useStyles = createStyles(({ css }) => {
     `,
     textareaContainer: css`
       position: relative;
+      display: flex !important;
       flex: 1;
     `,
   };
@@ -42,12 +45,12 @@ const InputArea = memo<InputAreaProps>(({ setExpand }) => {
   const isChineseInput = useRef(false);
 
   const [loading, value, updateInputMessage] = useChatStore((s) => [
-    !!s.chatLoadingId,
+    chatSelectors.isAIGenerating(s),
     s.inputMessage,
     s.updateInputMessage,
   ]);
 
-  const useCmdEnterToSend = useGlobalStore(preferenceSelectors.useCmdEnterToSend);
+  const useCmdEnterToSend = useUserStore(preferenceSelectors.useCmdEnterToSend);
 
   const sendMessage = useSendMessage();
 

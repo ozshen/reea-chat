@@ -1,0 +1,51 @@
+{
+  "button": {
+    "import": "Import Configuration",
+    "market": "Visit Market",
+    "start": "Start Now"
+  },
+  "guide": {
+    "agents": {
+      "moreBtn": "Learn More",
+      "replaceBtn": "Replace",
+      "title": "Assistant Recommendations"
+    },
+    "defaultMessage": "### I'm ChatAI, your intelligent assistant. How can I help you today? ### \nI can help you with writing copy, editing drafts, brainstorming ideas, chatting, and answering questions.\nIf you need customized content, click on `+` to create a custom assistant.",
+    "qa": {
+      "q01": "What is ChatAI?",
+      "q02": "What functions does ChatAI support?",
+      "q03": "Is ChatAI free to use?",
+      "q04": "How is ChatAI priced?",
+      "q05": "What is ChatGPT?",
+      "q06": "Concepts of LLM, Agent, Prompts, and GPTs?",
+      "q07": "How to design a custom assistant?",
+      "q08": "Is there a cloud service version available?",
+      "q09": "Does it support local language models?",
+      "q10": "Does it support image recognition and generation?",
+      "q11": "Does it support speech synthesis and speech recognition?",
+      "q12": "Does it support a plugin system?",
+      "q13": "Is there a marketplace to access GPTs?",
+      "q14": "Does it support multiple AI service providers?",
+      "q15": "What should I do if I encounter problems while using it?"
+    },
+    "questions": {
+      "moreBtn": "Learn More",
+      "replaceBtn": "Replace",
+      "title": "Frequently Asked Questions"
+    },
+    "welcome": {
+      "afternoon": "Good afternoon",
+      "morning": "Good morning",
+      "night": "Good evening",
+      "noon": "Good noon"
+    }
+  },
+  "header": "Welcome",
+  "pickAgent": "Or choose from the following agent templates",
+  "skip": "Skip Creation",
+  "slogan": {
+    "desc1": "Further refined, exceedingly intelligent, and overflowing with innovation.",
+    "desc2": "Create your first smart agent, let's get started!",
+    "title": "Your Brainpower"
+  }
+}

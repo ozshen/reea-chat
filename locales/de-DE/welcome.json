@@ -1,0 +1,51 @@
+{
+  "button": {
+    "import": "Konfiguration importieren",
+    "market": "Markt durchsuchen",
+    "start": "Jetzt starten"
+  },
+  "guide": {
+    "agents": {
+      "moreBtn": "Mehr erfahren",
+      "replaceBtn": "Ersetzen",
+      "title": "Assistentenempfehlung"
+    },
+    "defaultMessage": "### Ich bin dein intelligenter Assistent. Wie kann ich dir heute helfen? ### \nIch kann Texte schreiben, Korrekturen vornehmen, kreative Ideen finden, mit dir plaudern und Fragen beantworten.\nWenn du maßgeschneiderte Inhalte benötigst, klicke auf `+`, um einen benutzerdefinierten Assistenten zu erstellen.",
+    "qa": {
+      "q01": "Was ist ChatAI?",
+      "q02": "Welche Funktionen unterstützt ChatAI?",
+      "q03": "Ist ChatAI kostenlos?",
+      "q04": "Wie sind die Preise für ChatAI?",
+      "q05": "Was ist ChatGPT?",
+      "q06": "Konzepte von LLM, Agent, Prompts und GPTs",
+      "q07": "Wie entwirft man einen benutzerdefinierten Assistenten?",
+      "q08": "Gibt es eine Cloud-Service-Version?",
+      "q09": "Unterstützt es lokale Sprachmodelle?",
+      "q10": "Unterstützt es Bilderkennung und -erzeugung?",
+      "q11": "Unterstützt es Sprachsynthese und Spracherkennung?",
+      "q12": "Gibt es ein Plugin-System?",
+      "q13": "Gibt es einen eigenen Markt, um GPTs zu erhalten?",
+      "q14": "Unterstützt es mehrere KI-Service-Anbieter?",
+      "q15": "Was soll ich tun, wenn ich beim Gebrauch auf Probleme stoße?"
+    },
+    "questions": {
+      "moreBtn": "Mehr erfahren",
+      "replaceBtn": "Ersetzen",
+      "title": "Häufig gestellte Fragen"
+    },
+    "welcome": {
+      "afternoon": "Guten Nachmittag",
+      "morning": "Guten Morgen",
+      "night": "Guten Abend",
+      "noon": "Guten Tag"
+    }
+  },
+  "header": "Willkommen",
+  "pickAgent": "Oder wählen Sie eine Vorlage aus den folgenden Assistenten",
+  "skip": "Erstellung überspringen",
+  "slogan": {
+    "desc1": "Starten Sie das Gehirncluster und entfachen Sie den Funken des Denkens. Ihr intelligenter Assistent ist immer da.",
+    "desc2": "Erstellen Sie Ihren ersten Assistenten und lassen Sie uns beginnen.",
+    "title": "Geben Sie sich ein schlaueres Gehirn"
+  }
+}

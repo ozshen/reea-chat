@@ -1,0 +1,56 @@
+{
+  "background_color": "#000000",
+  "description": "An high-performance chatbot framework that supports speech synthesis, multimodal, and extensible Function Call plugin system.",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "id": "/",
+  "name": "ChatAI",
+  "orientation": "portrait",
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "/screenshots/screenshot-2.png",
+      "sizes": "750x1334",
+      "type": "image/png"
+    },
+    {
+      "src": "/screenshots/screenshot-3.png",
+      "sizes": "750x1334",
+      "type": "image/png"
+    },
+    {
+      "src": "/screenshots/screenshot-4.png",
+      "sizes": "750x1334",
+      "type": "image/png"
+    }
+  ],
+  "short_name": "ChatAI",
+  "splash_pages": null,
+  "start_url": ".",
+  "theme_color": "#000000"
+}

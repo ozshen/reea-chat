@@ -4,17 +4,15 @@ import { ActionIcon } from '@lobehub/ui';
 import { createStyles } from 'antd-style';
 import { shuffle } from 'lodash-es';
 import { ArrowRight, RefreshCw } from 'lucide-react';
-import { memo, useMemo, useState } from 'react';
+import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
-import urlJoin from 'url-join';
 
+import { DOCUMENTS_USAGE } from '@/const/url';
 import { useSendMessage } from '@/features/ChatInput/useSend';
 import { useChatStore } from '@/store/chat';
 
-const BASE_DOC_URL = 'https://lobehub.com/docs/usage/features';
-
-const useStyles = createStyles(({ css, token }) => ({
+const useStyles = createStyles(({ css, token, responsive }) => ({
   card: css`
     cursor: pointer;
 
@@ -27,6 +25,10 @@ const useStyles = createStyles(({ css, token }) => ({
 
     &:hover {
       background: ${token.colorBgElevated};
+    }
+
+    ${responsive.mobile} {
+      padding: 8px 16px;
     }
   `,
   icon: css`
@@ -55,37 +57,14 @@ const qaqList = shuffle([
   'q15',
 ]);
 
-const QuestionSuggest = memo(() => {
+const QuestionSuggest = memo<{ mobile?: boolean }>(({ mobile }) => {
   const [updateInputMessage] = useChatStore((s) => [s.updateInputMessage]);
+
   const { t } = useTranslation('welcome');
   const { styles } = useStyles();
   const sendMessage = useSendMessage();
   const [sliceStart, setSliceStart] = useState(0);
-
-  const handoleSend = (text: string) => {
-    updateInputMessage(text);
-    sendMessage({ isWelcomeQuestion: true });
-  };
-
-  const cards = useMemo(
-    () =>
-      qaqList.slice(sliceStart, sliceStart + 5).map((item) => {
-        const text = t(`guide.qa.${item}` as any);
-        return (
-          <Flexbox
-            align={'center'}
-            className={styles.card}
-            gap={8}
-            horizontal
-            key={item}
-            onClick={() => handoleSend(text)}
-          >
-            {t(text)}
-          </Flexbox>
-        );
-      }),
-    [qaqList, sliceStart],
-  );
+  const qaqLength = mobile ? 2 : 4;
 
   const handleRefresh = () => {
     if (!qaqList) return;
@@ -105,7 +84,7 @@ const QuestionSuggest = memo(() => {
           <ActionIcon
             icon={ArrowRight}
             onClick={() => {
-              window.open(urlJoin(BASE_DOC_URL, 'start'), '__blank');
+              window.open(DOCUMENTS_USAGE, '__blank');
             }}
             size={{ blockSize: 24, fontSize: 16 }}
             title={t('guide.questions.moreBtn')}
@@ -113,7 +92,25 @@ const QuestionSuggest = memo(() => {
         </Flexbox>
       </Flexbox>
       <Flexbox gap={8} horizontal wrap={'wrap'}>
-        {cards}
+        {qaqList &&
+          qaqList.slice(sliceStart, sliceStart + qaqLength).map((item) => {
+            const text = t(`guide.qa.${item}` as any);
+            return (
+              <Flexbox
+                align={'center'}
+                className={styles.card}
+                gap={8}
+                horizontal
+                key={item}
+                onClick={() => {
+                  updateInputMessage(text);
+                  sendMessage({ isWelcomeQuestion: true });
+                }}
+              >
+                {t(text)}
+              </Flexbox>
+            );
+          })}
       </Flexbox>
     </Flexbox>
   );

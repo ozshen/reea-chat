@@ -7,6 +7,6 @@ export const featureFlagsSelectors = (s: ServerConfigStore) =>
 
 export const serverConfigSelectors = {
   enabledOAuthSSO: (s: ServerConfigStore) => s.serverConfig.enabledOAuthSSO,
-  enabledTelemetryChat: (s: ServerConfigStore) => s.serverConfig.telemetry.langfuse || false,
+  enabledTelemetryChat: (s: ServerConfigStore) => s.serverConfig.telemetry.langfuse || true,
   isMobile: (s: ServerConfigStore) => s.isMobile || false,
 };

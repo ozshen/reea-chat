@@ -7,7 +7,7 @@ import { agentSelectors } from '@/store/agent/selectors';
 import { useSessionStore } from '@/store/session';
 import { sessionMetaSelectors } from '@/store/session/selectors';
 import { useUserStore } from '@/store/user';
-import { commonSelectors } from '@/store/user/selectors';
+import { userProfileSelectors } from '@/store/user/selectors';
 import { ChatMessage } from '@/types/message';
 import { MetaData } from '@/types/meta';
 import { merge } from '@/utils/merge';
@@ -19,7 +19,7 @@ const getMeta = (message: ChatMessage) => {
   switch (message.role) {
     case 'user': {
       return {
-        avatar: commonSelectors.userAvatar(useUserStore.getState()) || DEFAULT_USER_AVATAR,
+        avatar: userProfileSelectors.userAvatar(useUserStore.getState()) || DEFAULT_USER_AVATAR,
       };
     }
 
@@ -117,7 +117,14 @@ const currentChatLoadingState = (s: ChatStore) => !s.messagesInit;
 const isMessageEditing = (id: string) => (s: ChatStore) => s.messageEditingIds.includes(id);
 const isMessageLoading = (id: string) => (s: ChatStore) => s.messageLoadingIds.includes(id);
 const isMessageGenerating = (id: string) => (s: ChatStore) => s.chatLoadingIds.includes(id);
-const isAIGenerating = (s: ChatStore) => s.chatLoadingIds.length > 0;
+const isToolCallStreaming = (id: string, index: number) => (s: ChatStore) => {
+  const isLoading = s.toolCallingStreamIds[id];
+
+  if (!isLoading) return false;
+
+  return isLoading[index];
+};
+const isAIGenerating = (s: ChatStore) => s.messageLoadingIds.length > 0;
 
 export const chatSelectors = {
   chatsMessageString,
@@ -133,6 +140,7 @@ export const chatSelectors = {
   isMessageEditing,
   isMessageGenerating,
   isMessageLoading,
+  isToolCallStreaming,
   latestMessage,
   showInboxWelcome,
 };

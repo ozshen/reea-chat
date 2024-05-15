@@ -3,7 +3,8 @@
     "title": "Model"
   },
   "agentDefaultMessage": "Hello, I'm **{{name}}**. You can start chatting with me right away, or go to [Agent Settings](/chat/settings#session={{id}}) to complete my information.",
-  "agentDefaultMessageWithSystemRole": "Hello, I'm **{{name}}**, {{systemRole}}. Let's start chatting!",
+  "agentDefaultMessageWithSystemRole": "Hello, I am **{{name}}** \n{{systemRole}}",
+  "agentsAndConversations": "Agents and Conversations",
   "backToBottom": "Back to bottom",
   "clearCurrentMessages": "Clear current session messages",
   "confirmClearCurrentMessages": "You are about to clear the current session messages. Once cleared, they cannot be retrieved. Please confirm your action.",
@@ -39,7 +40,7 @@
     "regenerate": "Regenerate"
   },
   "newAgent": "New Agent",
-  "noDescription": "No description available",
+  "noDescription": "",
   "pin": "Pin",
   "pinOff": "Unpin",
   "regenerate": "Regenerate",

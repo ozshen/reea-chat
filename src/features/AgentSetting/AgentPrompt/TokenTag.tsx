@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
-import TokenTagIner from '@/features/TokenTag';
+import TokenTag from '@/features/TokenTag';
 import { useTokenCount } from '@/hooks/useTokenCount';
 import { useUserStore } from '@/store/user';
 import { modelProviderSelectors } from '@/store/user/selectors';
@@ -20,7 +20,7 @@ const Tokens = memo(() => {
   return (
     <Flexbox align={'center'} gap={8} horizontal>
       {showTag && (
-        <TokenTagIner
+        <TokenTag
           displayMode={'used'}
           maxValue={modelMaxTokens}
           shape={'square'}

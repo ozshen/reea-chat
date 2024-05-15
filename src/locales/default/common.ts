@@ -59,6 +59,7 @@ export default {
     },
     title: '导入数据',
   },
+  installPWA: '安裝小助手',
   lang: {
     'ar': '阿拉伯语',
     'bg-BG': '保加利亚语',
@@ -99,6 +100,7 @@ export default {
   layoutInitializing: '正在加载布局...',
   noDescription: '暂无描述',
   oauth: 'OAuth',
+  officialSite: '官方网站',
   ok: '确定',
   password: '密码',
   pin: '置顶',
@@ -111,6 +113,7 @@ export default {
   send: '发送',
   setting: '设置',
   share: '分享',
+  shopping: '官方商城',
   stop: '停止',
   sync: {
     actions: { settings: '同步设置', sync: '立即同步' },
@@ -137,6 +140,7 @@ export default {
     title: '同步状态',
     unconnected: { tip: '信令服务器连接失败，将无法建立点对点通信频道，请检查网络后重试' },
   },
+
   tab: {
     chat: '会话',
     market: '发现',
@@ -161,7 +165,8 @@ export default {
   userPanel: {
     anonymousNickName: '匿名用户',
     billing: '账单管理',
-    defaultNickname: '社区版用户',
+    data: '数据存储',
+    defaultNickname: '游客',
     discord: '社区支持',
     docs: '使用文档',
     email: '邮件支持',

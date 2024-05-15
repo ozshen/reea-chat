@@ -26,7 +26,7 @@ const AutoGenerateInput = memo<AutoGenerateInputProps>(
               icon={Wand2}
               loading={loading}
               onClick={onGenerate}
-              size={'small'}
+              size="small"
               style={{
                 color: theme.colorInfo,
                 marginRight: -4,

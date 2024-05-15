@@ -3,7 +3,8 @@
     "title": "Modell"
   },
   "agentDefaultMessage": "Hallo, ich bin **{{name}}**. Du kannst sofort mit mir chatten oder gehe zu [Assistenteneinstellungen](/chat/settings#session={{id}}), um meine Informationen zu vervollständigen.",
-  "agentDefaultMessageWithSystemRole": "Hallo, ich bin **{{name}}**, {{systemRole}}. Lass uns chatten!",
+  "agentDefaultMessageWithSystemRole": "Hallo, ich bin **{{name}}** \n{{systemRole}}",
+  "agentsAndConversations": "Agenten und Unterhaltungen",
   "backToBottom": "Zurück zum Ende",
   "clearCurrentMessages": "Aktuelle Nachrichten löschen",
   "confirmClearCurrentMessages": "Möchtest du wirklich die aktuellen Nachrichten löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
@@ -39,7 +40,7 @@
     "regenerate": "Neu generieren"
   },
   "newAgent": "Neuer Assistent",
-  "noDescription": "Keine Beschreibung vorhanden",
+  "noDescription": "",
   "pin": "Anheften",
   "pinOff": "Anheften aufheben",
   "regenerate": "Neu generieren",

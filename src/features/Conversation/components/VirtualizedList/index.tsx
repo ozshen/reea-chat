@@ -5,16 +5,17 @@ import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { Flexbox } from 'react-layout-kit';
 import { Virtuoso, VirtuosoHandle } from 'react-virtuoso';
 
+import { WELCOME_GUIDE_CHAT_ID } from '@/const/session';
 import { useChatStore } from '@/store/chat';
 import { chatSelectors } from '@/store/chat/selectors';
+import { useSessionStore } from '@/store/session';
+import { sessionSelectors } from '@/store/session/selectors';
 
 import { useInitConversation } from '../../hooks/useInitConversation';
 import AutoScroll from '../AutoScroll';
 import Item from '../ChatItem';
 import InboxWelcome from '../InboxWelcome';
 import SkeletonList from '../SkeletonList';
-
-const WELCOME_ID = 'welcome';
 
 interface VirtualizedListProps {
   mobile?: boolean;
@@ -32,7 +33,9 @@ const VirtualizedList = memo<VirtualizedListProps>(({ mobile }) => {
 
   const data = useChatStore((s) => {
     const showInboxWelcome = chatSelectors.showInboxWelcome(s);
-    const ids = showInboxWelcome ? [WELCOME_ID] : chatSelectors.currentChatIDsWithGuideMessage(s);
+    const ids = showInboxWelcome
+      ? [WELCOME_GUIDE_CHAT_ID]
+      : chatSelectors.currentChatIDsWithGuideMessage(s);
     return ['empty', ...ids];
   }, isEqual);
 
@@ -53,9 +56,11 @@ const VirtualizedList = memo<VirtualizedListProps>(({ mobile }) => {
   // overscan should be 1.5 times the height of the window
   const overscan = typeof window !== 'undefined' ? window.innerHeight * 1.5 : 0;
 
+  const isInbox = useSessionStore(sessionSelectors.isInboxSession);
+  console.log('rander VirtualizedList isInbox:' + isInbox + ' data:' + JSON.stringify(data));
   const itemContent = useCallback(
     (index: number, id: string) => {
-      if (id === WELCOME_ID) return <InboxWelcome />;
+      if (id === WELCOME_GUIDE_CHAT_ID && isInbox) return <InboxWelcome />;
 
       return index === 0 ? (
         <div style={{ height: 24 + (mobile ? 0 : 64) }} />

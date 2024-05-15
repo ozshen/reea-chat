@@ -58,6 +58,7 @@
     },
     "title": "导入数据"
   },
+  "installPWA": "安裝小助手",
   "lang": {
     "ar": "阿拉伯语",
     "bg-BG": "保加利亚语",
@@ -98,6 +99,7 @@
   "layoutInitializing": "正在加载布局...",
   "noDescription": "暂无描述",
   "oauth": "OAuth",
+  "officialSite": "官方网站",
   "ok": "确定",
   "password": "密码",
   "pin": "置顶",
@@ -168,7 +170,8 @@
   "userPanel": {
     "anonymousNickName": "匿名用户",
     "billing": "账单管理",
-    "defaultNickname": "社区版用户",
+    "data": "数据存储",
+    "defaultNickname": "游客",
     "discord": "社区支持",
     "docs": "使用文档",
     "email": "邮件支持",

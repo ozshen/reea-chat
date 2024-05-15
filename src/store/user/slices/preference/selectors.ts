@@ -8,9 +8,12 @@ const userAllowTrace = (s: UserStore): boolean =>
 const hideSyncAlert = (s: UserStore): boolean =>
   !!s.preference.hideSyncAlert ? s.preference.hideSyncAlert : false;
 
+const hideSettingsMoveGuide = (s: UserStore) => s.preference.guide?.moveSettingsToAvatar;
+
 const isPreferenceInit = (s: UserStore) => s.isPreferenceInit;
 
 export const preferenceSelectors = {
+  hideSettingsMoveGuide,
   hideSyncAlert,
   isPreferenceInit,
   useCmdEnterToSend,

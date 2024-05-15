@@ -4,11 +4,12 @@ import { createStyles } from 'antd-style';
 import type { ItemType } from 'antd/es/menu/hooks/useItems';
 import isEqual from 'fast-deep-equal';
 import { ArrowRight, Blocks, Store, ToyBrick } from 'lucide-react';
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
 import PluginStore from '@/features/PluginStore';
+import { useWorkspaceModal } from '@/hooks/useWorkspaceModal';
 import { useAgentStore } from '@/store/agent';
 import { agentSelectors } from '@/store/agent/selectors';
 import { featureFlagsSelectors, useServerConfigStore } from '@/store/serverConfig';
@@ -45,7 +46,7 @@ const Tools = memo(() => {
         .filter((i) => !builtinList.some((b) => b.identifier === i)).length,
   );
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useWorkspaceModal();
   const { styles } = useStyles();
 
   const model = useAgentStore(agentSelectors.currentAgentModel);

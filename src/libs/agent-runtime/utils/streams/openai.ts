@@ -1,13 +1,24 @@
-import { createCallbacksTransformer, readableFromAsyncIterable } from 'ai';
+import { readableFromAsyncIterable } from 'ai';
 import OpenAI from 'openai';
 import type { Stream } from 'openai/streaming';
 
 import { ChatStreamCallbacks } from '../../types';
-import { StreamProtocolChunk, StreamToolCallChunk, generateToolCallId } from './protocol';
+import {
+  StreamProtocolChunk,
+  StreamProtocolToolCallChunk,
+  StreamToolCallChunkData,
+  createCallbacksTransformer,
+  createSSEProtocolTransformer,
+  generateToolCallId,
+} from './protocol';
 
 export const transformOpenAIStream = (chunk: OpenAI.ChatCompletionChunk): StreamProtocolChunk => {
   // maybe need another structure to add support for multiple choices
+
   const item = chunk.choices[0];
+  if (!item) {
+    return { data: chunk, id: chunk.id, type: 'data' };
+  }
 
   if (typeof item.delta?.content === 'string') {
     return { data: item.delta.content, id: chunk.id, type: 'text' };
@@ -16,7 +27,7 @@ export const transformOpenAIStream = (chunk: OpenAI.ChatCompletionChunk): Stream
   if (item.delta?.tool_calls) {
     return {
       data: item.delta.tool_calls.map(
-        (value, index): StreamToolCallChunk => ({
+        (value, index): StreamToolCallChunkData => ({
           function: value.function,
           id: value.id || generateToolCallId(index, value.function?.name),
 
@@ -33,7 +44,7 @@ export const transformOpenAIStream = (chunk: OpenAI.ChatCompletionChunk): Stream
       ),
       id: chunk.id,
       type: 'tool_calls',
-    };
+    } as StreamProtocolToolCallChunk;
   }
 
   // 给定结束原因
@@ -67,16 +78,6 @@ export const OpenAIStream = (
     stream instanceof ReadableStream ? stream : readableFromAsyncIterable(chatStreamable(stream));
 
   return readableStream
-    .pipeThrough(
-      new TransformStream({
-        transform: (chunk, controller) => {
-          const { type, id, data } = transformOpenAIStream(chunk);
-
-          controller.enqueue(`id: ${id}\n`);
-          controller.enqueue(`event: ${type}\n`);
-          controller.enqueue(`data: ${JSON.stringify(data)}\n\n`);
-        },
-      }),
-    )
+    .pipeThrough(createSSEProtocolTransformer(transformOpenAIStream))
     .pipeThrough(createCallbacksTransformer(callbacks));
 };

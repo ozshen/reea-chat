@@ -91,6 +91,7 @@ const TokenTag = memo(() => {
       <TokenTagIner
         displayMode={'used'}
         maxValue={maxTokens}
+        shape="square"
         style={{ marginLeft: 8 }}
         text={{
           overload: t('tokenTag.overload'),

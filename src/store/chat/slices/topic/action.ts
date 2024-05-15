@@ -118,10 +118,18 @@ export const chatTopic: StateCreator<
     const { updateTopicTitleInSummary, internal_updateTopicLoading } = get();
     const topic = topicSelectors.getTopicById(topicId)(get());
     if (!topic) return;
+    if (!messages) return;
 
     updateTopicTitleInSummary(topicId, LOADING_FLAT);
 
     let output = '';
+    const chainmsgs = messages.slice(0, 2);
+    if (!!chainmsgs && chainmsgs[0]?.content?.length <= 10) {
+      output = chainmsgs[0].content;
+      updateTopicTitleInSummary(topicId, output);
+      await get().internal_updateTopic(topicId, { title: output });
+      return;
+    }
 
     // 自动总结话题标题
     await chatService.fetchPresetTaskResult({
@@ -134,11 +142,16 @@ export const chatTopic: StateCreator<
       onLoadingChange: (loading) => {
         internal_updateTopicLoading(topicId, loading);
       },
-      onMessageHandle: (x) => {
-        output += x;
+      onMessageHandle: (chunk) => {
+        switch (chunk.type) {
+          case 'text': {
+            output += chunk.text;
+          }
+        }
+
         updateTopicTitleInSummary(topicId, output);
       },
-      params: await chainSummaryTitle(messages),
+      params: await chainSummaryTitle(chainmsgs),
       trace: get().getCurrentTracePayload({ traceName: TraceNameMap.SummaryTopicTitle, topicId }),
     });
   },
@@ -156,7 +169,7 @@ export const chatTopic: StateCreator<
     internal_updateTopicLoading(id, true);
     const messages = await messageService.getMessages(sessionId, id);
 
-    await summaryTopicTitle(id, messages.filter((m) => m.role === 'user').slice(0, 0));
+    await summaryTopicTitle(id, messages);
     internal_updateTopicLoading(id, false);
   },
 

@@ -1,5 +1,6 @@
 import { ModelProviderCard } from '@/types/llm';
 
+// ref https://platform.lingyiwanwu.com/
 const ZeroOne: ModelProviderCard = {
   chatModels: [
     {

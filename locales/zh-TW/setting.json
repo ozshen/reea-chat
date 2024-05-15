@@ -38,7 +38,6 @@
     "checker": {
       "button": "檢查",
       "desc": "測試 Api Key 與代理地址是否正確填寫",
-      "ollamaDesc": "測試代理地址是否正確填寫",
       "pass": "檢查通過",
       "title": "連通性檢查"
     },
@@ -71,7 +70,8 @@
         },
         "modalTitle": "自定義模型配置",
         "tokens": {
-          "title": "最大 token 數"
+          "title": "最大 token 數",
+          "unlimited": "無限制"
         },
         "vision": {
           "extra": "此配置將開啟圖片視覺識別，是否支持視覺識別完全取決於模型本身",
@@ -95,7 +95,11 @@
       "title": "模型列表",
       "total": "共 {{count}} 個模型可用"
     },
-    "waitingForMore": "✨ <1>更多模型，敬請期待</1> ✨"
+    "proxyUrl": {
+      "desc": "除預設地址外，必須包含 http(s)://",
+      "title": "API 代理地址"
+    },
+    "waitingForMore": "✨<1>更多模型，敬請期待</1>✨"
   },
   "ollama": {
     "download": {

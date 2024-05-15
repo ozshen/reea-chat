@@ -15,16 +15,17 @@ import { useToolStore } from '@/store/tool';
 import { pluginSelectors, toolSelectors } from '@/store/tool/selectors';
 import { useUserStore } from '@/store/user';
 import {
-  commonSelectors,
   modelConfigSelectors,
   modelProviderSelectors,
   preferenceSelectors,
+  userProfileSelectors,
 } from '@/store/user/selectors';
 import { ChatErrorType } from '@/types/fetch';
-import { ChatMessage } from '@/types/message';
+import { ChatMessage, MessageToolCall } from '@/types/message';
 import type { ChatStreamPayload, OpenAIChatMessage } from '@/types/openai/chat';
 import { UserMessageContentPart } from '@/types/openai/chat';
 import { FetchSSEOptions, fetchSSE, getMessageError } from '@/utils/fetch';
+import { genToolCallingName } from '@/utils/toolCall';
 import { createTraceHeader, getTraceId } from '@/utils/trace';
 
 import { createHeaderWithAuth, getProviderAuthPayload } from './_auth';
@@ -254,28 +255,33 @@ class ChatService {
     const enableFetchOnClient = modelConfigSelectors.isProviderFetchOnClient(provider)(
       useUserStore.getState(),
     );
-    /**
-     * Notes:
-     * 1. Broswer agent runtime will skip auth check if a key and endpoint provided by
-     *    user which will cause abuse of plugins services
-     * 2. This feature will disabled by default
-     */
+
+    let fetcher: typeof fetch | undefined = undefined;
+
     if (enableFetchOnClient) {
-      try {
-        return await this.fetchOnClient({ payload, provider, signal });
-      } catch (e) {
-        const {
-          errorType = ChatErrorType.BadRequest,
-          error: errorContent,
-          ...res
-        } = e as ChatCompletionErrorPayload;
+      /**
+       * Notes:
+       * 1. Browser agent runtime will skip auth check if a key and endpoint provided by
+       *    user which will cause abuse of plugins services
+       * 2. This feature will be disabled by default
+       */
+      fetcher = async () => {
+        try {
+          return await this.fetchOnClient({ payload, provider, signal });
+        } catch (e) {
+          const {
+            errorType = ChatErrorType.BadRequest,
+            error: errorContent,
+            ...res
+          } = e as ChatCompletionErrorPayload;
 
-        const error = errorContent || e;
-        // track the error at server side
-        console.error(`Route: [${provider}] ${errorType}:`, error);
+          const error = errorContent || e;
+          // track the error at server side
+          console.error(`Route: [${provider}] ${errorType}:`, error);
 
-        return createErrorResponse(errorType, { error, ...res, provider });
-      }
+          return createErrorResponse(errorType, { error, ...res, provider });
+        }
+      };
     }
 
     const traceHeader = createTraceHeader({ ...options?.trace });
@@ -287,6 +293,7 @@ class ChatService {
 
     return fetchSSE(API_ENDPOINTS.chat(provider), {
       body: JSON.stringify(payload),
+      fetcher: fetcher,
       headers,
       method: 'POST',
       onAbort: options?.onAbort,
@@ -410,19 +417,26 @@ class ChatService {
         }
 
         case 'assistant': {
-          return { content: m.content, role: m.role, tool_calls: m.tool_calls };
-        }
-
-        // TODO: need to be removed after upgrade
-        case 'function': {
-          const name = m.plugin?.identifier as string;
-          return { content: m.content, name, role: m.role };
+          return {
+            content: m.content,
+            role: m.role,
+            tool_calls: m.tools?.map(
+              (tool): MessageToolCall => ({
+                function: {
+                  arguments: tool.arguments,
+                  name: genToolCallingName(tool.identifier, tool.apiName, tool.type),
+                },
+                id: tool.id,
+                type: 'function',
+              }),
+            ),
+          };
         }
 
         case 'tool': {
           return {
             content: m.content,
-            name: m.tool_calls?.find((tool) => tool.id === m.tool_call_id)?.function.name,
+            name: genToolCallingName(m.plugin!.identifier, m.plugin!.apiName, m.plugin?.type),
             role: m.role,
             tool_call_id: m.tool_call_id,
           };
@@ -481,7 +495,7 @@ class ChatService {
       ...trace,
       enabled: true,
       tags: [tag, ...(trace?.tags || []), ...tags].filter(Boolean) as string[],
-      userId: commonSelectors.userId(useUserStore.getState()),
+      userId: userProfileSelectors.userId(useUserStore.getState()),
     };
   }
 

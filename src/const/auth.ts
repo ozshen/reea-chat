@@ -1,8 +1,15 @@
-export const CHAT_AUTH_HEADER = 'X-reea-chat-auth';
+import { authEnv } from '@/config/auth';
+
+export const enableClerk = authEnv.NEXT_PUBLIC_ENABLE_CLERK_AUTH;
+export const enableNextAuth = authEnv.NEXT_PUBLIC_ENABLE_NEXT_AUTH;
+export const enableAuth =
+  authEnv.NEXT_PUBLIC_ENABLE_CLERK_AUTH || authEnv.NEXT_PUBLIC_ENABLE_NEXT_AUTH;
+
+export const CHAT_AUTH_HEADER = 'X-imec-chat-auth';
 
 export const OAUTH_AUTHORIZED = 'X-oauth-authorized';
 
-export const JWT_SECRET_KEY = 'ReeaHub · ChatAI';
+export const JWT_SECRET_KEY = 'Ozshen · ChatAI';
 export const NON_HTTP_PREFIX = 'http_nosafe';
 
 /* eslint-disable typescript-sort-keys/interface */

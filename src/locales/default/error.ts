@@ -133,6 +133,7 @@ export default {
     addProxyUrl: '添加 OpenAI 代理地址（可选）',
     closeMessage: '关闭提示',
     confirm: '确认并重试',
+
     oauth: {
       description: '请点击下方按钮登录',
       success: '登录成功',

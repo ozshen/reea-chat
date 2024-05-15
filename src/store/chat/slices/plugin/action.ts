@@ -24,15 +24,22 @@ export interface ChatPluginAction {
     content: string,
     triggerAiMessage?: boolean,
   ) => Promise<void>;
+
+  internal_callPluginApi: (id: string, payload: ChatToolPayload) => Promise<string | undefined>;
+  internal_invokeDifferentTypePlugin: (id: string, payload: ChatToolPayload) => Promise<any>;
   internal_transformToolCalls: (toolCalls: MessageToolCall[]) => ChatToolPayload[];
+  internal_updatePluginError: (id: string, error: any) => Promise<void>;
+
   invokeBuiltinTool: (id: string, payload: ChatToolPayload) => Promise<void>;
   invokeDefaultTypePlugin: (id: string, payload: any) => Promise<string | undefined>;
   invokeMarkdownTypePlugin: (id: string, payload: ChatToolPayload) => Promise<void>;
-  invokeStandaloneTypePlugin: (id: string, payload: ChatToolPayload) => Promise<void>;
-  runPluginApi: (id: string, payload: ChatToolPayload) => Promise<string | undefined>;
-  triggerAIMessage: (params: { parentId?: string; traceId?: string }) => Promise<void>;
-  triggerToolCalls: (id: string) => Promise<void>;
 
+  invokeStandaloneTypePlugin: (id: string, payload: ChatToolPayload) => Promise<void>;
+
+  reInvokeToolMessage: (id: string) => Promise<void>;
+  triggerAIMessage: (params: { parentId?: string; traceId?: string }) => Promise<void>;
+
+  triggerToolCalls: (id: string) => Promise<void>;
   updatePluginState: (id: string, key: string, value: any) => Promise<void>;
 }
 
@@ -61,6 +68,70 @@ export const chatPlugin: StateCreator<
     await internal_updateMessageContent(id, content);
 
     if (triggerAiMessage) await triggerAIMessage({ parentId: id });
+  },
+  internal_callPluginApi: async (id, payload) => {
+    const { internal_updateMessageContent, refreshMessages, internal_toggleChatLoading } = get();
+    let data: string;
+
+    try {
+      const abortController = internal_toggleChatLoading(
+        true,
+        id,
+        n('fetchPlugin/start') as string,
+      );
+
+      const message = chatSelectors.getMessageById(id)(get());
+
+      const res = await chatService.runPluginApi(payload, {
+        signal: abortController?.signal,
+        trace: { observationId: message?.observationId, traceId: message?.traceId },
+      });
+      data = res.text;
+
+      // save traceId
+      if (res.traceId) {
+        await messageService.updateMessage(id, { traceId: res.traceId });
+      }
+    } catch (error) {
+      console.log(error);
+      const err = error as Error;
+
+      // ignore the aborted request error
+      if (!err.message.includes('The user aborted a request.')) {
+        await messageService.updateMessageError(id, error as any);
+        await refreshMessages();
+      }
+
+      data = '';
+    }
+
+    internal_toggleChatLoading(false, id, n('fetchPlugin/end') as string);
+    // 如果报错则结束了
+    if (!data) return;
+
+    await internal_updateMessageContent(id, data);
+
+    return data;
+  },
+
+  internal_invokeDifferentTypePlugin: async (id, payload) => {
+    switch (payload.type) {
+      case 'standalone': {
+        return await get().invokeStandaloneTypePlugin(id, payload);
+      }
+
+      case 'markdown': {
+        return await get().invokeMarkdownTypePlugin(id, payload);
+      }
+
+      case 'builtin': {
+        return await get().invokeBuiltinTool(id, payload);
+      }
+
+      default: {
+        return await get().invokeDefaultTypePlugin(id, payload);
+      }
+    }
   },
 
   internal_transformToolCalls: (toolCalls) => {
@@ -98,6 +169,13 @@ export const chatPlugin: StateCreator<
       .filter(Boolean) as ChatToolPayload[];
   },
 
+  internal_updatePluginError: async (id, error) => {
+    const { refreshMessages } = get();
+
+    await messageService.updateMessage(id, { pluginError: error });
+    await refreshMessages();
+  },
+
   invokeBuiltinTool: async (id, payload) => {
     const { internal_toggleChatLoading, internal_updateMessageContent } = get();
     const params = JSON.parse(payload.arguments);
@@ -133,9 +211,9 @@ export const chatPlugin: StateCreator<
   },
 
   invokeDefaultTypePlugin: async (id, payload) => {
-    const { runPluginApi } = get();
+    const { internal_callPluginApi } = get();
 
-    const data = await runPluginApi(id, payload);
+    const data = await internal_callPluginApi(id, payload);
 
     if (!data) return;
 
@@ -143,9 +221,9 @@ export const chatPlugin: StateCreator<
   },
 
   invokeMarkdownTypePlugin: async (id, payload) => {
-    const { runPluginApi } = get();
+    const { internal_callPluginApi } = get();
 
-    await runPluginApi(id, payload);
+    await internal_callPluginApi(id, payload);
   },
 
   invokeStandaloneTypePlugin: async (id, payload) => {
@@ -168,50 +246,13 @@ export const chatPlugin: StateCreator<
     }
   },
 
-  runPluginApi: async (id, payload) => {
-    const { internal_updateMessageContent, refreshMessages, internal_toggleChatLoading } = get();
-    let data: string;
+  reInvokeToolMessage: async (id) => {
+    const message = chatSelectors.getMessageById(id)(get());
+    if (!message || message.role !== 'tool' || !message.plugin) return;
 
-    try {
-      const abortController = internal_toggleChatLoading(
-        true,
-        id,
-        n('fetchPlugin/start') as string,
-      );
+    const payload: ChatToolPayload = { ...message.plugin, id: message.tool_call_id! };
 
-      const message = chatSelectors.getMessageById(id)(get());
-
-      console.log('pluginMessage', message);
-      const res = await chatService.runPluginApi(payload, {
-        signal: abortController?.signal,
-        trace: { observationId: message?.observationId, traceId: message?.traceId },
-      });
-      data = res.text;
-
-      // save traceId
-      if (res.traceId) {
-        await messageService.updateMessage(id, { traceId: res.traceId });
-      }
-    } catch (error) {
-      console.log(error);
-      const err = error as Error;
-
-      // ignore the aborted request error
-      if (!err.message.includes('The user aborted a request.')) {
-        await messageService.updateMessageError(id, error as any);
-        await refreshMessages();
-      }
-
-      data = '';
-    }
-
-    internal_toggleChatLoading(false, id, n('fetchPlugin/end') as string);
-    // 如果报错则结束了
-    if (!data) return;
-
-    await internal_updateMessageContent(id, data);
-
-    return data;
+    await get().internal_invokeDifferentTypePlugin(id, payload);
   },
 
   triggerAIMessage: async ({ parentId, traceId }) => {
@@ -219,18 +260,9 @@ export const chatPlugin: StateCreator<
     const chats = chatSelectors.currentChats(get());
     await internal_coreProcessMessage(chats, parentId ?? chats.at(-1)!.id, { traceId });
   },
-
   triggerToolCalls: async (assistantId) => {
     const message = chatSelectors.getMessageById(assistantId)(get());
     if (!message || !message.tools) return;
-
-    const {
-      invokeDefaultTypePlugin,
-      invokeMarkdownTypePlugin,
-      invokeStandaloneTypePlugin,
-      invokeBuiltinTool,
-      triggerAIMessage,
-    } = get();
 
     let shouldCreateMessage = false;
     let latestToolId = '';
@@ -247,29 +279,12 @@ export const chatPlugin: StateCreator<
 
       const id = await get().internal_createMessage(toolMessage);
 
-      switch (payload.type) {
-        case 'standalone': {
-          await invokeStandaloneTypePlugin(id, payload);
-          break;
-        }
+      // trigger the plugin call
+      const data = await get().internal_invokeDifferentTypePlugin(id, payload);
 
-        case 'markdown': {
-          await invokeMarkdownTypePlugin(id, payload);
-          break;
-        }
-
-        case 'builtin': {
-          await invokeBuiltinTool(id, payload);
-          break;
-        }
-
-        default: {
-          const data = await invokeDefaultTypePlugin(id, payload);
-          if (data) {
-            shouldCreateMessage = true;
-            latestToolId = id;
-          }
-        }
+      if (payload.type === 'default' && data) {
+        shouldCreateMessage = true;
+        latestToolId = id;
       }
     });
 
@@ -280,9 +295,8 @@ export const chatPlugin: StateCreator<
 
     const traceId = chatSelectors.getTraceIdByMessageId(latestToolId)(get());
 
-    await triggerAIMessage({ traceId });
+    await get().triggerAIMessage({ traceId });
   },
-
   updatePluginState: async (id, key, value) => {
     const { refreshMessages } = get();
 

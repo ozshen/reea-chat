@@ -58,6 +58,7 @@
     },
     "title": "Import Data"
   },
+  "installPWA": "Browser Extension",
   "lang": {
     "ar": "Arabic",
     "bg-BG": "Bulgarian",
@@ -98,6 +99,7 @@
   "layoutInitializing": "Initializing layout...",
   "noDescription": "No description available",
   "oauth": "SSO Login",
+  "officialSite": "Official Website",
   "ok": "OK",
   "password": "Password",
   "pin": "Pin",
@@ -168,7 +170,8 @@
   "userPanel": {
     "anonymousNickName": "Anonymous User",
     "billing": "Billing Management",
-    "defaultNickname": "Community User",
+    "data": "Data Storage",
+    "defaultNickname": "Guest",
     "discord": "Community Support",
     "docs": "Documentation",
     "email": "Email Support",

@@ -130,10 +130,6 @@
     "plugin": "Plugin is running..."
   },
   "pluginList": "Plugin List",
-  "plugins": {
-    "loading": "Detecting plugins...",
-    "unknown": "Unknown Plugin"
-  },
   "setting": "Plugin Settings",
   "settings": {
     "indexUrl": {
@@ -164,5 +160,6 @@
       "installed": "Installed"
     },
     "title": "Plugin Store"
-  }
+  },
+  "unknownPlugin": "Unknown Plugin"
 }

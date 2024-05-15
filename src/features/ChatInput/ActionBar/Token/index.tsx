@@ -8,11 +8,11 @@ import { modelProviderSelectors } from '@/store/user/selectors';
 
 const LargeTokenContent = dynamic(() => import('./TokenTag'), { ssr: false });
 
-const TokenTag = memo(() => {
+const Token = memo(() => {
   const model = useAgentStore(agentSelectors.currentAgentModel);
   const showTag = useUserStore(modelProviderSelectors.isModelHasMaxToken(model));
 
   return showTag && <LargeTokenContent />;
 });
 
-export default TokenTag;
+export default Token;

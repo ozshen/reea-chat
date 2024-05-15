@@ -58,6 +58,7 @@
     },
     "title": "匯入數據"
   },
+  "installPWA": "安裝小助手",
   "lang": {
     "ar": "阿拉伯語",
     "bg-BG": "保加利亞語",
@@ -98,6 +99,7 @@
   "layoutInitializing": "正在載入版面配置...",
   "noDescription": "暫無描述",
   "oauth": "OAuth",
+  "officialSite": "官方網站",
   "ok": "確定",
   "password": "密碼",
   "pin": "置頂",
@@ -168,7 +170,8 @@
   "userPanel": {
     "anonymousNickName": "匿名使用者",
     "billing": "帳單管理",
-    "defaultNickname": "社區版使用者",
+    "data": "資料存儲",
+    "defaultNickname": "訪客",
     "discord": "社區支援",
     "docs": "使用文件",
     "email": "郵件支援",

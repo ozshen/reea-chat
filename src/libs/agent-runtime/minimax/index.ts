@@ -1,8 +1,5 @@
-import { StreamingTextResponse } from 'ai';
 import { isEmpty } from 'lodash-es';
 import OpenAI from 'openai';
-
-import { MinimaxStream } from '@/libs/agent-runtime/utils/streams/minimax';
 
 import { LobeRuntimeAI } from '../BaseAI';
 import { AgentRuntimeErrorType } from '../error';
@@ -15,6 +12,7 @@ import {
 import { AgentRuntimeError } from '../utils/createError';
 import { debugStream } from '../utils/debugStream';
 import { StreamingResponse } from '../utils/response';
+import { MinimaxStream } from '../utils/streams';
 
 interface MinimaxBaseResponse {
   base_resp?: {
@@ -71,10 +69,7 @@ export class LobeMinimaxAI implements LobeRuntimeAI {
     this.apiKey = apiKey;
   }
 
-  async chat(
-    payload: ChatStreamPayload,
-    options?: ChatCompetitionOptions,
-  ): Promise<StreamingTextResponse> {
+  async chat(payload: ChatStreamPayload, options?: ChatCompetitionOptions): Promise<Response> {
     try {
       const response = await fetch('https://api.minimax.chat/v1/text/chatcompletion_v2', {
         body: JSON.stringify(this.buildCompletionsParams(payload)),

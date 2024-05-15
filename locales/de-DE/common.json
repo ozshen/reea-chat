@@ -58,6 +58,7 @@
     },
     "title": "Daten importieren"
   },
+  "installPWA": "Browsererweiterung",
   "lang": {
     "ar": "Arabisch",
     "bg-BG": "Bulgarisch",
@@ -96,8 +97,9 @@
     "zh-TW": "Chinesisch (traditionell)"
   },
   "layoutInitializing": "Layout wird geladen...",
-  "noDescription": "Keine Beschreibung vorhanden",
+  "noDescription": "Keine Beschreibung verfügbar",
   "oauth": "SSO-Anmeldung",
+  "officialSite": "Offizielle Website",
   "ok": "OK",
   "password": "Passwort",
   "pin": "Anheften",
@@ -168,7 +170,8 @@
   "userPanel": {
     "anonymousNickName": "Anonymer Benutzer",
     "billing": "Abrechnung",
-    "defaultNickname": "Community-Benutzer",
+    "data": "Daten speichern",
+    "defaultNickname": "Gast",
     "discord": "Community-Support",
     "docs": "Dokumentation",
     "email": "E-Mail-Support",

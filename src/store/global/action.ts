@@ -81,8 +81,8 @@ export const globalActionSlice: StateCreator<
 
   useCheckLatestVersion: () =>
     useSWR('checkLatestVersion', globalService.getLatestVersion, {
-      // check latest version every 30 minutes
-      focusThrottleInterval: 1000 * 60 * 30,
+      // check latest version every 60 minutes
+      focusThrottleInterval: 1000 * 60 * 60,
       onSuccess: (data: string) => {
         if (gt(data, CURRENT_VERSION))
           set({ hasNewVersion: true, latestVersion: data }, false, n('checkLatestVersion'));
@@ -96,6 +96,8 @@ export const globalActionSlice: StateCreator<
       {
         onSuccess: (preference) => {
           const nextPreference = merge(get().preference, preference);
+
+          set({ isPreferenceInit: true });
 
           if (isEqual(get().preference, nextPreference)) return;
 

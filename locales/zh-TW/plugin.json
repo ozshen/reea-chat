@@ -130,10 +130,6 @@
     "plugin": "外掛執行中..."
   },
   "pluginList": "外掛清單",
-  "plugins": {
-    "loading": "插件檢測中...",
-    "unknown": "未知插件"
-  },
   "setting": "插件設置",
   "settings": {
     "indexUrl": {
@@ -164,5 +160,6 @@
       "installed": "已安裝"
     },
     "title": "插件商店"
-  }
+  },
+  "unknownPlugin": "未知外掛程式"
 }

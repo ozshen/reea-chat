@@ -1,11 +1,12 @@
 import OpenAI, { ClientOptions } from 'openai';
 
 import { DEFAULT_MODEL_LIST } from '@/config/modelProviders';
+import { TextToImagePayload } from '@/libs/agent-runtime/types/textToImage';
 import { ChatModelCard } from '@/types/llm';
 
 import { LobeRuntimeAI } from '../../BaseAI';
 import { ILobeAgentRuntimeErrorType } from '../../error';
-import { ChatCompetitionOptions, ChatStreamPayload } from '../../types';
+import { ChatCompetitionOptions, ChatCompletionErrorPayload, ChatStreamPayload } from '../../types';
 import { AgentRuntimeError } from '../createError';
 import { debugStream } from '../debugStream';
 import { desensitizeUrl } from '../desensitizeUrl';
@@ -29,6 +30,7 @@ const CHAT_MODELS_BLOCK_LIST = [
 interface OpenAICompatibleFactoryOptions {
   baseURL?: string;
   chatCompletion?: {
+    handleError?: (error: any) => Omit<ChatCompletionErrorPayload, 'provider'> | undefined;
     handlePayload?: (payload: ChatStreamPayload) => OpenAI.ChatCompletionCreateParamsStreaming;
   };
   constructorOptions?: ClientOptions;
@@ -72,7 +74,10 @@ export const LobeOpenAICompatibleFactory = ({
       try {
         const postPayload = chatCompletion?.handlePayload
           ? chatCompletion.handlePayload(payload)
-          : (payload as unknown as OpenAI.ChatCompletionCreateParamsStreaming);
+          : ({
+              ...payload,
+              stream: payload.stream ?? true,
+            } as OpenAI.ChatCompletionCreateParamsStreaming);
 
         const response = await this.client.chat.completions.create(postPayload, {
           // https://github.com/lobehub/lobe-chat/pull/318
@@ -127,6 +132,16 @@ export const LobeOpenAICompatibleFactory = ({
           }
         }
 
+        if (chatCompletion?.handleError) {
+          const errorResult = chatCompletion.handleError(error);
+
+          if (errorResult)
+            throw AgentRuntimeError.chat({
+              ...errorResult,
+              provider,
+            } as ChatCompletionErrorPayload);
+        }
+
         const { errorResult, RuntimeError } = handleOpenAIError(error);
 
         throw AgentRuntimeError.chat({
@@ -162,6 +177,56 @@ export const LobeOpenAICompatibleFactory = ({
         })
 
         .filter(Boolean) as ChatModelCard[];
+    }
+
+    async textToImage(payload: TextToImagePayload) {
+      try {
+        const res = await this.client.images.generate(payload);
+        return res.data.map((o) => o.url) as string[];
+      } catch (error) {
+        let desensitizedEndpoint = this.baseURL;
+
+        // refs: https://github.com/lobehub/lobe-chat/issues/842
+        if (this.baseURL !== DEFAULT_BASE_URL) {
+          desensitizedEndpoint = desensitizeUrl(this.baseURL);
+        }
+
+        if ('status' in (error as any)) {
+          switch ((error as Response).status) {
+            case 401: {
+              throw AgentRuntimeError.chat({
+                endpoint: desensitizedEndpoint,
+                error: error as any,
+                errorType: ErrorType.invalidAPIKey,
+                provider: provider as any,
+              });
+            }
+
+            default: {
+              break;
+            }
+          }
+        }
+
+        if (chatCompletion?.handleError) {
+          const errorResult = chatCompletion.handleError(error);
+
+          if (errorResult)
+            throw AgentRuntimeError.chat({
+              ...errorResult,
+              provider,
+            } as ChatCompletionErrorPayload);
+        }
+
+        const { errorResult, RuntimeError } = handleOpenAIError(error);
+
+        throw AgentRuntimeError.chat({
+          endpoint: desensitizedEndpoint,
+          error: errorResult,
+          errorType: RuntimeError || ErrorType.bizError,
+          provider: provider as any,
+        });
+      }
     }
 
     /**

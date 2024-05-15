@@ -38,7 +38,6 @@ export default {
     checker: {
       button: '检查',
       desc: '测试 Api Key 与代理地址是否正确填写',
-      ollamaDesc: '测试代理地址是否正确填写',
       pass: '检查通过',
       title: '连通性检查',
     },
@@ -70,7 +69,10 @@ export default {
           title: '模型 ID',
         },
         modalTitle: '自定义模型配置',
-        tokens: { title: '最大 token 数' },
+        tokens: {
+          title: '最大 token 数',
+          unlimited: '无限制',
+        },
         vision: {
           extra: '此配置将开启图片视觉识别，是否支持视觉识别完全取决于模型本身',
           title: '支持视觉识别',
@@ -93,7 +95,11 @@ export default {
       title: '模型列表',
       total: '共 {{count}} 个模型可用',
     },
-    waitingForMore: '✨ <1>更多模型，敬请期待</1> ✨',
+    proxyUrl: {
+      desc: '除默认地址外，必须包含 http(s)://',
+      title: 'API 代理地址',
+    },
+    waitingForMore: '✨<1>更多模型，敬请期待</1>✨',
   },
   ollama: {
     download: {

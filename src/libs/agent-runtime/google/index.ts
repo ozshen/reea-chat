@@ -22,7 +22,6 @@ import {
 import { ModelProvider } from '../types/type';
 import { AgentRuntimeError } from '../utils/createError';
 import { debugStream } from '../utils/debugStream';
-import { desensitizeUrl } from '../utils/desensitizeUrl';
 import { StreamingResponse } from '../utils/response';
 import { GoogleGenerativeAIStream, googleGenAIResultToStream } from '../utils/streams';
 import { parseDataUri } from '../utils/uriParser';
@@ -38,13 +37,11 @@ enum HarmBlockThreshold {
   BLOCK_NONE = 'BLOCK_NONE',
 }
 
-const DEFAULT_BASE_URL = 'https://generativelanguage.googleapis.com';
-
 export class LobeGoogleAI implements LobeRuntimeAI {
   private client: GoogleGenerativeAI;
   baseURL?: string;
 
-  constructor({ apiKey, baseURL = DEFAULT_BASE_URL }: { apiKey?: string; baseURL?: string }) {
+  constructor({ apiKey, baseURL }: { apiKey?: string; baseURL?: string }) {
     if (!apiKey) throw AgentRuntimeError.createError(AgentRuntimeErrorType.InvalidGoogleAPIKey);
 
     this.client = new GoogleGenerativeAI(apiKey);
@@ -108,18 +105,7 @@ export class LobeGoogleAI implements LobeRuntimeAI {
 
       const { errorType, error } = this.parseErrorMessage(err.message);
 
-      let desensitizedEndpoint = this.baseURL;
-
-      if (this.baseURL && this.baseURL.length !== 0) {
-        desensitizedEndpoint = desensitizeUrl(this.baseURL);
-      }
-
-      throw AgentRuntimeError.chat({
-        endpoint: desensitizedEndpoint,
-        error,
-        errorType,
-        provider: ModelProvider.Google,
-      });
+      throw AgentRuntimeError.chat({ error, errorType, provider: ModelProvider.Google });
     }
   }
 
@@ -261,11 +247,7 @@ export class LobeGoogleAI implements LobeRuntimeAI {
 
     return [
       {
-        functionDeclarations: tools.map((tool) => {
-          const t = this.convertToolToGoogleTool(tool);
-          console.log('output Schema', t);
-          return t;
-        }),
+        functionDeclarations: tools.map((tool) => this.convertToolToGoogleTool(tool)),
       },
     ];
   }
@@ -273,8 +255,6 @@ export class LobeGoogleAI implements LobeRuntimeAI {
   private convertToolToGoogleTool = (tool: ChatCompletionTool): FunctionDeclaration => {
     const functionDeclaration = tool.function;
     const parameters = functionDeclaration.parameters;
-
-    console.log('input Schema', JSON.stringify(parameters, null, 2));
 
     return {
       description: functionDeclaration.description,
@@ -291,8 +271,6 @@ export class LobeGoogleAI implements LobeRuntimeAI {
   };
 
   private convertSchemaObject(schema: JSONSchema7): FunctionDeclarationSchemaProperty {
-    console.log('input:', schema);
-
     switch (schema.type) {
       default:
       case 'object': {

@@ -130,10 +130,6 @@
     "plugin": "プラグインの実行中..."
   },
   "pluginList": "プラグインリスト",
-  "plugins": {
-    "loading": "プラグインを読み込み中...",
-    "unknown": "不明なプラグイン"
-  },
   "setting": "プラグインの設定",
   "settings": {
     "indexUrl": {
@@ -164,5 +160,6 @@
       "installed": "インストール済み"
     },
     "title": "プラグインストア"
-  }
+  },
+  "unknownPlugin": "不明なプラグイン"
 }

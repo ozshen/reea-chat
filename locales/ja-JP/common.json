@@ -58,6 +58,7 @@
     },
     "title": "データのインポート"
   },
+  "installPWA": "PWAのインストール",
   "lang": {
     "ar": "アラビア語",
     "bg-BG": "ブルガリア語",
@@ -96,8 +97,9 @@
     "zh-TW": "繁体字中国語"
   },
   "layoutInitializing": "レイアウトを初期化中...",
-  "noDescription": "説明はありません",
+  "noDescription": "説明なし",
   "oauth": "SSO ログイン",
+  "officialSite": "公式サイト",
   "ok": "OK",
   "password": "パスワード",
   "pin": "ピン留め",
@@ -168,7 +170,8 @@
   "userPanel": {
     "anonymousNickName": "匿名ユーザー",
     "billing": "請求管理",
-    "defaultNickname": "コミュニティ版ユーザー",
+    "data": "データ",
+    "defaultNickname": "ゲスト",
     "discord": "コミュニティサポート",
     "docs": "使用文書",
     "email": "メールサポート",

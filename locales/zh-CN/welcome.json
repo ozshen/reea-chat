@@ -6,7 +6,7 @@
   },
   "guide": {
     "agents": {
-      "moreBtn": "了解更多",
+      "moreBtn": "更多",
       "replaceBtn": "换一批",
       "title": "助理推荐"
     },
@@ -29,7 +29,7 @@
       "q15": "我在使用时遇到问题应该怎么办？"
     },
     "questions": {
-      "moreBtn": "了解更多",
+      "moreBtn": "更多",
       "replaceBtn": "换一批",
       "title": "常见问题"
     },

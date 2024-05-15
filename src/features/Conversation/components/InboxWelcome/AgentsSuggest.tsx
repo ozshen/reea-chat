@@ -3,21 +3,18 @@
 import { ActionIcon, Avatar, Grid, Modal } from '@lobehub/ui';
 import { Skeleton, Typography } from 'antd';
 import { createStyles } from 'antd-style';
-import isEqual from 'fast-deep-equal';
 import { ArrowRight, RefreshCw } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { memo, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
-import AgentInfo from '@/app/market/features/AgentDetailContent';
-import { agentMarketSelectors, useMarketStore } from '@/store/market';
-import { useSessionStore } from '@/store/session';
-import { sessionSelectors } from '@/store/session/selectors';
+import AgentDetailContent from '@/app/(main)/market/@detail/features/AgentDetailContent';
+import { useMarketStore } from '@/store/market';
 
 const { Paragraph } = Typography;
 
-const useStyles = createStyles(({ css, token }) => ({
+const useStyles = createStyles(({ css, token, responsive }) => ({
   card: css`
     cursor: pointer;
 
@@ -33,6 +30,10 @@ const useStyles = createStyles(({ css, token }) => ({
 
     &:hover {
       background: ${token.colorBgElevated};
+    }
+
+    ${responsive.mobile} {
+      min-height: 72px;
     }
   `,
   cardDesc: css`
@@ -52,28 +53,25 @@ const useStyles = createStyles(({ css, token }) => ({
   `,
 }));
 
-const AgentsSuggest = memo(() => {
+const AgentsSuggest = memo<{ mobile?: boolean }>(({ mobile }) => {
   const { t } = useTranslation('welcome');
   const { styles } = useStyles();
   const router = useRouter();
-  const [tempId, setTempId] = useState<string>('');
   const [sliceStart, setSliceStart] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const isInbox = useSessionStore(sessionSelectors.isInboxSession);
-  const agentList = useMarketStore((s) => agentMarketSelectors.getAgentList(s), isEqual);
   const useFetchAgentList = useMarketStore((s) => s.useFetchAgentList);
   const { isLoading } = useFetchAgentList();
-  const [onActivateAgent, onDeactivateAgent] = useMarketStore((s) => [
+  const [agentList, onActivateAgent, onDeactivateAgent] = useMarketStore((s) => [
+    s.agentList,
     s.activateAgent,
     s.deactivateAgent,
   ]);
 
-  if (isInbox && !isModalOpen) {
-    onDeactivateAgent();
-    onActivateAgent(tempId);
-  }
+  if (!isModalOpen) onDeactivateAgent();
 
-  const loadingCards = Array.from({ length: 4 }).map((_, index) => (
+  const agentLength = mobile ? 2 : 4;
+
+  const loadingCards = Array.from({ length: agentLength }).map((_, index) => (
     <Flexbox className={styles.card} key={index}>
       <Skeleton active avatar paragraph={{ rows: 2 }} title={false} />
     </Flexbox>
@@ -86,14 +84,15 @@ const AgentsSuggest = memo(() => {
 
   const cards = useMemo(
     () =>
-      agentList.slice(sliceStart, sliceStart + 4).map((agent) => (
+      agentList &&
+      agentList.length > 0 &&
+      agentList.slice(sliceStart, sliceStart + agentLength).map((agent) => (
         <Flexbox
           className={styles.card}
           gap={8}
           horizontal
           key={agent.identifier}
           onClick={() => {
-            setTempId(agent.identifier);
             onActivateAgent(agent.identifier);
             setIsModalOpen(true);
           }}
@@ -139,15 +138,11 @@ const AgentsSuggest = memo(() => {
         footer={null}
         onCancel={() => {
           setIsModalOpen(false);
-          if (isInbox) {
-            setTempId('');
-            onDeactivateAgent();
-            onActivateAgent(tempId);
-          }
+          onDeactivateAgent();
         }}
         open={isModalOpen}
       >
-        <AgentInfo />
+        <AgentDetailContent mobile={mobile} />
       </Modal>
     </Flexbox>
   );

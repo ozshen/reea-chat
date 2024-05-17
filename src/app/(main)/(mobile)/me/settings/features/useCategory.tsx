@@ -1,5 +1,5 @@
-import { Tag } from 'antd';
-import { Bot, Brain, Cloudy, Info, Mic2, Settings2 } from 'lucide-react';
+// import { Tag } from 'antd';
+import { Bot, BrainCircuit, Cloudy, Mic2, Settings2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
@@ -26,14 +26,14 @@ export const useCategory = () => {
       label: (
         <Flexbox align={'center'} gap={8} horizontal>
           {t('tab.sync')}
-          <Tag bordered={false} color={'warning'}>
+          {/* <Tag bordered={false} color={'warning'}>
             {t('tab.experiment')}
-          </Tag>
+          </Tag> */}
         </Flexbox>
       ),
     },
     showLLM && {
-      icon: Brain,
+      icon: BrainCircuit,
       key: SettingsTabs.LLM,
       label: t('tab.llm'),
     },
@@ -42,11 +42,6 @@ export const useCategory = () => {
       icon: Bot,
       key: SettingsTabs.Agent,
       label: t('tab.agent'),
-    },
-    {
-      icon: Info,
-      key: SettingsTabs.About,
-      label: t('tab.about'),
     },
   ].filter(Boolean) as CellProps[];
 

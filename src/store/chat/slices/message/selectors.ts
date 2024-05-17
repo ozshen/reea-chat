@@ -124,7 +124,7 @@ const isToolCallStreaming = (id: string, index: number) => (s: ChatStore) => {
 
   return isLoading[index];
 };
-const isAIGenerating = (s: ChatStore) => s.messageLoadingIds.length > 0;
+const isAIGenerating = (s: ChatStore) => s.chatLoadingIds.length > 0;
 
 export const chatSelectors = {
   chatsMessageString,

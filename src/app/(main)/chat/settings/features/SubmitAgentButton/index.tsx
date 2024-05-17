@@ -1,6 +1,6 @@
 import { ActionIcon, Icon } from '@lobehub/ui';
 import { Button } from 'antd';
-import { Share2 } from 'lucide-react';
+import { UploadCloud } from 'lucide-react';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -17,12 +17,12 @@ const SubmitAgentButton = memo<{ modal?: boolean }>(({ modal }) => {
   return (
     <>
       {modal ? (
-        <Button block icon={<Icon icon={Share2} />} onClick={() => setIsModalOpen(true)}>
+        <Button block icon={<Icon icon={UploadCloud} />} onClick={() => setIsModalOpen(true)}>
           {t('submitAgentModal.tooltips')}
         </Button>
       ) : (
         <ActionIcon
-          icon={Share2}
+          icon={UploadCloud}
           onClick={() => setIsModalOpen(true)}
           size={HEADER_ICON_SIZE(mobile)}
           title={t('submitAgentModal.tooltips')}

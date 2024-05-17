@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
-import { Center } from 'react-layout-kit';
 
-import BrandWatermark from '@/components/BrandWatermark';
+// import { Center } from 'react-layout-kit';
+// import BrandWatermark from '@/components/BrandWatermark';
 import { metadataModule } from '@/server/metadata';
 import { translation } from '@/server/translation';
 import { isMobileDevice } from '@/utils/responsive';
@@ -26,9 +26,9 @@ const Page = () => {
     <>
       <UserBanner />
       <Category />
-      <Center padding={16}>
+      {/* <Center padding={16}>
         <BrandWatermark />
-      </Center>
+      </Center> */}
     </>
   );
 };

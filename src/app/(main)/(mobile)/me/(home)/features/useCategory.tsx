@@ -1,5 +1,5 @@
 import { DiscordIcon } from '@lobehub/ui';
-import { Book, CircleUserRound, Database, Download, Feather, Settings2 } from 'lucide-react';
+import { Book, CircleUserRound, Database, Download, Feather, Info, Settings2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 
@@ -7,6 +7,7 @@ import { CellProps } from '@/components/Cell';
 import { enableAuth } from '@/const/auth';
 import { DISCORD, DOCUMENTS, FEEDBACK } from '@/const/url';
 import { usePWAInstall } from '@/hooks/usePWAInstall';
+import { SettingsTabs } from '@/store/global/initialState';
 import { useUserStore } from '@/store/user';
 import { authSelectors } from '@/store/user/slices/auth/selectors';
 
@@ -38,29 +39,21 @@ export const useCategory = () => {
       label: t('userPanel.setting'),
       onClick: () => router.push('/me/settings'),
     },
-    {
-      type: 'divider',
-    },
   ];
 
   const pwa: CellProps[] = [
+    {
+      type: 'divider',
+    },
     {
       icon: Download,
       key: 'pwa',
       label: t('installPWA'),
       onClick: () => install(),
     },
-    {
-      type: 'divider',
-    },
   ];
 
-  const settingsWithoutAuth = [
-    ...useSettingsCategory(),
-    {
-      type: 'divider',
-    },
-  ];
+  const settingsWithoutAuth = [...useSettingsCategory()];
 
   const data: CellProps[] = [
     {
@@ -69,41 +62,44 @@ export const useCategory = () => {
       label: t('userPanel.data'),
       onClick: () => router.push('/me/data'),
     },
-    {
-      type: 'divider',
-    },
   ];
 
   const helps: CellProps[] = [
+    {
+      icon: Info,
+      key: SettingsTabs.About,
+      label: t('about'),
+      visible: true,
+    },
     {
       icon: Book,
       key: 'docs',
       label: t('document'),
       onClick: () => window.open(DOCUMENTS, '__blank'),
+      visible: false,
     },
     {
       icon: Feather,
       key: 'feedback',
       label: t('feedback'),
       onClick: () => window.open(FEEDBACK, '__blank'),
+      visible: false,
     },
     {
       icon: DiscordIcon,
       key: 'discord',
       label: 'Discord',
       onClick: () => window.open(DISCORD, '__blank'),
+      visible: false,
     },
-  ];
+  ].filter((s) => s.visible);
 
   const mainItems = [
-    {
-      type: 'divider',
-    },
     ...(isLoginWithClerk ? profile : []),
     ...(enableAuth ? (isLoginWithAuth ? settings : []) : settingsWithoutAuth),
-    ...(canInstall ? pwa : []),
     ...(isLogin ? data : []),
     ...helps,
+    ...(canInstall ? pwa : []),
   ].filter(Boolean) as CellProps[];
 
   return mainItems;

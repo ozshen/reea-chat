@@ -4,7 +4,7 @@ import { enableAuth, enableClerk } from '@/const/auth';
 import { UserStore } from '@/store/user';
 import { LobeUser } from '@/types/user';
 
-const DEFAULT_USERNAME = 'LobeChat';
+const DEFAULT_USERNAME = 'Welcome !';
 
 const nickName = (s: UserStore) => {
   if (!enableAuth) return t('userPanel.anonymousNickName', { ns: 'common' });

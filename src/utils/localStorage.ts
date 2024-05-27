@@ -2,7 +2,7 @@ const PREV_KEY = 'CHAT_GLOBAL';
 
 // CHAT_PREFERENCE for userStore
 // GLOBAL_PREFERENCE for globalStore
-type StorageKey = 'CHAT_PREFERENCE' | 'GLOBAL_PREFERENCE';
+type StorageKey = 'CHAT_PREFERENCE' | 'CHAT_SYSTEM_STATUS';
 
 export class AsyncLocalStorage<State> {
   private storageKey: StorageKey;

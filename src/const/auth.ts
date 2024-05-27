@@ -5,7 +5,7 @@ export const enableNextAuth = authEnv.NEXT_PUBLIC_ENABLE_NEXT_AUTH;
 export const enableAuth =
   authEnv.NEXT_PUBLIC_ENABLE_CLERK_AUTH || authEnv.NEXT_PUBLIC_ENABLE_NEXT_AUTH;
 
-export const CHAT_AUTH_HEADER = 'X-imec-chat-auth';
+export const CHAT_AUTH_HEADER = 'X-chat-app-auth';
 
 export const OAUTH_AUTHORIZED = 'X-oauth-authorized';
 

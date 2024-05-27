@@ -8,7 +8,7 @@ import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
-import { DOCUMENTS_USAGE } from '@/const/url';
+import { USAGE_DOCUMENTS } from '@/const/url';
 import { useSendMessage } from '@/features/ChatInput/useSend';
 import { useChatStore } from '@/store/chat';
 
@@ -84,7 +84,7 @@ const QuestionSuggest = memo<{ mobile?: boolean }>(({ mobile }) => {
           <ActionIcon
             icon={ArrowRight}
             onClick={() => {
-              window.open(DOCUMENTS_USAGE, '__blank');
+              window.open(USAGE_DOCUMENTS, '__blank');
             }}
             size={{ blockSize: 24, fontSize: 16 }}
             title={t('guide.questions.moreBtn')}

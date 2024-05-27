@@ -1,18 +1,18 @@
 import urlJoin from 'url-join';
 
-import { getServerConfig } from '@/config/server';
+import { getAppConfig } from '@/config/app';
 import {
-  BLOG,
   EMAIL_BUSINESS,
   EMAIL_SUPPORT,
   GITHUB,
+  OFFICIAL_BLOG,
   OFFICIAL_SITE,
   OFFICIAL_URL,
 } from '@/const/url';
 
 import pkg from '../../package.json';
 
-const { SITE_URL = OFFICIAL_URL } = getServerConfig();
+const { SITE_URL = OFFICIAL_URL } = getAppConfig();
 const LAST_MODIFIED = new Date().toISOString();
 export const AUTHOR_LIST = {
   arvinxx: {
@@ -97,7 +97,7 @@ class Ld {
         'width': 512,
       },
       'name': 'LobeHub',
-      'sameAs': [GITHUB, BLOG],
+      'sameAs': [GITHUB, OFFICIAL_BLOG],
       'url': OFFICIAL_SITE,
     };
   }

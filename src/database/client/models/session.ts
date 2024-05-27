@@ -81,7 +81,7 @@ class _SessionModel extends BaseModel {
   async queryByKeyword(keyword: string): Promise<LobeSessions> {
     if (!keyword) return [];
 
-    //const startTime = Date.now();
+    const startTime = Date.now();
     const keywordLowerCase = keyword.toLowerCase();
 
     // First, filter sessions by title and description
@@ -139,7 +139,7 @@ class _SessionModel extends BaseModel {
       .anyOf([...combinedSessionIds])
       .toArray();
 
-    //console.log(`检索到 ${items.length} 项，耗时 ${Date.now() - startTime}ms`);
+    console.log(`检索到 ${items.length} 项，耗时 ${Date.now() - startTime}ms`);
     return this.mapToAgentSessions(items);
   }
 
@@ -246,16 +246,20 @@ class _SessionModel extends BaseModel {
   private mapToDB_Session(session: LobeAgentSession): DBModel<DB_Session> {
     return {
       ...session,
+      createdAt: session.createdAt?.valueOf(),
       group: session.group || SessionDefaultGroup.Default,
       pinned: session.pinned ? 1 : 0,
+      updatedAt: session.updatedAt?.valueOf(),
     };
   }
 
   private DB_SessionToAgentSession(session: DBModel<DB_Session>) {
     return {
       ...session,
+      createdAt: new Date(session.createdAt),
       model: session.config.model,
       pinned: !!session.pinned,
+      updatedAt: new Date(session.updatedAt),
     } as LobeAgentSession;
   }
 

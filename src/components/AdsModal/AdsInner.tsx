@@ -8,18 +8,17 @@ import { Flexbox } from 'react-layout-kit';
 import { SHOPPING, imageUrl } from '@/const/url';
 
 const AdsInner = memo<{ content?: string }>(({ content }) => {
-  const html = !!content ? content : SHOPPING;
   return (
     <>
-      {html ? (
-        html.startsWith('http') ? (
+      {content ? (
+        content.startsWith('http') ? (
           <iframe
-            src={html}
+            src={content}
             style={{ border: 'none', height: '100vh', width: '100%' }}
             title="about"
           />
         ) : (
-          <div dangerouslySetInnerHTML={{ __html: html }}></div>
+          <div dangerouslySetInnerHTML={{ __html: content }}></div>
         )
       ) : (
         <>
@@ -50,7 +49,7 @@ const AdsInner = memo<{ content?: string }>(({ content }) => {
             {' - 账号永不过期，可用token数永不清零，有效额不因市场价格浮动。'}
           </p>
           <Divider />
-          <Button onClick={() => window.open('https://api.reea.cc', '__blank')} type={'default'}>
+          <Button onClick={() => window.open(SHOPPING, '__blank')} type={'default'}>
             <Flexbox align={'center'} gap={4} horizontal justify={'center'}>
               Get KEY
               <Icon icon={ShoppingCart} />

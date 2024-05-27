@@ -29,7 +29,7 @@ const OllamaProvider = memo(() => {
       }}
       showApiKey={false}
       showBrowserRequest
-      title={<Ollama.Combine size={24} />}
+      title={<Ollama.Combine size={28} />}
     />
   );
 });

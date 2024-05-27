@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
 import { ModelProvider } from '@/libs/agent-runtime';
-import { GlobalLLMProviderKey } from '@/types/settings';
+import { GlobalLLMProviderKey } from '@/types/user/settings';
 
 import ProviderConfig from '../components/ProviderConfig';
 import { LLMProviderConfigKey } from '../const';
@@ -64,7 +64,7 @@ const BedrockProvider = memo(() => {
         <Flexbox align={'center'} gap={8} horizontal>
           <Aws.Color size={32} />
           <Divider style={{ margin: '0 4px' }} type={'vertical'} />
-          <Bedrock.Combine size={24} type={'color'} />
+          <Bedrock.Combine size={26} type={'color'} />
         </Flexbox>
       }
     />

@@ -10,7 +10,7 @@ import { modelProviderSelectors } from '@/store/user/selectors';
 
 import { useSendMessage } from './useSend';
 
-export const useChatInput = () => {
+export const useChatInput = (mobile?: boolean) => {
   const ref = useRef<TextAreaRef>(null);
   const [expand, setExpand] = useState<boolean>(false);
   const onSend = useSendMessage();
@@ -26,9 +26,12 @@ export const useChatInput = () => {
   ]);
 
   const handleSend = useCallback(() => {
-    setExpand(false);
-
-    onSend();
+    if (mobile) {
+      onInput(value + '\r\n');
+    } else {
+      setExpand(false);
+      onSend();
+    }
   }, [onSend]);
 
   return {

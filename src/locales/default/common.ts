@@ -59,7 +59,7 @@ export default {
     },
     title: '导入数据',
   },
-  installPWA: '安裝小助手',
+  installPWA: '安裝助手',
   lang: {
     'ar': '阿拉伯语',
     'bg-BG': '保加利亚语',

@@ -7,13 +7,15 @@ import {
 } from '@lobehub/ui';
 import { Skeleton } from 'antd';
 // import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
-// import Link from 'next/link';
-import { memo } from 'react';
+import { Suspense, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
+import { useInitAgentConfig } from '@/hooks/useInitAgentConfig';
+// import { DESKTOP_HEADER_ICON_SIZE } from '@/const/layoutTokens';
 import { useOpenChatSettings } from '@/hooks/useInterceptingRoutes';
 // import { useGlobalStore } from '@/store/global';
+// import { systemStatusSelectors } from '@/store/global/selectors';
 import { useSessionStore } from '@/store/session';
 import { sessionMetaSelectors, sessionSelectors } from '@/store/session/selectors';
 
@@ -21,6 +23,8 @@ import Tags from './Tags';
 
 const Main = memo(() => {
   const { t } = useTranslation('chat');
+
+  useInitAgentConfig();
 
   const [init, isInbox, title, description, avatar, backgroundColor] = useSessionStore((s) => [
     sessionSelectors.isSomeSessionActive(s),
@@ -35,7 +39,8 @@ const Main = memo(() => {
 
   const displayTitle = isInbox ? t('inbox.title') : title;
   const displayDesc = isInbox ? t('inbox.desc') : description;
-  // const showSessionPanel = useGlobalStore((s) => s.preference.showSessionPanel);
+  // const showSessionPanel = useGlobalStore(systemStatusSelectors.showSessionPanel);
+  // const updateSystemStatus = useGlobalStore((s) => s.updateSystemStatus);
 
   return !init ? (
     <Flexbox horizontal>
@@ -47,21 +52,20 @@ const Main = memo(() => {
       />
     </Flexbox>
   ) : (
-    <Flexbox align={'flex-start'} gap={12} horizontal>
-      {/*<Link aria-label={t('agentsAndConversations')} href={'/chat'}>
-          <ActionIcon
-            icon={showSessionPanel ? PanelLeftClose : PanelLeftOpen}
-            onClick={() => {
-              const currentShowSessionPanel = useGlobalStore.getState().preference.showSessionPanel;
-              useGlobalStore.getState().updatePreference({
-                sessionsWidth: currentShowSessionPanel ? 0 : 320,
-                showSessionPanel: !currentShowSessionPanel,
-              });
-            }}
-            size="large"
-            title={t('agentsAndConversations')}
-          />
-        </Link>*/}
+    <Flexbox align={'center'} gap={4} horizontal>
+      {/*
+        <ActionIcon
+          aria-label={t('agentsAndConversations')}
+          icon={showSessionPanel ? PanelLeftClose : PanelLeftOpen}
+          onClick={() => {
+            updateSystemStatus({
+              sessionsWidth: showSessionPanel ? 0 : 320,
+              showSessionPanel: !showSessionPanel,
+            });
+          }}
+          size={DESKTOP_HEADER_ICON_SIZE}
+          title={t('agentsAndConversations')}
+        />*/}
       <Avatar
         avatar={avatar}
         background={backgroundColor}
@@ -74,4 +78,17 @@ const Main = memo(() => {
   );
 });
 
-export default Main;
+export default () => (
+  <Suspense
+    fallback={
+      <Skeleton
+        active
+        avatar={{ shape: 'circle', size: 'default' }}
+        paragraph={false}
+        title={{ style: { margin: 0, marginTop: 8 }, width: 200 }}
+      />
+    }
+  >
+    <Main />
+  </Suspense>
+);

@@ -2,10 +2,9 @@ import dayjs from 'dayjs';
 import { domToJpeg, domToPng, domToSvg, domToWebp } from 'modern-screenshot';
 import { useCallback, useState } from 'react';
 
+import { ImageType } from '@/app/(main)/chat/(workspace)/features/ShareButton/type';
 import { useSessionStore } from '@/store/session';
 import { sessionMetaSelectors } from '@/store/session/selectors';
-
-import { ImageType } from '../app/(main)/chat/(workspace)/features/ShareButton/type';
 
 export const useScreenshot = (imageType: ImageType) => {
   const [loading, setLoading] = useState(false);
@@ -42,7 +41,7 @@ export const useScreenshot = (imageType: ImageType) => {
         scale: 2,
       });
       const link = document.createElement('a');
-      link.download = `ChatAI_${title}_${dayjs().format('YYYY-MM-DD')}.${imageType}`;
+      link.download = `LobeChat_${title}_${dayjs().format('YYYY-MM-DD')}.${imageType}`;
       link.href = dataUrl;
       link.click();
       setLoading(false);

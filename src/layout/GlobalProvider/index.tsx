@@ -1,11 +1,13 @@
 import dynamic from 'next/dynamic';
-import { cookies } from 'next/headers';
-import { FC, ReactNode } from 'react';
+import { cookies, headers } from 'next/headers';
+import { FC, PropsWithChildren } from 'react';
+import { resolveAcceptLanguage } from 'resolve-accept-language';
 
-import { getClientConfig } from '@/config/client';
-import { getServerFeatureFlagsValue } from '@/config/server/featureFlags';
+import { getDebugConfig } from '@/config/debug';
+import { getServerFeatureFlagsValue } from '@/config/featureFlags';
 import { LOCALE_COOKIE } from '@/const/locale';
 import { THEME_APPEARANCE, THEME_NEUTRAL_COLOR, THEME_PRIMARY_COLOR } from '@/const/theme';
+import { locales } from '@/locales/resources';
 import { getServerGlobalConfig } from '@/server/globalConfig';
 import { ServerConfigStoreProvider } from '@/store/serverConfig';
 import { getAntdLocale } from '@/utils/locale';
@@ -22,16 +24,32 @@ let DebugUI: FC = () => null;
 // refs: https://webpack.js.org/plugins/internal-plugins/#constplugin
 if (process.env.NODE_ENV === 'development') {
   // eslint-disable-next-line unicorn/no-lonely-if
-  if (getClientConfig().DEBUG_MODE) {
+  if (getDebugConfig().DEBUG_MODE) {
     DebugUI = dynamic(() => import('@/features/DebugUI'), { ssr: false }) as FC;
   }
 }
 
-interface GlobalLayoutProps {
-  children: ReactNode;
-}
+const parserFallbackLang = () => {
+  /**
+   * The arguments are as follows:
+   *
+   * 1) The HTTP accept-language header.
+   * 2) The available locales (they must contain the default locale).
+   * 3) The default locale.
+   */
+  let fallbackLang: string = resolveAcceptLanguage(
+    headers().get('accept-language') || '',
+    //  Invalid locale identifier 'ar'. A valid locale should follow the BCP 47 'language-country' format.
+    locales.map((locale) => locale),
+    'en-US',
+  );
+  // if match the ar-EG then fallback to ar
+  if (fallbackLang === 'ar-EG') fallbackLang = 'ar';
 
-const GlobalLayout = async ({ children }: GlobalLayoutProps) => {
+  return fallbackLang;
+};
+
+const GlobalLayout = async ({ children }: PropsWithChildren) => {
   // get default theme config to use with ssr
   const cookieStore = cookies();
   const appearance = cookieStore.get(THEME_APPEARANCE);
@@ -40,7 +58,13 @@ const GlobalLayout = async ({ children }: GlobalLayoutProps) => {
 
   // get default locale config to use with ssr
   const defaultLang = cookieStore.get(LOCALE_COOKIE);
-  const antdLocale = await getAntdLocale(defaultLang?.value);
+  const fallbackLang = parserFallbackLang();
+
+  // if it's a new user, there's no cookie
+  // So we need to use the fallback language parsed by accept-language
+  const userLocale = defaultLang?.value || fallbackLang;
+
+  const antdLocale = await getAntdLocale(userLocale);
 
   // get default feature flags to use with ssr
   const serverFeatureFlags = getServerFeatureFlagsValue();
@@ -48,19 +72,19 @@ const GlobalLayout = async ({ children }: GlobalLayoutProps) => {
   const isMobile = isMobileDevice();
   return (
     <StyleRegistry>
-      <Locale antdLocale={antdLocale} defaultLang={defaultLang?.value}>
+      <Locale antdLocale={antdLocale} defaultLang={userLocale}>
         <AppTheme
           defaultAppearance={appearance?.value}
           defaultNeutralColor={neutralColor?.value as any}
           defaultPrimaryColor={primaryColor?.value as any}
         >
-          <StoreInitialization />
           <ServerConfigStoreProvider
             featureFlags={serverFeatureFlags}
             isMobile={isMobile}
             serverConfig={serverConfig}
           >
             {children}
+            <StoreInitialization />
           </ServerConfigStoreProvider>
           <DebugUI />
         </AppTheme>

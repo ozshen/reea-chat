@@ -15,14 +15,14 @@ import Files from './Files';
 const MobileChatInput = memo(() => {
   const { t } = useTranslation('chat');
   const theme = useTheme();
-  const { ref, onSend, loading, value, onInput, onStop, expand, setExpand } = useChatInput();
+  const { ref, onSend, loading, value, onInput, onStop, expand, setExpand } = useChatInput(true);
 
   return (
     <MobileChatInputArea
       expand={expand}
       loading={loading}
       onInput={onInput}
-      //onSend={onSend}
+      onSend={onSend}
       placeholder={t('sendPlaceholder')}
       ref={ref}
       setExpand={setExpand}

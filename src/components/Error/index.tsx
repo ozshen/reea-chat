@@ -1,6 +1,6 @@
 'use client';
 
-import { FluentEmoji } from '@lobehub/ui';
+// import { FluentEmoji } from '@lobehub/ui';
 import { Button } from 'antd';
 import Link from 'next/link';
 import { memo, useLayoutEffect } from 'react';
@@ -9,11 +9,13 @@ import { Flexbox } from 'react-layout-kit';
 
 import { MAX_WIDTH } from '@/const/layoutTokens';
 
+// import { type ErrorType, sentryCaptureException } from './sentryCaptureException';
+export type ErrorType = Error & { digest?: string };
+
 interface ErrorCaptureProps {
   error: ErrorType;
   reset?: () => void;
 }
-export type ErrorType = Error & { digest?: string };
 
 const ErrorCapture = memo<ErrorCaptureProps>(({ reset, error }) => {
   const { t } = useTranslation('error');
@@ -23,7 +25,7 @@ const ErrorCapture = memo<ErrorCaptureProps>(({ reset, error }) => {
   }, [error]);
 
   return (
-    <Flexbox align={'center'} justify={'center'} style={{ height: '100%', width: '100%' }}>
+    <Flexbox align={'center'} justify={'center'} style={{ minHeight: '100%', width: '100%' }}>
       <h1
         style={{
           filter: 'blur(8px)',
@@ -37,7 +39,7 @@ const ErrorCapture = memo<ErrorCaptureProps>(({ reset, error }) => {
       >
         ERROR
       </h1>
-      <FluentEmoji emoji={'🤧'} size={64} />
+      {/* <FluentEmoji emoji={'🤧'} size={64} /> */}
       <h2 style={{ fontWeight: 'bold', marginTop: '1em', textAlign: 'center' }}>
         {t('error.title')}
       </h2>

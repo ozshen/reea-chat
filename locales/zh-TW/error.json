@@ -12,6 +12,8 @@
     "retry": "重新加載",
     "title": "頁面遇到一點問題.."
   },
+  "fetchError": "請求失敗",
+  "fetchErrorDetail": "錯誤詳情",
   "notFound": {
     "backHome": "返回首頁",
     "desc": "我們找不到你正在尋找的頁面，請檢查鏈接是否正確",
@@ -55,6 +57,7 @@
     "AnthropicBizError": "請求 Anthropic AI 服務出錯，請根據以下信息排查或重試",
     "AzureBizError": "請求 Azure AI 服務出錯，請根據以下信息排查或重試",
     "BedrockBizError": "請求 Bedrock 服務出錯，請根據以下信息排查或重試",
+    "DeepSeekBizError": "請求 DeepSeek 服務出錯，請根據以下信息排查或重試",
     "GoogleBizError": "請求 Google 服務出錯，請根據以下信息排查或重試",
     "GroqBizError": "請求 Groq 服務出錯，請根據以下信息排查或重試",
     "InvalidAccessCode": "請輸入正確的訪問密碼，或者添加自定義 API Key",
@@ -62,6 +65,7 @@
     "InvalidAzureAPIKey": "Azure API Key 不正確或為空，請檢查 Azure API Key 後重試",
     "InvalidBedrockCredentials": "Bedrock 驗證未通過，請檢查 AccessKeyId/SecretAccessKey 後重試",
     "InvalidClerkUser": "很抱歉，你當前尚未登錄，請先登錄或註冊賬號後繼續操作",
+    "InvalidDeepSeekAPIKey": "DeepSeek API 金鑰無效或為空，請檢查 DeepSeek API 金鑰後重試",
     "InvalidGoogleAPIKey": "Google API Key 不正確或為空，請檢查 Google API Key 後重試",
     "InvalidGroqAPIKey": "Groq API Key 不正確或為空，請檢查 Groq API Key 後重試",
     "InvalidMinimaxAPIKey": "Minimax API 金鑰不正確或為空，請檢查 Minimax API 金鑰後重試",

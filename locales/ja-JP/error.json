@@ -12,6 +12,8 @@
     "retry": "再読み込み",
     "title": "ページに問題が発生しました.."
   },
+  "fetchError": "リクエストに失敗しました",
+  "fetchErrorDetail": "エラーの詳細",
   "notFound": {
     "backHome": "ホームに戻る",
     "desc": "お探しのページが見つかりませんでした。リンクが正しいか確認してください",
@@ -55,6 +57,7 @@
     "AnthropicBizError": "Anthropic AIサービスのリクエストでエラーが発生しました。以下の情報に基づいてトラブルシューティングを行うか、再度お試しください。",
     "AzureBizError": "Azure AIサービスのリクエストでエラーが発生しました。以下の情報に基づいてトラブルシューティングを行うか、再試行してください。",
     "BedrockBizError": "Bedrockサービスのリクエストでエラーが発生しました。以下の情報に基づいてトラブルシューティングを行うか、再試行してください。",
+    "DeepSeekBizError": "DeepSeekサービスのリクエストでエラーが発生しました。以下の情報に基づいてトラブleshootするか再試行してください",
     "GoogleBizError": "Googleサービスのリクエストでエラーが発生しました。以下の情報に基づいてトラブルシューティングを行うか、再試行してください。",
     "GroqBizError": "Groqサービスのリクエストでエラーが発生しました。以下の情報を確認して再試行してください。",
     "InvalidAccessCode": "パスワードが正しくないか空です。正しいアクセスパスワードを入力するか、カスタムAPIキーを追加してください",
@@ -62,6 +65,7 @@
     "InvalidAzureAPIKey": "Azure APIキーが正しくないか空です。Azure APIキーを確認してから再試行してください。",
     "InvalidBedrockCredentials": "Bedrockの認証に失敗しました。AccessKeyId/SecretAccessKeyを確認してから再試行してください。",
     "InvalidClerkUser": "申し訳ありませんが、現在ログインしていないようです。操作を続行するには、ログインまたはアカウント登録を行ってください",
+    "InvalidDeepSeekAPIKey": "DeepSeek APIキーが正しくないか空です。DeepSeek APIキーを確認して再試行してください",
     "InvalidGoogleAPIKey": "Google APIキーが正しくないか空です。Google APIキーを確認してから再試行してください。",
     "InvalidGroqAPIKey": "Groq APIキーが正しくないか空です。Groq APIキーを確認して再試行してください。",
     "InvalidMinimaxAPIKey": "Minimax APIキーが正しくないか空です。Minimax APIキーを確認して再試行してください。",

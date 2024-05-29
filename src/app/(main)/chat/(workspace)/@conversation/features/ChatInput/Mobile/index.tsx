@@ -1,6 +1,6 @@
 'use client';
 
-import { MobileChatInputArea, MobileChatSendButton } from '@lobehub/ui';
+import { MobileChatSendButton } from '@lobehub/ui';
 import { useTheme } from 'antd-style';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -11,11 +11,12 @@ import SaveTopic from '@/features/ChatInput/Topic';
 import { useChatInput } from '@/features/ChatInput/useChatInput';
 
 import Files from './Files';
+import MobileChatInputArea from './InputArea';
 
 const MobileChatInput = memo(() => {
   const { t } = useTranslation('chat');
   const theme = useTheme();
-  const { ref, onSend, loading, value, onInput, onStop, expand, setExpand } = useChatInput(true);
+  const { ref, onSend, loading, value, onInput, onStop, expand, setExpand } = useChatInput();
 
   return (
     <MobileChatInputArea

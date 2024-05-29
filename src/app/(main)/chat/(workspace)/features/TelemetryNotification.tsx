@@ -1,9 +1,15 @@
 'use client';
 
-import { Avatar, Icon } from '@lobehub/ui';
+import {
+  /*Avatar,*/
+  Icon,
+} from '@lobehub/ui';
 import { Button } from 'antd';
 import { createStyles } from 'antd-style';
-import { LucideArrowUpRightFromSquare, TelescopeIcon } from 'lucide-react';
+import {
+  LucideArrowUpRightFromSquare,
+  /*, TelescopeIcon*/
+} from 'lucide-react';
 import Link from 'next/link';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -27,7 +33,7 @@ const useStyles = createStyles(({ css, token }) => ({
 }));
 
 const TelemetryNotification = memo<{ mobile?: boolean }>(({ mobile }) => {
-  const { styles, theme } = useStyles();
+  const { styles /*, theme*/ } = useStyles();
 
   const { t } = useTranslation('common');
   const shouldCheck = useServerConfigStore(serverConfigSelectors.enabledTelemetryChat);
@@ -47,13 +53,13 @@ const TelemetryNotification = memo<{ mobile?: boolean }>(({ mobile }) => {
 
   return (
     <Notification mobile={mobile} show={showModal} showCloseIcon={false}>
-      <Flexbox>
+      {/* <Flexbox>
         <Avatar
           avatar={<TelescopeIcon />}
           background={theme.geekblue1}
           style={{ color: theme.geekblue7 }}
         ></Avatar>
-      </Flexbox>
+      </Flexbox> */}
       <Flexbox gap={16}>
         <Flexbox gap={12}>
           <Flexbox className={styles.title}>{t('telemetry.title')}</Flexbox>

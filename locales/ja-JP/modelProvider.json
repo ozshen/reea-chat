@@ -61,6 +61,18 @@
       "title": "Bedrock認証情報"
     }
   },
+  "deepseek": {
+    "title": "DeepSeek",
+    "token": {
+      "desc": "DeepSeek の API キーを入力してください",
+      "placeholder": "DeepSeek API キー",
+      "title": "API キー"
+    },
+    "unlock": {
+      "description": "あなたの DeepSeek API キーを入力してセッションを開始します。アプリは API キーを記録しません",
+      "title": "カスタム DeepSeek API キーを使用"
+    }
+  },
   "google": {
     "title": "Google",
     "token": {

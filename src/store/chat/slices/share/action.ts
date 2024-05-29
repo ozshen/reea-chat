@@ -105,7 +105,7 @@ export const chatShare: StateCreator<ChatStore, [['zustand/devtools', never]], [
     set({ shareLoading: true });
 
     const res = await shareService.createShareGPTUrl({
-      avatarUrl: avatar || DEFAULT_USER_AVATAR_URL,
+      avatarUrl: avatar || DEFAULT_USER_AVATAR_URL(),
       items: shareMsgs,
     });
     set({ shareLoading: false });

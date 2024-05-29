@@ -2,6 +2,14 @@
   "about": {
     "title": "Über"
   },
+  "agentTab": {
+    "chat": "Chat-Präferenz",
+    "meta": "Assistenteninformation",
+    "modal": "Modal-Einstellung",
+    "plugin": "Plugin-Einstellung",
+    "prompt": "Rolleneinstellung",
+    "tts": "Sprachdienst"
+  },
   "analytics": {
     "telemetry": {
       "desc": "Durch das Senden von Telemetriedaten können Sie uns dabei helfen, die Gesamtnutzererfahrung von ChatAI zu verbessern",
@@ -357,6 +365,17 @@
         "title": "Synchronisierung aktivieren"
       },
       "title": "WebRTC-Synchronisierung"
+    }
+  },
+  "systemAgent": {
+    "tab": {
+      "system-agent": "Systemassistent"
+    },
+    "title": "Systemassistent",
+    "translation": {
+      "label": "Übersetzungsmodell",
+      "modelDesc": "Festlegung des zu verwendenden Übersetzungsmodells",
+      "title": "Einstellungen für Übersetzungsassistent"
     }
   },
   "tab": {

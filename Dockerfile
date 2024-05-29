@@ -76,6 +76,23 @@ EXPOSE 3210
 ENV HOSTNAME "0.0.0.0"
 ENV PORT 3210
 
+ENV NEXT_PUBLIC_BASE_PATH ""
+
+# Sentry
+ENV NEXT_PUBLIC_SENTRY_DSN ""
+ENV SENTRY_ORG ""
+ENV SENTRY_PROJECT ""
+
+# Posthog
+ENV NEXT_PUBLIC_ANALYTICS_POSTHOG ""
+ENV NEXT_PUBLIC_POSTHOG_KEY ""
+ENV NEXT_PUBLIC_POSTHOG_HOST ""
+
+# Umami
+ENV NEXT_PUBLIC_ANALYTICS_UMAMI ""
+ENV NEXT_PUBLIC_UMAMI_SCRIPT_URL ""
+ENV NEXT_PUBLIC_UMAMI_WEBSITE_ID ""
+
 # set default link urls
 ENV SHOP_URL ""
 ENV ABOUT_URL ""
@@ -83,7 +100,9 @@ ENV PRIVACY_URL ""
 
 # General Variables
 ENV ACCESS_CODE ""
-ENV CUSTOM_MODELS ""
+
+ENV API_KEY_SELECT_MODE ""
+
 ENV AGENTS_INDEX_URL ""
 ENV PLUGINS_INDEX_URL ""
 
@@ -152,25 +171,5 @@ ENV MINIMAX_API_KEY ""
 
 # DeepSeek
 ENV DEEPSEEK_API_KEY ""
-#CMD ["node", "server.js"]
 
-CMD if [ -n "$PROXY_URL" ]; then \
-        export HOSTNAME="127.0.0.1"; \
-        protocol=$(echo $PROXY_URL | cut -d: -f1); \
-        host=$(echo $PROXY_URL | cut -d/ -f3 | cut -d: -f1); \
-        port=$(echo $PROXY_URL | cut -d: -f3); \
-        conf=/etc/proxychains.conf; \
-        echo "strict_chain" > $conf; \
-        echo "proxy_dns" >> $conf; \
-        echo "remote_dns_subnet 224" >> $conf; \
-        echo "tcp_read_time_out 15000" >> $conf; \
-        echo "tcp_connect_time_out 8000" >> $conf; \
-        echo "localnet 127.0.0.0/255.0.0.0" >> $conf; \
-        echo "localnet ::1/128" >> $conf; \
-        echo "[ProxyList]" >> $conf; \
-        echo "$protocol $host $port" >> $conf; \
-        cat /etc/proxychains.conf; \
-        proxychains4 -f $conf node --no-deprecation server.js; \
-    else \
-        node --no-deprecation server.js; \
-    fi
+CMD ["node", "server.js"]

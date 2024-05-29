@@ -23,10 +23,10 @@ const Redirect = memo(() => {
     if (!isLoaded) return;
 
     // this mean user is definitely not login
-    if (!isLogin) {
-      router.replace('/welcome');
-      return;
-    }
+    // if (!isLogin) {
+    //   router.replace('/welcome');
+    //   return;
+    // }
 
     // if user state not init, wait for loading
     if (!isUserStateInit) return;

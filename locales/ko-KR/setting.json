@@ -2,6 +2,14 @@
   "about": {
     "title": "소개"
   },
+  "agentTab": {
+    "chat": "채팅 설정",
+    "meta": "보조 정보",
+    "modal": "모델 설정",
+    "plugin": "플러그인 설정",
+    "prompt": "역할 설정",
+    "tts": "음성 서비스"
+  },
   "analytics": {
     "telemetry": {
       "desc": "익명 사용 데이터를 보내는 것으로 ChatAI의 전반적인 사용자 경험을 개선하는 데 도움을 줄 수 있습니다",
@@ -357,6 +365,17 @@
         "title": "동기화 활성화"
       },
       "title": "WebRTC 동기화"
+    }
+  },
+  "systemAgent": {
+    "tab": {
+      "system-agent": "시스템 보조"
+    },
+    "title": "시스템 보조",
+    "translation": {
+      "label": "번역 모델",
+      "modelDesc": "번역에 사용되는 모델 지정",
+      "title": "번역 보조 설정"
     }
   },
   "tab": {

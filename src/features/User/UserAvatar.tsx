@@ -1,7 +1,7 @@
 'use client';
 
 import { Avatar, type AvatarProps } from '@lobehub/ui';
-import { createStyles } from 'antd-style';
+import { createStyles, useTheme } from 'antd-style';
 import { forwardRef } from 'react';
 
 import { DEFAULT_USER_AVATAR_URL } from '@/const/meta';
@@ -53,11 +53,12 @@ const UserAvatar = forwardRef<HTMLDivElement, UserAvatarProps>(
     ]);
 
     const isSignedIn = useUserStore(authSelectors.isLogin);
+    const { isDarkMode } = useTheme();
 
     return (
       <Avatar
         alt={isSignedIn ? (username as string) : 'ChatAI'}
-        avatar={DEFAULT_USER_AVATAR_URL}
+        avatar={DEFAULT_USER_AVATAR_URL(isDarkMode)}
         background={isSignedIn && avatar ? background : undefined}
         className={cx(clickable && styles.clickable, className)}
         ref={ref}

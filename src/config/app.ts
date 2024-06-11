@@ -30,6 +30,7 @@ export const getAppConfig = () => {
       PLUGIN_SETTINGS: z.string().optional(),
 
       SITE_URL: z.string().optional(),
+      SHOP_URL: z.string().optional(),
     },
     runtimeEnv: {
       NEXT_PUBLIC_BASE_PATH: process.env.NEXT_PUBLIC_BASE_PATH || '',
@@ -51,6 +52,7 @@ export const getAppConfig = () => {
 
       PLUGIN_SETTINGS: process.env.PLUGIN_SETTINGS,
       SITE_URL: process.env.SITE_URL,
+      SHOP_URL: process.env.SHOP_URL,
     },
   });
 };

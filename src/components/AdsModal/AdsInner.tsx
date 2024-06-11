@@ -38,7 +38,7 @@ const AdsInner = memo<{ content?: string }>(({ content }) => {
             <br />
             <br />
             <Icon icon={Sparkles} />
-            {' - 接口消耗的token计算方式与官方公布的算法一致，日志72小时定时自动清理不留存。'}
+            {' - 接口消耗的token计算方式与官方公布的算法一致，日志72小时定时清理。'}
             <br />
             <br />
             <Icon icon={Sparkles} />
@@ -46,7 +46,7 @@ const AdsInner = memo<{ content?: string }>(({ content }) => {
             <br />
             <br />
             <Icon icon={Sparkles} />
-            {' - 账号永不过期，可用token数永不清零，有效额不因市场价格浮动。'}
+            {' - 账号可用token用多少充多少，价格实惠，质量上乘。'}
           </p>
           <Divider />
           <Button onClick={() => window.open(SHOPPING, '__blank')} type={'default'}>

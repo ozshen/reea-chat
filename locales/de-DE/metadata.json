@@ -1,18 +1,18 @@
 {
   "chat": {
-    "description": "LobeChat bietet Ihnen das beste ChatGPT-, OLLaMA-, Gemini- und Claude-WebUI-Nutzererlebnis",
-    "title": "LobeChat: Persönliches LLM-Produktivitätstool für ein klügeres Gehirn"
+    "description": "Persönliches LLM-Produktivitätstool für die besten ChatGPT-, OLLaMA-, Gemini- und Claude-WebUI-Nutzererfahrungen",
+    "title": "Persönliches LLM-Produktivitätstool für ein schlaueres Gehirn"
   },
   "market": {
-    "description": "Inhaltsproduktion, Texterstellung, Fragen und Antworten, Bildgenerierung, Videogenerierung, Sprachgenerierung, intelligente Agenten, Automatisierungs-Workflows - gestalten Sie Ihren eigenen AI / GPTs / OLLaMA intelligenten Assistenten",
+    "description": "Content-Erstellung, Copywriting, Fragen und Antworten, Bildgenerierung, Videogenerierung, Sprachgenerierung, intelligente Agenten, Automatisierungs-Workflows - Gestalten Sie Ihren eigenen AI / GPTs / OLLaMA-Intelligenten Assistenten",
     "title": "Assistentenmarkt"
   },
   "plugins": {
-    "description": "Suche, Diagrammerstellung, Akademisch, Bildgenerierung, Videogenerierung, Sprachgenerierung, Automatisierungs-Workflows - passen Sie ChatGPT / OLLaMA exklusive ToolCall-Plugin-Fähigkeiten an",
+    "description": "Suche, Diagrammerstellung, Akademisch, Bildgenerierung, Videogenerierung, Sprachgenerierung, Automatisierungs-Workflows - Gestalten Sie spezielle ToolCall-Plugin-Funktionen für ChatGPT / OLLaMA",
     "title": "Plugin-Markt"
   },
   "welcome": {
-    "description": "LobeChat bietet Ihnen das beste ChatGPT-, OLLaMA-, Gemini- und Claude-WebUI-Nutzererlebnis",
-    "title": "Willkommen bei LobeChat: Persönliches LLM-Produktivitätstool für ein klügeres Gehirn"
+    "description": "Persönliches LLM-Produktivitätstool für die besten ChatGPT-, OLLaMA-, Gemini- und Claude-WebUI-Nutzererfahrungen",
+    "title": "Willkommen bei ChatAI: Ein schlaueres Gehirn für sich selbst"
   }
 }

@@ -368,9 +368,6 @@
     }
   },
   "systemAgent": {
-    "tab": {
-      "system-agent": "Systemassistent"
-    },
     "title": "Systemassistent",
     "translation": {
       "label": "Übersetzungsmodell",
@@ -385,6 +382,7 @@
     "experiment": "Experiment",
     "llm": "Sprachmodell",
     "sync": "Cloud-Synchronisierung",
+    "system-agent": "System-Assistent",
     "tts": "Sprachdienste"
   },
   "tools": {

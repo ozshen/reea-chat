@@ -368,9 +368,6 @@
     }
   },
   "systemAgent": {
-    "tab": {
-      "system-agent": "시스템 보조"
-    },
     "title": "시스템 보조",
     "translation": {
       "label": "번역 모델",
@@ -385,6 +382,7 @@
     "experiment": "실험",
     "llm": "언어 모델",
     "sync": "클라우드 동기화",
+    "system-agent": "시스템 에이전트",
     "tts": "음성 서비스"
   },
   "tools": {
